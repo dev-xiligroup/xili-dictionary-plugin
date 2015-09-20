@@ -4,13 +4,14 @@ Plugin Name: xili-dictionary
 Plugin URI: http://dev.xiligroup.com/xili-dictionary/
 Description: A tool using wordpress's CPT and taxonomy for localized themes or multilingual themes managed by xili-language - a powerful tool to create .mo file(s) on the fly in the theme's folder and more... - ONLY for >= WP 3.2.1 -
 Author: dev.xiligroup - MS
-Version: 2.12.1
+Version: 2.12.2
 Author URI: http://dev.xiligroup.com
 License: GPLv2
 Text Domain: xili-dictionary
 Domain Path: /languages/
 */
 
+# 2.12.2 - 150920 - better compatibility w polylang before xl install - import polylang_mo custom post in dev
 # 2.12.1 - 150704 - datatables js updated to 1.10.7 (for jQuery 1.11.3 WP 4.3)
 # 2.12.0 - 150628 - fixes, better labels in Writers and Origins, able to import parent sources if child theme active, writers displayed in list, compatible with Polylang taxonomy
 # 2.11.2 - 150527 - link title added, more terms from post-template, core import process improved
@@ -73,7 +74,7 @@ if ( !function_exists( 'add_action' ) ) {
 	exit;
 }
 
-define( 'XILIDICTIONARY_VER', '2.12.1' );
+define( 'XILIDICTIONARY_VER', '2.12.2' );
 define( 'XILIDICTIONARY_DEBUG', false ); // WP_DEBUG must be also true !
 
 include_once ( ABSPATH . WPINC . '/pomo/po.php'); /* not included in wp-settings */
@@ -128,7 +129,7 @@ class xili_dictionary {
 	var $file_site_local_mos = array() ; // $this->get_pomo_from_site( true );
 
 	var $default_langs_array = array(); // default languages
-	var $internal_list = false; // created by xl or xd
+	var $internal_list = false; // created by xl // true by xd or pll
 
 	var $importing_mode = false ; // for new action by hand ( action save when new )
 	var $msg_str_labels = array (
@@ -185,7 +186,7 @@ class xili_dictionary {
 		/* get current settings - name of taxonomy - name of query-tag */
 		$this->xililanguage_state();
 		$this->xili_settings = get_option('xili_dictionary_settings');
-		if(empty($this->xili_settings) || $this->xili_settings['taxonomy'] != 'dictionary') { // to fix
+		if( empty($this->xili_settings) || $this->xili_settings['taxonomy'] != 'dictionary') { // to fix
 			$this->xili_dictionary_activation();
 			$this->xili_settings = get_option('xili_dictionary_settings');
 		}
@@ -277,7 +278,8 @@ class xili_dictionary {
 			add_action( 'restrict_manage_posts', array(&$this,'restrict_manage_origin_posts'), 10 );
 			add_action( 'pre_get_posts', array(&$this,'wpse6066_pre_get_posts' ) );
 
-			add_action( 'category_edit_form_fields', array(&$this, 'show_translation_msgstr'), 10, 2 );
+			if ( class_exists ('xili_language' ) ) // not visible if pll 2.12.2
+				add_action( 'category_edit_form_fields', array(&$this, 'show_translation_msgstr'), 10, 2 );
 
 			add_action( 'wp_print_scripts', array(&$this,'auto_save_unsetting' ), 2 ); // before other
 
@@ -434,12 +436,15 @@ class xili_dictionary {
 		// new method for languages 2.0
 		$this->internal_list = $this->default_language_taxonomy ();
 
-		if ( $this->internal_list ) { // test if empty
+		if ( $this->internal_list ) { // xl is not active
 			$listlanguages = get_terms( TAXONAME, array('hide_empty' => false));
+
+			$this->other_multilingual_compat( $listlanguages ); // what from pll ?
+
 			if ( $listlanguages == array() ) {
 				$this->create_default_languages();
 			}
-			$this->other_multilingual_compat( $listlanguages );
+
 		}
 
 		//,'slug' => 'the-langs-group'
@@ -463,7 +468,7 @@ xili_xd_error_log ( '# '. __LINE__ . ' admin_menu_add ------------');
 			$this->multilanguage_plugin_active = 'Polylang';
 			// attach languages to group
 			foreach ( $languages as $language ) {
-				wp_set_object_terms( $language->term_id, 'the-langs-group', TAXOLANGSGROUP);
+				wp_set_object_terms( $language->term_id, 'the-langs-group', TAXOLANGSGROUP); // link to group
 				$desc_array = unserialize( $language->description );
 				$this->ISO_to_term_id[ $desc_array['locale'] ] = $language->term_id;
 			}
@@ -662,7 +667,8 @@ xili_xd_error_log ( '# '. __LINE__ . ' admin_menu_add ------------');
 	 *
 	 */
 	function default_language_taxonomy () {
-		if ( ! defined ( 'TAXONAME' ) ) {
+
+		if ( ! defined ( 'TAXONAME' ) ) { // XL is not active
 			if ( ! defined ( 'QUETAG' ) ) define ('QUETAG', 'lang');
 
 			define ('TAXONAME', 'language');
@@ -3209,21 +3215,23 @@ function verifybefore(id) {
 
 	function xililanguage_state() {
 	/* test if xili-language is present or was present */
-		if (class_exists('xili_language')) {
+		if ( class_exists('xili_language') ) {
 
 			$this->xililanguage = 'isactive';
 
 		} else {
 			/* test if language taxonomy relationships are present */
-			$xl_settings = get_option('xili_language_settings');
-			if ( empty($xl_settings) ) {
-				$this->xililanguage = 'neveractive';
-			} else {
+			$xl_settings = get_option('xili_language_settings', false );
+			if ( $xl_settings ) {
 				$this->xililanguage = 'wasactive';
+			} else {
+				$this->xililanguage = 'neveractive';
 			}
 		}
 	}
-	/** * @since 1.02 */
+	/**
+	 * @since 1.02
+	 */
 	function fill_default_languages_list() {
 		if ( $this->xililanguage == 'neveractive' || $this->xililanguage == 'wasactive' ) {
 
@@ -3914,7 +3922,7 @@ function verifybefore(id) {
 			<legend><?php _e('Language to add','xili-dictionary'); ?></legend>
 			<?php if ( $this->examples_list  ) { ?>
 			<select name="language_name_list" id="language_name_list">
-				<?php $this->example_langs_list(); ?>
+				<?php $this->example_langs_list( $action ); ?>
 			</select><br />
 			<?php } ?>
 			<label for="lang_ISO"><?php _e('ISO (xx_YY)','xili-dictionary') ?></label>:&nbsp;
@@ -3951,7 +3959,7 @@ function verifybefore(id) {
 	 * private functions for admin page : the language example list
 	 * @since 1.6.0
 	 */
-	function example_langs_list( ) {
+	function example_langs_list( $state ) {
 
 		/* reduce list according present languages in today list */
 		if ($state != 'delete' && $state != 'edit') {
@@ -3986,25 +3994,6 @@ function verifybefore(id) {
 		$optionlist .= '<option value="'.$left_line.$dictlanguage->slug.'" '.$checked.' >'.$lefttext.$dictlanguage->name .' ('.$dictlanguage->description.')</option>';
 		}
 	return $optionlist;
-	}
-
-	 /**
-	  * @since 1.3.3
-	  * // obsolete ?
-	  *
-	  */
-	function xd_wp_set_object_terms( $term_id, $lang_slug, $taxo_dictgroup , $bool = false) {
-
-		// check if lang_slug exists in this dict taxonomy
-		if ( ! $term_info = term_exists($lang_slug, $taxo_dictgroup) ) {
-			// Skip if a non-existent term ID is passed.
-			if ( is_int( $term_info ) )
-				continue;
-			$args = array( 'alias_of' => '', 'description' => 'Dictionary Group in '.$lang_slug );
-			$term_info = wp_insert_term($lang_slug, $taxo_dictgroup, $args); //print_r ($term_info);
-		}
-		wp_set_object_terms( $term_id, $lang_slug, $taxo_dictgroup, $bool );
-
 	}
 
 	/**
@@ -4468,12 +4457,12 @@ function verifybefore(id) {
 			$actiontype = "importingbloginfos";
 			$formtitle = __('Import terms of blog info and others…','xili-dictionary');
 			$formhow = __('To import terms of blog info and others defining this current website (title, date, comment, archive...), click below.','xili-dictionary')
-			. '<br />' . __('The process will import around 140 <strong>msgid</strong> from sources, so be patient.','xili-dictionary');
+			. '<br />' . __('The process will import around 140 <strong>msgid</strong> from db and sources, so be patient.','xili-dictionary');
 			$UI_lang = get_locale();
 			if ( 'en_US' != get_locale() ) // 2.11.1
 				$formhow .= '<br />' . sprintf(__('The language of dashboard is not <em>en_US</em>, so the process will try to import translations in %s.','xili-dictionary'), '<strong>'.get_locale().'</strong>' );
 			else
-				$formhow .= '<br />' . __('if you switch language of dashboard is other than in <em>en_US</em>, then the process will try to import translations of chosen language.','xili-dictionary');
+				$formhow .= '<br />' . __('If you switch language of dashboard in one other than in <em>en_US</em>, then the process will try to import translations of chosen language.','xili-dictionary');
 
 			// detect xml
 			if ( $this->available_theme_mod_xml() ) {
@@ -5659,29 +5648,29 @@ function verifybefore(id) {
 				if ( $extract_array [ 'origin' ] == '' || $extract_array [ 'origin' ] == array() ) {
 
 					return get_posts( array(
-				'numberposts' => -1, 'offset' => 0,
-				'category' => 0, 'orderby' => 'ID',
-				'order' => 'ASC', 'include' => array(),
-				'exclude' => array(),
-				'post_type' => XDMSG,
-				'suppress_filters' => true,
-				'meta_query' => $meta_query
-				) );
+						'numberposts' => -1, 'offset' => 0,
+						'category' => 0, 'orderby' => 'ID',
+						'order' => 'ASC', 'include' => array(),
+						'exclude' => array(),
+						'post_type' => XDMSG,
+						'suppress_filters' => true,
+						'meta_query' => $meta_query
+						) );
 
 				} else {
 
-				return get_posts( array(
-				'numberposts' => -1, 'offset' => 0,
-				'category' => 0, 'orderby' => 'ID',
-				'order' => 'ASC', 'include' => array(),
-				'exclude' => array(),
-				'post_type' => XDMSG,
-				'suppress_filters' => true,
-				'meta_query' => $meta_query,
-				'tax_query' => array(
-						$array_tax
-					)
-				) );
+					return get_posts( array(
+						'numberposts' => -1, 'offset' => 0,
+						'category' => 0, 'orderby' => 'ID',
+						'order' => 'ASC', 'include' => array(),
+						'exclude' => array(),
+						'post_type' => XDMSG,
+						'suppress_filters' => true,
+						'meta_query' => $meta_query,
+						'tax_query' => array(
+								$array_tax
+							)
+						) );
 				}
 
 			}
@@ -6360,14 +6349,47 @@ function verifybefore(id) {
 			}
 		}
 
-		// shortcode [linked-post-in lang="fr_fr"]Voir cet article[/linked-post-in] - 2.18.2
+		// shortcode [linked-post-in lang="fr_fr"]Voir cet article[/linked-post-in] - XL 2.18.2
 		$oneline = array();
 		$oneline['msgid'] = 'A similar post in %s';
 		$oneline['ctxt'] = 'linktitle'; // default context
 		$oneline['extracted_comments'] = $this->local_tag.' shortcode_linked-post-in';
 		$terms_to_import[] = $oneline;
 
-		// import the series...
+		// import Widget titles and texts - 2.12.2
+		global $wp_registered_widgets;
+		$sidebars = wp_get_sidebars_widgets();
+		foreach ( $sidebars as $sidebar => $widgets ) {
+			if ( $sidebar == 'wp_inactive_widgets' || empty($widgets) )
+				continue;
+
+			foreach ($widgets as $widget) {
+				// nothing can be done if the widget is created using pre WP2.8 API :( - as Fred says !
+				// there is no object, so we can't access it to get the widget options
+				if ( !isset($wp_registered_widgets[$widget]['callback'][0]) || !is_object($wp_registered_widgets[$widget]['callback'][0]) || !method_exists($wp_registered_widgets[$widget]['callback'][0], 'get_settings'))
+					continue;
+
+				$widget_settings = $wp_registered_widgets[$widget]['callback'][0]->get_settings();
+				$number = $wp_registered_widgets[$widget]['params'][0]['number'];
+
+				$item_array = apply_filters( 'widget_text_items', array('title', 'text') ); // filter to add item from other plugins
+
+				if ( $item_array ) {
+					foreach ( $item_array as $item ) {
+						if ( $item ) {
+							$oneline = array();
+							if ( !empty( $widget_settings[$number][$item]) ) {
+								$oneline['msgid'] = $widget_settings[$number][$item];
+								$oneline['extracted_comments'] = $this->local_tag.' widget_' . $item;
+								$terms_to_import[] = $oneline;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		// finally import the series...
 		$msg_counters[0] += count( $terms_to_import );
 		foreach ( $terms_to_import as $term ) {
 
