@@ -11,7 +11,7 @@ Text Domain: xili-dictionary
 Domain Path: /languages/
 */
 
-# 2.12.2 - 150920 - better compatibility w polylang before xl install - import polylang_mo custom post in dev
+# 2.12.2 - 150920 - better compatibility w polylang before xl install - import polylang_mo custom posts
 # 2.12.1 - 150704 - datatables js updated to 1.10.7 (for jQuery 1.11.3 WP 4.3)
 # 2.12.0 - 150628 - fixes, better labels in Writers and Origins, able to import parent sources if child theme active, writers displayed in list, compatible with Polylang taxonomy
 # 2.11.2 - 150527 - link title added, more terms from post-template, core import process improved
@@ -4456,8 +4456,11 @@ function verifybefore(id) {
 		case 'importbloginfos'; // bloginfos and others since 1.1.0
 			$actiontype = "importingbloginfos";
 			$formtitle = __('Import terms of blog info and others…','xili-dictionary');
-			$formhow = __('To import terms of blog info and others defining this current website (title, date, comment, archive...), click below.','xili-dictionary')
-			. '<br />' . __('The process will import around 140 <strong>msgid</strong> from db and sources, so be patient.','xili-dictionary');
+			$formhow = __('To import terms of blog info and others defining this current website (title, date, comment, archive...), click below.','xili-dictionary');
+			// current around 30 but...
+ 			if ( class_exists ('xili_language'))
+				$formhow .= '<br />' . __('The process will import around 140 <strong>msgid</strong> from db and sources, so be patient.','xili-dictionary');
+
 			$UI_lang = get_locale();
 			if ( 'en_US' != get_locale() ) // 2.11.1
 				$formhow .= '<br />' . sprintf(__('The language of dashboard is not <em>en_US</em>, so the process will try to import translations in %s.','xili-dictionary'), '<strong>'.get_locale().'</strong>' );
@@ -4468,6 +4471,12 @@ function verifybefore(id) {
 			if ( $this->available_theme_mod_xml() ) {
 				$formhow .= '<hr />' ;
 				$formhow .= $this->display_form_theme_mod_xml();
+				$formhow .= '<hr />' ;
+			}
+			// detect pll - 2.12.2
+			if ( get_option('polylang') ) {
+				$formhow .= '<hr />' ;
+				$formhow .= $this->display_form_pll_import();
 				$formhow .= '<hr />' ;
 			}
 
@@ -4731,6 +4740,15 @@ function verifybefore(id) {
 									} else {
 										$this->import_message = ' '.__('already imported','xili-dictionary') . ' (' .$infosterms[0].') ';
 									}
+									// polylang
+									if ( isset( $_POST['pllimport' ]) ) {
+										$results = $this->import_pll_db_mos();
+										$s = array();
+										foreach ($results as $lang => $nb)
+											$s[] = $lang."=".$nb;
+										$this->import_message .=  ' - '.sprintf(__('Polylang imported or refreshed (%s)','xili-dictionary'), implode ( ', ', $s) );
+									}
+
 									do_meta_boxes($this->thehook, 'normal', $data);
 								} else {
 									do_meta_boxes($this->thehook, 'normal', $data);
@@ -9234,6 +9252,80 @@ function verifybefore(id) {
 		}
 		return false;
 	}
+
+	/**
+	 * display form to import pll
+	 *
+	 *
+	 * @since 2.12.2
+	 */
+	function display_form_pll_import() {
+		$output = __('Polylang translation strings are available.', 'xili-dictionary' );
+
+		$output .= ' ' . __('Check below if you want to add in dictionary the terms (and translations) made by Polylang', 'xili-dictionary' );
+		$output .= '<br /><label for="pllimport">';
+		$output .= '<input type="checkbox" id="pllimport" name="pllimport" value="pllimport" />' . __('import Polylang strings', 'xili-dictionary' );
+		$output .= '</label>';
+
+	return $output;
+	}
+
+	/**
+	 * to search and import polylang_mo data
+	 *
+	 *
+	 * @since 2.12.2
+	 */
+	function import_pll_db_mos(){
+		$listlanguages = $this->get_list_languages();
+		$results = array();
+		foreach ( $listlanguages as $language ) {
+			$lines = $this->import_pll_post_mo ( $language );
+			$key = $language->name;
+			$results[$key] = $lines;
+		}
+		return $results;
+	}
+
+	/**
+	 * to read and import polylang_mo data inside dictionary
+	 *
+	 *
+	 * @since 2.12.2
+	 */
+	function import_pll_post_mo ( $lang ) {
+		$mo_id = $this->get_id( $lang );
+		$mo = new MO();
+		$post = get_post($mo_id, OBJECT);
+		$strings = unserialize($post->post_content);
+		if ( is_array($strings) && $strings != array() ) {
+			$lines = 0;
+			foreach ($strings as $msg)
+				$mo->add_entry($mo->make_entry($msg[0], $msg[1]));
+
+			foreach ( $mo->entries as $pomsgid => $pomsgstr ) {
+				$pomsgstr->extracted_comments = $this->local_tag.' pll_imported';
+				$this->pomo_entry_to_xdmsg ( $pomsgid, $pomsgstr, $lang->name, array( 'importing_po_comments'=>'replace', 'origin_theme'=>'' ) );
+				$lines++;
+			}
+			return $lines;
+		}
+		return false;
+	}
+
+	/**
+	 * returns the post id of the custom post polylang_mo_ storing the strings translations
+	 *
+	 * @since 2.12.2 - 1.4 - pll
+	 *
+	 * @param object $lang
+	 * @return int
+	 */
+	public static function get_id($lang) {
+		global $wpdb;
+		return $wpdb->get_var($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE post_title = %s AND post_type= %s", 'polylang_mo_' . $lang->term_id, 'polylang_mo'));
+	}
+
 
 	/**
 	 * detects other xili plugins used in email support form
