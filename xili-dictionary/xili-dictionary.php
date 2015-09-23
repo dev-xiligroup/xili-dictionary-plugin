@@ -4477,6 +4477,7 @@ function verifybefore(id) {
 			if ( get_option('polylang') ) {
 				$formhow .= '<hr />' ;
 				$formhow .= $this->display_form_pll_import();
+
 				$formhow .= '<hr />' ;
 			}
 
@@ -4743,6 +4744,7 @@ function verifybefore(id) {
 									// polylang
 									if ( isset( $_POST['pllimport' ]) ) {
 										$results = $this->import_pll_db_mos();
+										$nb_cat = $this->import_pll_categories_name_description();
 										$s = array();
 										foreach ($results as $lang => $nb)
 											$s[] = $lang."=".$nb;
@@ -6411,52 +6413,9 @@ function verifybefore(id) {
 		$msg_counters[0] += count( $terms_to_import );
 		foreach ( $terms_to_import as $term ) {
 
-			$the_context = null;
-
-			if ( $term['msgid'] == 'text_direction' ) {
-				$the_context = 'text direction';
-			}
-			if ( isset ( $term['ctxt'] ) ) { // 2.3.6
-				$the_context = $term['ctxt'];
-			}
-
-			$result = $this->msgid_exists ( $term['msgid'], $the_context ) ;
-
-			$t_entry = array();
-			$t_entry['extracted_comments'] = $term['extracted_comments'] ;
-			$entry = (object) $t_entry ;
-
-			if ( $result === false ) {
-				// create the msgid
-
-				$msgid_post_ID = $this->insert_one_cpt_and_meta( $term['msgid'], $the_context, 'msgid', 0, $entry ) ;
-				$msg_counters[1]++;
-			} else {
-				$msgid_post_ID = $result[0];
-			}
-
-			if ( isset ( $term['msgstr'] ) && '' !=  $term['msgstr'] ) { // now insert msgstr if exists
-
-				$value = $term['msgstr'];
-				$result = $this->msgstr_exists ( $value, $msgid_post_ID, $curlang ) ; // with lang of default (admin side)
-
-				if ( $result === false ) {
-					$msgstr_post_ID = $this->insert_one_cpt_and_meta( $value, $the_context, 'msgstr', 0, $entry );
-					$msg_counters[2]++;
-					wp_set_object_terms( $msgstr_post_ID, $this->target_lang($curlang), TAXONAME );
-				} else {
-					$msgstr_post_ID = $result[0];
-				}
-
-				// create link according lang
-
-				$res = get_post_meta ( $msgid_post_ID, $this->msglang_meta, false );
-				$thelangs = ( is_array ( $res ) && array() != $res ) ? $res[0] : array();
-				$thelangs['msgstrlangs'][$curlang]['msgstr'] = $msgstr_post_ID;
-				update_post_meta ( $msgid_post_ID, $this->msglang_meta, $thelangs );
-				update_post_meta ( $msgstr_post_ID, $this->msgidlang_meta, $msgid_post_ID );
-
-			}
+			$msg_counter = $this->one_term_in_cpt_xdmsg ( $term, $curlang ) ; // 2.12.2
+			if ( $msg_counter[1]) $msg_counters[1]++;
+			if ( $msg_counter[2]) $msg_counters[2]++;
 		}
 		$this->importing_mode = false ;
 		return $msg_counters;
@@ -6477,6 +6436,64 @@ function verifybefore(id) {
 		} else {
 			return translate ( $line['msgid'] );
 		}
+	}
+
+	/**
+	 * import one msg and translation in dictionary
+	 * called by importing source terms - xili_import_infosterms_cpt
+	 *
+	 * @since 2.12
+	 * @param entry as array
+	 *
+	 */
+	function one_term_in_cpt_xdmsg ( $term, $curlang ) {
+		$the_context = null;
+		$msg_counter = array(0,0,0);
+		if ( $term['msgid'] == 'text_direction' ) {
+			$the_context = 'text direction';
+		}
+		if ( isset ( $term['ctxt'] ) ) { // 2.3.6
+			$the_context = $term['ctxt'];
+		}
+
+		$result = $this->msgid_exists ( $term['msgid'], $the_context ) ;
+
+		$t_entry = array();
+		$t_entry['extracted_comments'] = $term['extracted_comments'] ;
+		$entry = (object) $t_entry ;
+
+		if ( $result === false ) {
+			// create the msgid
+
+			$msgid_post_ID = $this->insert_one_cpt_and_meta( $term['msgid'], $the_context, 'msgid', 0, $entry ) ;
+			$msg_counter[1]++;
+		} else {
+			$msgid_post_ID = $result[0];
+		}
+
+		if ( isset ( $term['msgstr'] ) && '' !=  $term['msgstr'] ) { // now insert msgstr if exists
+
+			$value = $term['msgstr'];
+			$result = $this->msgstr_exists ( $value, $msgid_post_ID, $curlang ) ; // with lang of default (admin side)
+
+			if ( $result === false ) {
+				$msgstr_post_ID = $this->insert_one_cpt_and_meta( $value, $the_context, 'msgstr', 0, $entry );
+				$msg_counter[2]++;
+				wp_set_object_terms( $msgstr_post_ID, $this->target_lang($curlang), TAXONAME );
+			} else {
+				$msgstr_post_ID = $result[0];
+			}
+
+			// create link according lang
+
+			$res = get_post_meta ( $msgid_post_ID, $this->msglang_meta, false );
+			$thelangs = ( is_array ( $res ) && array() != $res ) ? $res[0] : array();
+			$thelangs['msgstrlangs'][$curlang]['msgstr'] = $msgstr_post_ID;
+			update_post_meta ( $msgid_post_ID, $this->msglang_meta, $thelangs );
+			update_post_meta ( $msgstr_post_ID, $this->msgidlang_meta, $msgid_post_ID );
+
+		}
+		return $msg_counter;
 	}
 
 	/**
@@ -9271,6 +9288,59 @@ function verifybefore(id) {
 	}
 
 	/**
+	 * to import category data
+	 *
+	 *
+	 * @since 2.12.2
+	 */
+	function import_pll_categories_name_description(){
+		$i = 0;
+		if ( $this->xililanguage = 'isactive' && ( $categories_group = get_option( 'xili_language_pll_term_category_groups') ) ) {
+			$pll_languages = get_option( 'xili_language_pll_languages' ); // pll=>xl_slug
+
+			foreach ( $categories_group as $one_group ) {
+				$available_langs = array();
+				$msgid = array();
+				$msgstr = array();
+				foreach( $one_group['pll_links'] as $pll_key => $term_id ) {
+					$term = get_term_by ('id', (int)$term_id, 'category' );
+					$lang = $pll_languages[$pll_key];
+					if ( $lang == 'en_us') { // to fixe if not default ???
+						$msgid['name'] = $term->name;
+						$msgid['description'] = $term->description;
+					} else if ( $term) {
+						$available_langs[] = $lang;
+						$msgstr['name'][$lang] = $term->name;
+						$msgstr['description'][$lang] = $term->description;
+					}
+				}
+				// add terms in dictionary
+
+				if ( !empty( $msgid['name'] ) ) { // to fixe if not default ???
+					foreach ( $available_langs as $lang_slug ) {
+						$onelang = get_term_by ('slug', $lang_slug, TAXONAME );
+						$oneline = array();
+						$oneline['msgid'] = $msgid['name'];
+						$oneline['msgstr'] = $msgstr['name'][$lang_slug];
+						$oneline['extracted_comments'] = $this->local_tag.' pll_category';
+						$this->one_term_in_cpt_xdmsg ( $oneline, $onelang->name );
+						$i++;
+						if ( !empty( $msgid['description'] ) ) { // description associated w name
+							$oneline = array();
+							$oneline['msgid'] = $msgid['description'];
+							$oneline['msgstr'] = $msgstr['description'][$lang_slug];
+							$oneline['extracted_comments'] = $this->local_tag.' pll_category';
+							$this->one_term_in_cpt_xdmsg ( $oneline, $onelang->name );
+							$i++;
+						}
+					}
+				}
+			}
+		}
+		return $i;
+	}
+
+	/**
 	 * to search and import polylang_mo data
 	 *
 	 *
@@ -9292,16 +9362,18 @@ function verifybefore(id) {
 	 *
 	 *
 	 * @since 2.12.2
+	 * @param lang as object
 	 */
 	function import_pll_post_mo ( $lang ) {
 		$mo_id = $this->get_id( $lang );
 		$mo = new MO();
 		$post = get_post($mo_id, OBJECT);
 		$strings = unserialize($post->post_content);
-		if ( is_array($strings) && $strings != array() ) {
+		if ( is_array($strings) && $strings != array('','') ) {
 			$lines = 0;
 			foreach ($strings as $msg)
-				$mo->add_entry($mo->make_entry($msg[0], $msg[1]));
+				if ( ! empty ($msg[0] ) ) // $strings contains msgid '' !??
+					$mo->add_entry($mo->make_entry($msg[0], $msg[1]));
 
 			foreach ( $mo->entries as $pomsgid => $pomsgstr ) {
 				$pomsgstr->extracted_comments = $this->local_tag.' pll_imported';
