@@ -11,7 +11,7 @@ Text Domain: xili-dictionary
 Domain Path: /languages/
 */
 
-# 2.12.2 - 150920 - better compatibility w polylang before xl install - import polylang_mo custom posts
+# 2.12.2 - 150924 - better compatibility w polylang before xl install - import polylang_mo custom posts, categories,...
 # 2.12.1 - 150704 - datatables js updated to 1.10.7 (for jQuery 1.11.3 WP 4.3)
 # 2.12.0 - 150628 - fixes, better labels in Writers and Origins, able to import parent sources if child theme active, writers displayed in list, compatible with Polylang taxonomy
 # 2.11.2 - 150527 - link title added, more terms from post-template, core import process improved
@@ -4741,14 +4741,14 @@ function verifybefore(id) {
 									} else {
 										$this->import_message = ' '.__('already imported','xili-dictionary') . ' (' .$infosterms[0].') ';
 									}
-									// polylang
+									// polylang - XL 2.20.3
 									if ( isset( $_POST['pllimport' ]) ) {
 										$results = $this->import_pll_db_mos();
 										$nb_cat = $this->import_pll_categories_name_description();
 										$s = array();
 										foreach ($results as $lang => $nb)
 											$s[] = $lang."=".$nb;
-										$this->import_message .=  ' - '.sprintf(__('Polylang imported or refreshed (%s)','xili-dictionary'), implode ( ', ', $s) );
+										$this->import_message .=  ' - '.sprintf(__('Polylang imported or refreshed (%1$s) - and %2$s category strings.','xili-dictionary'), implode ( ', ', $s), $nb_cat );
 									}
 
 									do_meta_boxes($this->thehook, 'normal', $data);
