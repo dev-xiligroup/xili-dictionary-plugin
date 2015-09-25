@@ -2530,7 +2530,21 @@ function verifybefore(id) {
 			if ( isset ($_GET['msgaction'] ) && isset ($_GET['langstr']) ) { // action to create child and default line - single or plural...
 				check_admin_referer( 'xd-langstr' );
 				$target_lang = $_GET['langstr'];
-				if ( $_GET['msgaction'] == 'msgstr' && !isset( $thelangs['msgstrlangs'][$target_lang] ) ) {
+
+				// verify
+				$type_msgstr =  ( !isset ( $thechilds['msgid']['plural'] ) ) ? 'msgstr' : 'msgstr_0' ;
+				if ( !isset( $thelangs['msgstrlangs'][$target_lang] ) ) {
+					$doit = true;
+				} else {
+					if ( !empty( $thelangs['msgstrlangs'][$target_lang][$type_msgstr] ) )
+						$temp_post = $this->temp_get_post ( $thelangs['msgstrlangs'][$target_lang][$type_msgstr] );
+					if ( $temp_post )
+						$doit = false;
+					else
+						$doit = true; // ID bu w/o post = not updated
+				}
+
+				if ( ( $_GET['msgaction'] == 'msgstr' ) &&  $doit  ) {
 				// create post
 					if ( !isset ( $thechilds['msgid']['plural'] ) ) {
 
