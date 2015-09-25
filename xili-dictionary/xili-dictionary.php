@@ -4636,7 +4636,10 @@ function verifybefore(id) {
 				$contextual_arr[] = $this->xili_settings['webmestre-level']; // 1.9.1
 
 				$headers = 'From: xili-dictionary plugin page <' . get_bloginfo ('admin_email').'>' . "\r\n" ;
-				if ( '' != $_POST['ccmail'] ) $headers .= 'Cc: <'.$_POST['ccmail'].'>' . "\r\n";
+				if ( '' != $_POST['ccmail'] ) {
+					$headers .= 'Cc: <'.$_POST['ccmail'].'>' . "\r\n";
+					$headers .= 'Reply-To: <'.$_POST['ccmail'].'>' . "\r\n";
+				}
 				$headers .= "\\";
 				$message = "Message sent by: ".get_bloginfo ('admin_email')."\n\n" ;
 				$message .= "Subject: ".$_POST['subject']."\n\n" ;
@@ -9431,7 +9434,7 @@ function verifybefore(id) {
 			<p><strong><?php echo $emessage;?></strong></p>
 		<?php } ?>
 		<fieldset style="margin:2px; padding:12px 6px; border:1px solid #ccc;"><legend><?php echo _e('Mail to dev.xiligroup', 'xili-dictionary'); ?></legend>
-		<label for="ccmail"><?php _e('Cc:','xili-dictionary'); ?>
+		<label for="ccmail"><?php _e('Cc: (Reply to:)','xili-dictionary'); ?>
 		<input class="widefat" id="ccmail" name="ccmail" type="text" value="<?php bloginfo ('admin_email') ; ?>" /></label><br /><br />
 		<?php if ( false === strpos( get_bloginfo ('url'), 'local' ) ){ ?>
 			<label for="urlenable">
