@@ -454,7 +454,7 @@ class xili_dictionary {
 			$this->langs_group_tt_id = $thegroup[0]->term_taxonomy_id;
 		}
 
-xili_xd_error_log ( '# '. __LINE__ . ' admin_menu_add ------------');
+	xili_xd_error_log ( '# '. __LINE__ . ' admin_menu_add ------------');
 		add_action( 'admin_menu', array(&$this,'dictionary_menus_pages') );
 		add_action( 'admin_menu', array(&$this,'admin_sub_menus_hide') );
 	}
@@ -1345,9 +1345,32 @@ function verifybefore(id) {
 
 	// the first lang of msgstr or false for msgid
 	function cur_lang ( $post_ID ) {
-		$langs = wp_get_object_terms( $post_ID, TAXONAME);
+		$langs = wp_get_object_terms( $post_ID, TAXONAME );
 		if ( ! is_wp_error( $langs ) && ! empty( $langs ) ) {
 			return apply_filters ( 'other_multilingual_plugin_filter_term' , $langs[0] ) ;
+		} elseif ( ! is_wp_error( $langs ) && empty( $langs ) ) {
+			// try to repair if msgstr w/o taxonomy language
+			$type = get_post_meta ( $post_ID, $this->msgtype_meta, true);
+			if ($type != 'msgid') {
+				$msgid_ID = get_post_meta ( $post_ID, $this->msgidlang_meta , true);
+				$res = get_post_meta ( $msgid_ID, $this->msglang_meta, false );
+				$thelangs = ( is_array ( $res ) && array() != $res ) ? $res[0] : array();
+				if ( $res != '' && is_array ( $thelangs ) ) {
+					if ( !empty($thelangs['msgstrlangs']) ) {
+					 	foreach ( $thelangs['msgstrlangs'] as $one_lang => $msgtrs ) {
+					 		if ( !empty( $msgtrs['msgstr'] ) && $msgtrs['msgstr'] == $post_ID ) {
+
+					 			// repair
+					 			$ret = wp_set_object_terms( $post_ID, $this->target_lang($one_lang), TAXONAME );
+					 			xili_xd_error_log ( $msgid_ID . ' ---STR- '. $post_ID .' ---- ' . $one_lang . ' -- REPAIR -- ' . serialize($ret) );
+
+					 			$the_lang = get_term_by ( 'name', $one_lang, TAXONAME );
+					 			return apply_filters ( 'other_multilingual_plugin_filter_term' , $the_lang ) ;
+					 		}
+					 	}
+					}
+				}
+			}
 		}
 		return false;
 	}
@@ -1375,18 +1398,19 @@ function verifybefore(id) {
 
 			$lang = $this->cur_lang ( $post_ID );
 
-			if ( $lang ) $msglang = $lang->slug ;
+			if ( $lang ) {
+				$msglang = $lang->slug ;
 
-			$this->subselect = ( $working_lang == '' ) ? $msglang : $working_lang ;
-		$this->searchtranslated = 'not';
-		$message = sprintf(__('MSGs not translated in %1$s. <em>Sub-select in %2$s</em>', 'xili-dictionary' ), $this->languages_key_slug[$this->subselect]['name'], $listlink ) ;
-
+				$this->subselect = ( $working_lang == '' ) ? $msglang : $working_lang ;
+				$this->searchtranslated = 'not';
+				$message = sprintf(__('MSGs not translated in %1$s. <em>Sub-select in %2$s</em>', 'xili-dictionary' ), $this->languages_key_slug[$this->subselect]['name'], $listlink ) ;
+			}
 		} else { // msgid
 
 			$this->subselect = $working_lang;
 
 			$message = ( $working_lang == '' ) ? sprintf( __('No selection: Sub-select in %s', 'xili-dictionary' ), $listlink ) : sprintf(__('MSGs not translated in %1$s. <em>Sub-select in %2$s</em>', 'xili-dictionary' ), $_GET['workinglang'], $listlink );
-		$this->searchtranslated = ( $working_lang == '' ) ? '' : 'not' ;
+			$this->searchtranslated = ( $working_lang == '' ) ? '' : 'not' ;
 		}
 
 	?>
@@ -2632,60 +2656,67 @@ function verifybefore(id) {
 					if ( isset ( $msgtr['msgstr'] ) ) {
 						$strid = $msgtr['msgstr'] ;
 						$str_plural = false ;
-						$translated_langs[] = $curlang;
+
 						$typeref = 'msgstr';
 					} elseif ( isset ( $msgtr['msgstr_0'] ) ) {
 						$strid = $msgtr['msgstr_0'] ;
 						$str_plural = true ;
-						$translated_langs[] = $curlang; // detect content empty
+						// $translated_langs[] = $curlang; // move below - 2.12.2
 						$typeref = 'msgstr_0';
 					}
 
 					if ( $strid != 0 ) {
 						$target_lang = implode ( ' ', wp_get_object_terms( $id, TAXONAME, $args = array( 'fields' => 'names')) );
-						echo '<tr class="lang-'.strtolower($curlang).'" ><th><span>';
-						printf( '%s : ', $curlang );
-						echo '</span></th><td>';
+
 						$temp_post = $this->temp_get_post ( $strid );
-						$content = htmlspecialchars( $temp_post->post_content );
-						$line = "";
-						if ( $str_plural ) $line .= "[0] ";
 
-						$line .= '‟<strong>'. $content . '</strong>”' ;
-						$post_status = get_post_status ( $strid );
-						if ( $post_status == "trash" || $post_status === false ) $line .= $spanred;
-						if ( $post->ID != $strid ) {
-							$line .= sprintf( ' ( <a href="%s" title="link to:%d">%s</a> )<br />', 'post.php?post='.$strid.'&action=edit', $strid, __('Edit') ) ;
-						} else {
-							$line .= '<br />';
-						}
-						if ( $post_status == "trash" || $post_status === false ) $line .= $spanend;
+						if ( $temp_post ) { // if base corrupted - 2.12.2
+							echo '<tr class="lang-'.strtolower($curlang).'" ><th><span>';
+							printf( '%s : ', $curlang );
+							echo '</span></th><td>';
+							$translated_langs[] = $curlang;
+							$content = htmlspecialchars( $temp_post->post_content );
+							$line = "";
+							if ( $str_plural ) $line .= "[0] ";
 
-						$this->hightlight_line_str ( $line, $type, $typeref, $curlang, (int)$id ); // now id
-
-						if ( $str_plural ) {
-							$res = get_post_meta ( $strid, $this->msgchild_meta, false );
-							$strthechilds = ( is_array ( $res ) && array() != $res ) ? $res[0] : array();
-							foreach ( $strthechilds['msgstr']['plural'] as $key => $strchildid ) {
-								$temp_post = $this->temp_get_post ( $strchildid );
-								$content = htmlspecialchars( $temp_post->post_content );
-								$line = "";
-								$post_status = get_post_status ( $strchildid ); // fixed 2.1
-								if ( $post_status == "trash" || $post_status === false ) $line .= $spanred;
-								$line .= sprintf ( '[%s] ', $key );
-								if ( $post_status == "trash" || $post_status === false ) $line .= $spanend;
-								if ( $post->ID != $strchildid ) {
-									$line .= sprintf ( '‟<strong>%s</strong>” ( %s )', $content, '<a href="post.php?post='.$strchildid.'&action=edit" title="link to:'.$strchildid.'">'.__('Edit').'</a>' ) ;
-								} else {
-									$line .= sprintf ( '‟<strong>%s</strong>”', $content );
-								}
-								$this->hightlight_line_str ( $line, $type, 'msgstr_'.$key, $curlang, (int)$id );
-								echo '<br />';
+							$line .= '‟<strong>'. $content . '</strong>”' ;
+							$post_status = get_post_status ( $strid );
+							if ( $post_status == "trash" || $post_status === false ) $line .= $spanred;
+							if ( $post->ID != $strid ) {
+								$line .= sprintf( ' ( <a href="%s" title="link to:%d">%s</a> )<br />', 'post.php?post='.$strid.'&action=edit', $strid, __('Edit') ) ;
+							} else {
+								$line .= '<br />';
 							}
-										// if possible against current lang add links - compare to count of $strthechilds['msgstr']['plural']
 
+							if ( $post_status == "trash" || $post_status === false ) $line .= $spanend;
+
+							$this->hightlight_line_str ( $line, $type, $typeref, $curlang, (int)$id ); // now id
+
+							if ( $str_plural ) {
+								$res = get_post_meta ( $strid, $this->msgchild_meta, false );
+								$strthechilds = ( is_array ( $res ) && array() != $res ) ? $res[0] : array();
+								foreach ( $strthechilds['msgstr']['plural'] as $key => $strchildid ) {
+									$temp_post = $this->temp_get_post ( $strchildid );
+									$content = htmlspecialchars( $temp_post->post_content );
+									$line = "";
+									$post_status = get_post_status ( $strchildid ); // fixed 2.1
+									if ( $post_status == "trash" || $post_status === false ) $line .= $spanred;
+									$line .= sprintf ( '[%s] ', $key );
+									if ( $post_status == "trash" || $post_status === false ) $line .= $spanend;
+									if ( $post->ID != $strchildid ) {
+										$line .= sprintf ( '‟<strong>%s</strong>” ( %s )', $content, '<a href="post.php?post='.$strchildid.'&action=edit" title="link to:'.$strchildid.'">'.__('Edit').'</a>' ) ;
+									} else {
+										$line .= sprintf ( '‟<strong>%s</strong>”', $content );
+									}
+									$this->hightlight_line_str ( $line, $type, 'msgstr_'.$key, $curlang, (int)$id );
+									echo '<br />';
+								}
+											// if possible against current lang add links - compare to count of $strthechilds['msgstr']['plural']
+
+							}
+							echo '</td></tr>';
 						}
-						echo '</td></tr>';
+
 					}
 
 				} ///
@@ -2872,38 +2903,41 @@ function verifybefore(id) {
 					//$thelangs['msgstrlangs'][$curlang]['msgstr'] = $msgstr_post_ID;
 
 					$translated_langs = array ();
-					if ( $display ) {
-						echo '<br /><table class="widefat"><thead><tr><th class="column-msgtrans">';
-						_e( 'translated in', 'xili-dictionary');
-						echo '</th><th>msgstr</th></tr></thead><tbody>';
-					} else {
-						echo ( __( 'translated in', 'xili-dictionary').':<br />');
-					}
+
 					foreach ( $thelangs['msgstrlangs'] as $curlang => $msgtr ) {
 
 						$strid = 0;
 						if ( isset ( $msgtr['msgstr'] ) ) {
 							$strid = $msgtr['msgstr'] ;
 							$str_plural = false ;
-							$translated_langs[] = $curlang;
+
 						} elseif ( isset ( $msgtr['msgstr_0'] ) ) {
 							$strid = $msgtr['msgstr_0'] ;
 							$str_plural = true ;
-							$translated_langs[] = $curlang; // detect content empty
+
 						}
 
 						if ( $strid != 0 ) {
 							if ( !$display ) {
 							// get strid status
 								$post_status = get_post_status ( $strid );
-								if ( $post_status == "trash" || $post_status === false ) echo $spanred;
-								printf( '- %s : <a href="%s" >%d</a><br />', $curlang, 'post.php?post='.$strid.'&action=edit', $strid ) ;
-								if ( $post_status == "trash" || $post_status === false ) echo $spanend;
+								$temp_post = $this->temp_get_post ( $strid );
+								if ( $temp_post ) { // 2.12.2
+									$translated_langs[] = $curlang;
+									echo ( __( 'translated in', 'xili-dictionary').':<br />');
+									if ( $post_status == "trash" || $post_status === false ) echo $spanred;
+									printf( '- %s : <a href="%s" >%d</a><br />', $curlang, 'post.php?post='.$strid.'&action=edit', $strid ) ;
+									if ( $post_status == "trash" || $post_status === false ) echo $spanend;
+								}
 							} else {
+								echo '<br /><table class="widefat"><thead><tr><th class="column-msgtrans">';
+								_e( 'translated in', 'xili-dictionary');
+								echo '</th><th>msgstr</th></tr></thead><tbody>';
 								echo '<tr><th>';
 								printf( '%s : ', $curlang );
 								echo '</th><td>';
 								$temp_post = $this->temp_get_post ( $strid );
+								$translated_langs[] = $curlang; // detect content empty
 								$content = htmlspecialchars( $temp_post->post_content );
 
 								if ( $str_plural ) echo "[0] ";
@@ -2934,8 +2968,11 @@ function verifybefore(id) {
 							}
 						}
 
-					}
+					} // end foreach
+					if ( !count ($translated_langs) && !$display ) _e( 'not yet translated.', 'xili-dictionary');
 					if ( $display ) echo '</tbody></table>';
+
+
 					$this->create_line_lang = "";
 					if ( $display && ( count ($translated_langs) != count ($listlanguages) ) ) {
 						//echo '<br />';
