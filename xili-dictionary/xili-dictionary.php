@@ -11,7 +11,7 @@ Text Domain: xili-dictionary
 Domain Path: /languages/
 */
 
-# 2.12.2 - 150924 - better compatibility w polylang before xl install - import polylang_mo custom posts, categories,...
+# 2.12.2 - 150926 - better compatibility w polylang before xl install - import polylang_mo custom posts, categories,... - improves msgid_exists
 # 2.12.1 - 150704 - datatables js updated to 1.10.7 (for jQuery 1.11.3 WP 4.3)
 # 2.12.0 - 150628 - fixes, better labels in Writers and Origins, able to import parent sources if child theme active, writers displayed in list, compatible with Polylang taxonomy
 # 2.11.2 - 150527 - link title added, more terms from post-template, core import process improved
@@ -1095,19 +1095,20 @@ class xili_dictionary {
 	}
 
 	/**
-	 * a new msgid is created manually
+	 * a new msgid is created/edited manually
 	 */
 	function msgid_post_new_create ( $post_id, $post ) {
 		global $wpdb;
 		if ( isset( $_POST['_inline_edit'] ) ) return;
 		if ( isset( $_GET['bulk_edit'] ) ) return;
 		if ( get_post_type( $post_id ) == XDMSG ) {
-			if ( ! wp_is_post_revision( $post_id ) && $this->importing_mode != true ) {
+			if ( ! wp_is_post_revision( $post_id ) && $this->importing_mode !== true ) {
 
 				//$temp_post = $this->temp_get_post ( $post_id );
 				$type = get_post_meta ( $post_id, $this->msgtype_meta, true ) ;
 				if ( $type == "" ) {
-					update_post_meta ( $post_id, $this->msgtype_meta, 'msgid' );
+					$type = 'msgid';
+					update_post_meta ( $post_id, $this->msgtype_meta, $type );
 					update_post_meta ( $post_id, $this->msglang_meta, array() );
 					update_post_meta ( $post_id, $this->msg_extracted_comments, $this->local_tag . ' '); // 2.2.0 local by default if hand created
 					update_post_meta ( $post_id, $this->msg_sort_slug, sanitize_title ( $post->post_content ) );
@@ -1119,19 +1120,28 @@ class xili_dictionary {
 				}
 
 				$result = $this->msgid_exists ( $post->post_content, $the_context );
-				if ( $result === false || $result[0] == $post_id ) {
+
+				if (  empty( $result) || ( in_array( $post_id, $result ) && count ( $result ) == 1 ) )  {
 					return ;
-				} else {
-					if ( $type == get_post_meta ( $result[0], $this->msgtype_meta, true ) && $type == 'msgid') {
-						$found_context = get_post_meta ( $result[0], $this->ctxt_meta, true ); //2.10.2
+				} else if ( $type == 'msgid' ){ // only msgid tested
+					$found_others = array();
+					// erase current
+					foreach ( $result as $one ) {
+						if ( $one != $post_id ) $found_others[] = $one;
+					}
+					if ( $the_context) { // only one  with this context - impossible to have 2 msgid with same context
+						$found_context = get_post_meta ( $found_others[0], $this->ctxt_meta, true ); //2.10.2
 						if ( $found_context == $the_context ) {
-							$context = (''!= $the_context) ? ' ' . sprintf(__('and context %s','xili-dictionary'), $the_context ) : '' ; // 2.7.1
+							$context = ' '. sprintf(__('and context %s','xili-dictionary'), $the_context ); // 2.7.1
 							$newcontent = sprintf( __('msgid exists as %1$d with content: %2$s%3$s','xili-dictionary'), $result[0], $post->post_content, $context) ;
 							$where = array( 'ID' => $post_id );
 							$wpdb->update( $wpdb->posts, array( 'post_content' => $newcontent ), $where );
 						}
 					} else {
-						return ;
+							$context = ' '. __('without context','xili-dictionary');
+							$newcontent = sprintf( __('msgid exists as %1$d with content: %2$s%3$s','xili-dictionary'), $result[0], $post->post_content, $context) ;
+							$where = array( 'ID' => $post_id );
+							$wpdb->update( $wpdb->posts, array( 'post_content' => $newcontent ), $where );
 					}
 				}
 			}
@@ -1565,16 +1575,31 @@ function verifybefore(id) {
 		global $wpdb;
 		if ( $content != "" ) {
 			if ( null == $ctxt) {
-				$posts_query = $wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE BINARY post_content = %s AND post_type = %s", $content, XDMSG );
-
+				$posts_query = $wpdb->prepare(
+					"SELECT ID FROM $wpdb->posts
+					INNER JOIN $wpdb->postmeta as mt1 ON ($wpdb->posts.ID = mt1.post_id)
+					WHERE BINARY post_content = %s
+					AND post_type = %s
+					AND mt1.meta_key= '{$this->msgtype_meta}'
+					AND mt1.meta_value = %s "
+					, $content, XDMSG, 'msgid');
 			} else {
-				$posts_query = $wpdb->prepare("SELECT ID FROM $wpdb->posts INNER JOIN $wpdb->postmeta ON ($wpdb->posts.ID = $wpdb->postmeta.post_id) INNER JOIN $wpdb->postmeta as mt1 ON ($wpdb->posts.ID = mt1.post_id) WHERE BINARY post_content = %s AND post_type = %s AND $wpdb->postmeta.meta_key= '{$this->ctxt_meta}' AND mt1.meta_key= '{$this->ctxt_meta}' AND mt1.meta_value = %s ", $content, XDMSG, $ctxt);
+				$posts_query = $wpdb->prepare(
+					"SELECT ID FROM $wpdb->posts
+					INNER JOIN $wpdb->postmeta as mt1 ON ($wpdb->posts.ID = mt1.post_id)
+					WHERE BINARY post_content = %s
+					AND post_type = %s AND mt1.meta_key= '{$this->ctxt_meta}'
+					AND mt1.meta_value = %s "
+					, $content, XDMSG, $ctxt);
 			}
 			// 2.2.0
+			//error_log ( "************ " .serialize($posts_query) );
 			$found_posts = $wpdb->get_col($posts_query);
 			if ( empty($found_posts) ) {
+
 				return false;
 			} else {
+
 				return $found_posts;
 			}
 		}
@@ -1590,7 +1615,12 @@ function verifybefore(id) {
 	function msgstr_exists ( $content = "", $msgid, $curlang ) {
 		global $wpdb;
 		if ( "" != $content) {
-			$posts_query = $wpdb->prepare("SELECT ID FROM $wpdb->posts INNER JOIN $wpdb->postmeta ON ($wpdb->posts.ID = $wpdb->postmeta.post_id) INNER JOIN $wpdb->postmeta as mt1 ON ($wpdb->posts.ID = mt1.post_id) WHERE BINARY post_content = %s AND post_type = %s AND $wpdb->postmeta.meta_key='{$this->msgidlang_meta}' AND mt1.meta_key='{$this->msgidlang_meta}' AND mt1.meta_value = %s ", $content, XDMSG, $msgid);
+			$posts_query = $wpdb->prepare(
+				"SELECT ID FROM $wpdb->posts
+				INNER JOIN $wpdb->postmeta as mt1 ON ($wpdb->posts.ID = mt1.post_id)
+				WHERE BINARY post_content = %s AND post_type = %s
+				AND mt1.meta_key='{$this->msgidlang_meta}' AND mt1.meta_value = %s "
+				, $content, XDMSG, $msgid);
 
 
 			$found_posts = $wpdb->get_col($posts_query);
@@ -1600,6 +1630,7 @@ function verifybefore(id) {
 
 				if ( in_array ( $curlang , wp_get_object_terms( $found_posts, TAXONAME, array ( 'fields' => 'names' ) ) ) ) {
 					// select only this with $curlang
+
 					return $found_posts ;
 
 				} else {
@@ -1774,7 +1805,7 @@ function verifybefore(id) {
 		'ping_status' => get_option('default_ping_status'), 'post_parent' => $parent,
 		'menu_order' => 0, 'to_ping' => '', 'pinged' => '', 'post_password' => '',
 		'guid' => '', 'post_content_filtered' => '', 'post_excerpt' => $references, 'import_id' => 0,
-		'post_content' => $content, 'post_title' => '');
+		'post_content' => wp_slash($content), 'post_title' => '');
 
 		$post_id = wp_insert_post( $params ) ;
 
@@ -1840,6 +1871,7 @@ function verifybefore(id) {
 			$postarr = get_post( $post_id, ARRAY_A ) ;
 
 			$postarr['post_excerpt'] = $references;
+			$postarr['post_content'] = wp_slash( $postarr['post_content'] ); // 2.12.2
 
 			wp_insert_post( $postarr );
 
@@ -4796,6 +4828,7 @@ function verifybefore(id) {
 										$this->import_message = ' '.__('already imported','xili-dictionary') . ' (' .$infosterms[0].') ';
 									}
 									// polylang - XL 2.20.3
+
 									if ( isset( $_POST['pllimport' ]) ) {
 										$results = $this->import_pll_db_mos();
 										$nb_cat = $this->import_pll_categories_name_description();
@@ -6206,7 +6239,7 @@ function verifybefore(id) {
 		global $wp_version;
 		$curlang = get_locale() ; // admin language of config - import id and str
 
-		$this->importing_mode = true ;
+
 		$msg_counters = array ( 0, 0, 0); // to import, imported, msgstr
 		$terms_to_import = array();
 		$temp = array ();
@@ -6240,6 +6273,7 @@ function verifybefore(id) {
 			$from_file_count = $this->import_msgid_from_one_wp_file ( ABSPATH . WPINC, "comment-template", $xili_language->comment_form_labels, true, true ); // local + msgstr
 			$msg_counters[1] = $from_file_count;
 			$msg_counters[0] += $from_file_count;
+
 			// added 2.11.2 from post-template.php (password and private test)
 			$temp = array ();
 			$temp[0]['msgid'] = 'Protected: %s';
@@ -6355,9 +6389,9 @@ function verifybefore(id) {
 						$terms_to_import[] = $temp ;
 
 					}
-
 				}
 			}
+
 			if ( version_compare( $wp_version, '4.0', '>') ) { //2.10.3
 				$temp = array ();
 				// msgi used in fonction get_the_archive_title()
@@ -6405,7 +6439,7 @@ function verifybefore(id) {
 			}
 		}
 
-		if ( isset( $_POST['xmlimport' ]) ) {
+		if ( isset( $_POST['xmlimport'] ) ) {
 			$to_be_filtered = $this->get_xml_contents();
 
 			if ( $to_be_filtered ) {
@@ -6464,6 +6498,7 @@ function verifybefore(id) {
 		}
 
 		// finally import the series...
+		$this->importing_mode = true;
 		$msg_counters[0] += count( $terms_to_import );
 		foreach ( $terms_to_import as $term ) {
 
@@ -9348,6 +9383,7 @@ function verifybefore(id) {
 	 * @since 2.12.2
 	 */
 	function import_pll_categories_name_description(){
+		$this->importing_mode = true;
 		$i = 0;
 		if ( $this->xililanguage = 'isactive' && ( $categories_group = get_option( 'xili_language_pll_term_category_groups') ) ) {
 			$pll_languages = get_option( 'xili_language_pll_languages' ); // pll=>xl_slug
@@ -9391,6 +9427,7 @@ function verifybefore(id) {
 				}
 			}
 		}
+		$this->importing_mode = false;
 		return $i;
 	}
 
@@ -9403,11 +9440,13 @@ function verifybefore(id) {
 	function import_pll_db_mos(){
 		$listlanguages = $this->get_list_languages();
 		$results = array();
+		$this->importing_mode = true;
 		foreach ( $listlanguages as $language ) {
 			$lines = $this->import_pll_post_mo ( $language );
 			$key = $language->name;
 			$results[$key] = $lines;
 		}
+		$this->importing_mode = false;
 		return $results;
 	}
 
@@ -9427,10 +9466,10 @@ function verifybefore(id) {
 			$lines = 0;
 			foreach ($strings as $msg)
 				if ( ! empty ($msg[0] ) ) // $strings contains msgid '' !??
-					$mo->add_entry($mo->make_entry($msg[0], $msg[1]));
+					$mo->add_entry($mo->make_entry( $msg[0], $msg[1]));
 
 			foreach ( $mo->entries as $pomsgid => $pomsgstr ) {
-				$pomsgstr->extracted_comments = $this->local_tag.' pll_imported';
+				$pomsgstr->extracted_comments = $this->local_tag.' pll_mo_imported';
 				$this->pomo_entry_to_xdmsg ( $pomsgid, $pomsgstr, $lang->name, array( 'importing_po_comments'=>'replace', 'origin_theme'=>'' ) );
 				$lines++;
 			}
