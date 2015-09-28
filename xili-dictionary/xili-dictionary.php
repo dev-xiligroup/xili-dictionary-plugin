@@ -2548,11 +2548,7 @@ function verifybefore(id) {
 		}
 
 		if ( $temp_post_msg_id = $this->temp_get_post ( $msgid_id ) ) {
-			if ( defined ('WP_DEBUG') && WP_DEBUG == true ) {
-				//echo '<div class="msg-saved" >';
-				//printf( __('%s saved as: <em>%s</em>', 'xili-dictionary'), $this->msg_str_labels[$type], $post->post_content );
-				//echo '</div>';
-			}
+
 			$res = get_post_meta ( $msgid_id, $this->msgchild_meta, false );
 			$thechilds = ( is_array ( $res ) && array() != $res ) ? $res[0] : array();
 

@@ -23,10 +23,10 @@ xili-dictionary is a multilingual dictionary storable in CPT and terms to create
 
 
 = roadmap =
-* code source renewed with latest WP tools available in soon 4.3
+* code source renewed continiously with latest WP tools available in 4.3
 * readme rewritting
 
-= Version 2.12.2 (updated 2015-09-20) =
+= Version 2.12.2 (updated 2015-09-28) =
 see [Changelog tab](https://wordpress.org/extend/plugins/xili-dictionary/changelog/).
 
 == Installation ==
@@ -145,9 +145,10 @@ See also the [Wordpress plugins forum](https://wordpress.org/tags/xili-dictionar
 © 2009-2015 MS - dev.xiligroup.com
 
 == Changelog ==
-= 2.12.2 =
+= 2.12.2 (2015-09-28 ) =
 * better Polylang compatibility
-
+* improved msgid_exists - if contains slash
+* ready with xili-language version 2.20.3+
 = 2.12.0 (2015-06-28 ) - 2.12.1 (2015-07-05 ) =
 * better labels in Writers and Origins taxonomies
 * able to import parent sources if a child theme active
@@ -292,4 +293,4 @@ See also the [Wordpress plugins forum](https://wordpress.org/tags/xili-dictionar
 * between 0.9.3 and 1.4.4 see version 1.4.4 - 20120219
 = 0.9.3 = first public release (beta)
 
-© 20150920 - MS - dev.xiligroup.com
+© 20150928 - MS - dev.xiligroup.com
