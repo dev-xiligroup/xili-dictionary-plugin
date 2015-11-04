@@ -4,13 +4,14 @@ Plugin Name: xili-dictionary
 Plugin URI: http://dev.xiligroup.com/xili-dictionary/
 Description: A tool using wordpress's CPT and taxonomy for localized themes or multilingual themes managed by xili-language - a powerful tool to create .mo file(s) on the fly in the theme's folder and more... - ONLY for >= WP 3.2.1 -
 Author: dev.xiligroup - MS
-Version: 2.12.2
+Version: 2.12.3
 Author URI: http://dev.xiligroup.com
 License: GPLv2
 Text Domain: xili-dictionary
 Domain Path: /languages/
 */
 
+# 2.12.3 - 151021 - fixes menu when just activated, cleaning code lines
 # 2.12.2 - 150926 - better compatibility w polylang before xl install - import polylang_mo custom posts, categories,... - improves msgid_exists
 # 2.12.1 - 150704 - datatables js updated to 1.10.7 (for jQuery 1.11.3 WP 4.3)
 # 2.12.0 - 150628 - fixes, better labels in Writers and Origins, able to import parent sources if child theme active, writers displayed in list, compatible with Polylang taxonomy
@@ -74,10 +75,8 @@ if ( !function_exists( 'add_action' ) ) {
 	exit;
 }
 
-define( 'XILIDICTIONARY_VER', '2.12.2' );
+define( 'XILIDICTIONARY_VER', '2.12.3' );
 define( 'XILIDICTIONARY_DEBUG', false ); // WP_DEBUG must be also true !
-
-include_once ( ABSPATH . WPINC . '/pomo/po.php'); /* not included in wp-settings */
 
 // the class
 class xili_dictionary {
@@ -175,11 +174,11 @@ class xili_dictionary {
 		// 2.0
 		define ( 'XDMSG', $this->xdmsg ); // CPT to change from msg to xdmsg (less generic) 20120217
 
-		$this->plugin_path = plugin_dir_path(__FILE__) ;
-		$this->plugin_url = plugins_url('', __FILE__) ;
+		$this->plugin_path = plugin_dir_path( __FILE__ ) ;
+		$this->plugin_url = plugin_dir_url ( __FILE__ );
 
-		register_activation_hook( __FILE__, array( &$this,'xili_dictionary_activation') );
-		register_deactivation_hook( __FILE__, array(&$this, 'remove_capabilities') ); //2.3.7
+		register_activation_hook( __FILE__, array( &$this,'xili_dictionary_activation' ) );
+		register_deactivation_hook( __FILE__, array(&$this, 'remove_capabilities' ) ); //2.3.7
 
 		$this->ossep = strtoupper(substr(PHP_OS,0,3)=='WIN')?'\\':'/'; /* for rare xamp servers*/
 
@@ -230,8 +229,12 @@ class xili_dictionary {
 		$this->fill_default_languages_list();
 		/* Actions */
 
+		xili_xd_error_log ( '# '. __LINE__ . ' admin_menu_add ------------');
+		add_action( 'admin_menu', array(&$this,'dictionary_menus_pages') );
+		add_action( 'admin_menu', array(&$this,'admin_sub_menus_hide') );
+
 		/* admin */
-		add_action( 'admin_init', array(&$this, 'set_roles_capabilities') ); // 2.3.2
+
 		add_action( 'admin_init', array(&$this, 'admin_init') ); // 1.3.0
 		add_action( 'admin_init', array(&$this, 'ext_style_init') ); // 2.1
 		add_action( 'admin_init', array(&$this, 'xd_erasing_init_settings') ); // 2.3
@@ -251,8 +254,9 @@ class xili_dictionary {
 
 		add_action( 'add_meta_boxes', array(&$this, 'add_custom_box_in_post_msg') ); // 2.1.2
 
+		add_action( 'init', array(&$this, 'set_roles_capabilities'), 9 );
 		add_action( 'init', array(&$this, 'post_type_msg'), 9 );
-		add_action( 'init', array(&$this, 'xili_dictionary_register_taxonomies') ); // init + menu
+		add_action( 'init', array(&$this, 'xili_dictionary_register_taxonomies') );
 
 		add_filter( 'plugin_locale', array(&$this,'get_plugin_domain_array'), 10, 2 );
 
@@ -371,7 +375,7 @@ class xili_dictionary {
 
 	function set_roles_capabilities () {
 		global $wp_roles;
-
+		$add_cap = false;
 		$wp_roles->remove_cap ('editor', 'xili_dictionary_admin'); // reset
 		$wp_roles->remove_cap ('editor', 'xili_dictionary_edit');
 		$wp_roles->remove_cap ('editor', 'xili_dictionary_edit_save');
@@ -381,14 +385,24 @@ class xili_dictionary {
 			$wp_roles->add_cap ('administrator', 'xili_dictionary_admin');
 			$wp_roles->add_cap ('administrator', 'xili_dictionary_edit');
 			$wp_roles->add_cap ('administrator', 'xili_dictionary_edit_save');
+			$add_cap = true;
 
 		} elseif ( current_user_can ( 'edit_others_pages' ) ) {
 			if ( $this->xili_settings['editor_caps'] == 'cap_edit' ) {
 				$wp_roles->add_cap ('editor', 'xili_dictionary_edit');
+				$add_cap = true;
 			} elseif ( $this->xili_settings['editor_caps'] == 'cap_edit_save' ) {
 				$wp_roles->add_cap ('editor', 'xili_dictionary_edit');
 				$wp_roles->add_cap ('editor', 'xili_dictionary_edit_save');
+				$add_cap = true;
 			}
+		}
+		if ( $add_cap && current_user_can ('activate_plugins') || current_user_can ( 'edit_others_pages' )) {
+
+			$user = wp_get_current_user();
+			$user->add_cap ('xili_dictionary_edit'); // the current user must be updated to be checked for taxonomy menu -
+			if ( current_user_can ('activate_plugins') )
+				$user->add_cap ('xili_dictionary_admin');
 		}
 	}
 
@@ -453,10 +467,6 @@ class xili_dictionary {
 			$this->langs_group_id = $thegroup[0]->term_id;
 			$this->langs_group_tt_id = $thegroup[0]->term_taxonomy_id;
 		}
-
-	xili_xd_error_log ( '# '. __LINE__ . ' admin_menu_add ------------');
-		add_action( 'admin_menu', array(&$this,'dictionary_menus_pages') );
-		add_action( 'admin_menu', array(&$this,'admin_sub_menus_hide') );
 	}
 
 	/**
@@ -553,7 +563,7 @@ class xili_dictionary {
 			'query_var' => XDMSG, // add 2.3.3
 			'rewrite' => false,
 			'capability_type' => 'post',
-			'show_in_menu' => current_user_can ('xili_dictionary_edit'), // ?? if not admin
+			'show_in_menu' => current_user_can ('xili_dictionary_edit'), // ?? if not admin true, // xili_dictionary_edit
 			'hierarchical' => true,
 			'menu_position' => null,
 			'supports' => array( 'author', 'editor', 'excerpt' ), // ,'page-attributes', 'custom-fields' => (parent for plural), not ready
@@ -1156,11 +1166,11 @@ class xili_dictionary {
 	 *
 	 */
 	function add_custom_box_in_post_msg () {
-		$singular_name = __('series','xili-dictionary');
+		$msg = __('msg','xili-dictionary');
 
-		add_meta_box('msg_state', sprintf(__("msg %s",'xili-dictionary'), $singular_name), array(&$this,'msg_state_box'), XDMSG , 'normal','high');
+		add_meta_box('msg_state', sprintf(__("the entry with the %s",'xili-dictionary'), $msg), array(&$this,'msg_state_box'), XDMSG , 'normal','high');
 		if ( get_current_screen()->action != 'add' ) { // only for edit not new
-			add_meta_box('msg_untranslated_list', sprintf(__("List of MSG %s to translate",'xili-dictionary'), $singular_name), array(&$this,'msg_untranslated_list_box'), XDMSG , 'normal','high');
+			add_meta_box('msg_untranslated_list', sprintf(__("List of %s from entries to translate",'xili-dictionary'), $msg), array(&$this,'msg_untranslated_list_box'), XDMSG , 'normal','high');
 			if ( current_user_can ('xili_dictionary_edit_save') ) {	// 2.3.2
 				add_meta_box('msg_tools_shortcuts', __("Shortcuts to update mo files",'xili-dictionary'), array(&$this,'msg_tools_shortcuts_box'), XDMSG , 'side' );
 			}
@@ -1436,8 +1446,8 @@ function verifybefore(id) {
 					<th scope="col" class="center colid"><a href="<?php echo $this->xd_settings_page; ?>" ><?php _e('ID') ?></a></th>
 					<th scope="col" class="coltexte"><a href="<?php echo $this->xd_settings_page.'&amp;orderby=name'.$sortparent; ?>"><?php _e('Text') ?></a>
 					</th>
-					<th scope="col" class="colslug"><?php _e('Metas','xili-dictionary') ?></th>
-					<th scope="col" class="colgroup center"><?php _e('Save status', 'xili-dictionary') ?></th>
+					<th scope="col" class="colslug"><?php _e('relations','xili-dictionary') ?></th>
+					<th scope="col" class="colgroup center"><?php _e('.mo status', 'xili-dictionary') ?></th>
 					<th colspan="2"><?php _e('Action') ?></th>
 				</tr>
 			</thead>
@@ -1486,7 +1496,7 @@ function verifybefore(id) {
 						"sEmptyTable": "<?php _e('Empty table','xili-dictionary') ?>",
 						"sInfoEmpty": "<?php _e('No entry','xili-dictionary') ?>",
 						"sLengthMenu": "<?php _e('Show _MENU_ entries','xili-dictionary') ?>",
-						"sSearch": "<?php _e('Filter terms:','xili-dictionary') ?>"
+						"sSearch": "<?php _e('Filter msg:','xili-dictionary') ?>"
 
 					},
 					"aaSorting": [[1,'asc']],
@@ -1593,7 +1603,7 @@ function verifybefore(id) {
 					, $content, XDMSG, $ctxt);
 			}
 			// 2.2.0
-			//error_log ( "************ " .serialize($posts_query) );
+
 			$found_posts = $wpdb->get_col($posts_query);
 			if ( empty($found_posts) ) {
 
@@ -1904,7 +1914,7 @@ function verifybefore(id) {
 				}
 			}
 			$columns['msgcontent'] = __('Content','xili-dictionary'); // ? sortable ?
-			$columns['msgpostmeta'] = __('Metas','xili-dictionary');
+			$columns['msgpostmeta'] = __('msg / relations','xili-dictionary');
 			$columns['msgposttype'] = __('Type / Origin','xili-dictionary');
 			if ( !class_exists ( 'xili_language' ) ) {
 				$columns[TAXONAME] = __('Language','xili-dictionary');
@@ -3218,10 +3228,9 @@ function verifybefore(id) {
 			wp_enqueue_script('wp-lists');
 			wp_enqueue_script('postbox');
 
-			add_meta_box('xili-dictionary-sidebox-style', __('XD settings','xili-dictionary'), array(&$this,'on_sidebox_settings_content'), $this->thehook , 'side', 'low'); // low to be at end 2.3.1
-			add_meta_box('xili-dictionary-sidebox-info', __('Info','xili-dictionary'), array(&$this,'on_sidebox_info_content'), $this->thehook , 'side', 'low');
-			add_meta_box('xili-dictionary-sidebox-message', __('Message','xili-dictionary'), array(&$this,'on_sidebox_message_content'), $this->thehook , 'side', 'low');
-			add_meta_box('xili-dictionary-sidebox-mail', __('Mail & Support','xili-dictionary'), array(&$this,'on_sidebox_mail_content'), $this->thehook , 'normal', 'low');
+			add_meta_box( 'xili-dictionary-sidebox-style', __('XD settings','xili-dictionary'), array(&$this,'on_sidebox_settings_content'), $this->thehook , 'side', 'low' ); // low to be at end 2.3.1
+			add_meta_box( 'xili-dictionary-sidebox-info', __('Info','xili-dictionary'), array(&$this,'on_sidebox_info_content'), $this->thehook , 'side', 'low' );
+			add_meta_box( 'xili-dictionary-sidebox-mail', __('Mail & Support','xili-dictionary'), array(&$this,'on_sidebox_mail_content'), $this->thehook , 'normal', 'low' );
 
 	}
 
@@ -3365,21 +3374,6 @@ function verifybefore(id) {
 		}
 	}
 
-/**
- * private functions for dictionary_settings
- * @since 0.9.3
- *
- * fill the content of the boxes (right side and normal)
- *
- */
-	function on_sidebox_message_content( $data ) {
-		extract($data);
-		?>
-<h4><?php _e('Note:','xili-dictionary') ?></h4>
-<p><?php echo $message; ?></p>
-		<?php
-	}
-
 	/**
 	 * return the current theme name as saved in option with parent
 	 * param: true if parent appended
@@ -3412,8 +3406,6 @@ function verifybefore(id) {
 				}
 		}
 		?>
-<p><?php printf ( __('xili-dictionary is a plugin (compatible with xili-language) to build a multilingual dictionary saved in the post tables of WordPress as custom post type (%s). With this dictionary, it is possible to create and update .mo file in the current theme folder. And more...','xili-dictionary'), '<em>' . $this->xdmsg . '</em>' ); ?>
-</p>
 <fieldset style="margin:2px; padding:12px 6px; border:1px solid #ccc;">
 	<legend><?php echo __("Theme's informations:",'xili-dictionary').' ('. $cur_theme_name .')'; ?></legend>
 	<p>
@@ -3506,8 +3498,8 @@ function verifybefore(id) {
 			<th scope="col" class="center colid"><a href="<?php echo $this->xd_settings_page; ?>" ><?php _e('ID') ?></a></th>
 			<th scope="col" class="coltexte"><a href="<?php echo $this->xd_settings_page.'&amp;orderby=name'.$sortparent; ?>"><?php _e('Text') ?></a>
 			</th>
-			<th scope="col" class="colslug"><?php _e('Metas','xili-dictionary') ?></th>
-			<th scope="col" class="colgroup center"><?php _e('Save status', 'xili-dictionary') ?></th>
+			<th scope="col" class="colslug"><?php _e('relations','xili-dictionary') ?></th>
+			<th scope="col" class="colgroup center"><?php _e('.mo status', 'xili-dictionary') ?></th>
 			<th colspan="2"><?php _e('Action') ?></th>
 		</tr>
 	</thead>
@@ -3896,20 +3888,20 @@ function verifybefore(id) {
 <br /><a class="action-button grey-button" href="edit.php?post_type=<?php echo XDMSG ?>&amp;page=download_dictionary_page" title="<?php _e('Download po or file to your computer','xili-dictionary') ?>"><?php _e('Download file','xili-dictionary') ?></a>
 
 <h4 id="manage_categories"><?php _e('The taxonomies','xili-dictionary') ;?></h4>
-<a class="action-button blue-button" href="<?php echo $this->xd_settings_page.'&amp;action=importtaxonomy'; ?>" title="<?php _e('Import name and description of taxonomy','xili-dictionary') ?>"><?php _e('Import terms of taxonomy','xili-dictionary') ?></a>
+<a class="action-button blue-button" href="<?php echo $this->xd_settings_page.'&amp;action=importtaxonomy'; ?>" title="<?php _e('Import name and description of taxonomy','xili-dictionary') ?>"><?php _e('Import texts of taxonomy','xili-dictionary') ?></a>
 
 <h4 id="manage_website_infos"><?php _e('The website infos (title, sub-title and more…)','xili-dictionary') ;?></h4>
 		<?php if ( class_exists ('xili_language') && version_compare ( XILILANGUAGE_VER, '2.3.9', '>' )	) {
 			_e ( '…and comment, locale, date terms, archive,…', 'xili-dictionary' ); echo '<br /><br />';
 		} ?>
-<a class="action-button blue-button" href="<?php echo $this->xd_settings_page.'&amp;action=importbloginfos'; ?>" title="<?php _e('Import infos of web site and more','xili-dictionary') ?>"><?php _e("Import terms of website's infos",'xili-dictionary') ?></a>
+<a class="action-button blue-button" href="<?php echo $this->xd_settings_page.'&amp;action=importbloginfos'; ?>" title="<?php _e('Import infos of website and more to become translatable...','xili-dictionary') ?>"><?php _e("Import texts of website's infos",'xili-dictionary') ?></a>
 
 <h4 id="manage_dictionary"><?php _e('Dictionary in database','xili-dictionary') ;?></h4>
-	<a class="action-button grey-button" href="edit.php?post_type=<?php echo XDMSG ?>&amp;page=erase_dictionary_page" title="<?php _e('Erase selected terms of dictionary ! (but not .mo or .po files)','xili-dictionary') ?>"><?php _e('Erase (selection of) terms','xili-dictionary') ?></a>
-	<a class="action-button grey-button" href="edit.php?post_type=<?php echo XDMSG ?>&amp;page=import_dictionary_page&amp;scan=sources" title="<?php _e('Import terms from files','xili-dictionary') ?>"><?php _e('Import terms from source files','xili-dictionary') ?></a>
+	<a class="action-button grey-button" href="edit.php?post_type=<?php echo XDMSG ?>&amp;page=erase_dictionary_page" title="<?php _e('Erase selected msg of dictionary ! (but not .mo or .po files)','xili-dictionary') ?>"><?php _e('Erase (selection of) msg','xili-dictionary') ?></a>
+	<a class="action-button grey-button" href="edit.php?post_type=<?php echo XDMSG ?>&amp;page=import_dictionary_page&amp;scan=sources" title="<?php _e('Import translatable texts from files','xili-dictionary') ?>"><?php _e('Import texts from source files','xili-dictionary') ?></a>
 		<?php if ( isset($_GET['test']) ) { /* during testing phase 2.3.5 */ ?>
 <h4 id="manage_dictionary"><?php _e('Selection of plugin’s msgs for front-end','xili-dictionary') ;?></h4>
-	<a class="action-button grey-button" href="<?php echo $this->xd_settings_page.'&amp;action=importpluginmsgs'; ?>" title="<?php _e('Import terms for current active plugin','xili-dictionary') ?>"><?php _e('Import terms from plugins','xili-dictionary') ?></a>
+	<a class="action-button grey-button" href="<?php echo $this->xd_settings_page.'&amp;action=importpluginmsgs'; ?>" title="<?php _e('Import translatable texts for current active plugin','xili-dictionary') ?>"><?php _e('Import texts from plugins','xili-dictionary') ?></a>
 
 
 		<?php
@@ -3924,7 +3916,7 @@ function verifybefore(id) {
 		extract( $data );
 		?>
 		<fieldset style="margin:2px; padding:3px; border:1px solid #ccc;">
-			<legend><?php _e('Sub list of terms','xili-dictionary'); ?></legend>
+			<legend><?php _e('Sub list of msg','xili-dictionary'); ?></legend>
 <?php /*
 			<label for="tagsnamelike"><?php _e('Starting with:','xili-dictionary') ?></label>
 			<input name="tagsnamelike" id="tagsnamelike" type="text" value="<?php echo $tagsnamelike; ?>" /><br />
@@ -4234,7 +4226,7 @@ function verifybefore(id) {
 		case 'notagssublist';
 				$tagsnamelike = '';
 				$tagsnamesearch = '';
-				$message .= ' no sub list of terms';
+				$message .= ' no sub list of msg';
 				$actiontype = "add";
 				break;
 
@@ -4736,7 +4728,7 @@ function verifybefore(id) {
 
 		default:
 			$actiontype = "add";
-			$message .= ' '.__('Find below the list of terms.','xili-dictionary');
+			$message .= ' '.__('Find below the list of msg.','xili-dictionary');
 
 		}
 		/* register the main boxes always available */
@@ -4753,20 +4745,20 @@ function verifybefore(id) {
 		add_meta_box('xili-dictionary-normal-1', __( $formtitle, 'xili-dictionary'), array(&$this,'metabox_shared_by_dialogs'), $this->thehook , 'normal', 'core' );
 		/* list of terms*/
 
-		add_meta_box('xili-dictionary-normal-cpt', __('Multilingual Terms','xili-dictionary'), array(&$this,'metabox_with_cpt_content_list'), $this->thehook , 'normal', 'core');
+		add_meta_box('xili-dictionary-normal-cpt', __('Entries (Msgid and Msgstr)','xili-dictionary'), array(&$this,'metabox_with_cpt_content_list'), $this->thehook , 'normal', 'core');
 
 		// since 1.2.2 - need to be upgraded...
 		if ($msg == 0 && $message != '' ) $msg = 6 ; //by temporary default
-		$themessages[1] = __('A new term was added.','xili-dictionary');
-		$themessages[2] = __('A term was updated.','xili-dictionary');
-		$themessages[3] = __('A term was deleted.','xili-dictionary');
-		$themessages[4] = __('terms imported from WP: ','xili-dictionary') . $message;
-		$themessages[5] = __('All terms imported !','xili-dictionary') . ' ('.$message.')';
+		$themessages[1] = __('A new msgid was added.','xili-dictionary');
+		$themessages[2] = __('A msg was updated.','xili-dictionary');
+		$themessages[3] = __('A msg was deleted.','xili-dictionary');
+		$themessages[4] = __('msg imported from WP: ','xili-dictionary') . $message;
+		$themessages[5] = __('All msg imported !','xili-dictionary') . ' ('.$message.')';
 		$themessages[6] = sprintf(__('Result log: %s', 'xili-dictionary' ), $message );
-		$themessages[7] = __('All terms erased !','xili-dictionary');
+		$themessages[7] = __('All msgs erased !','xili-dictionary');
 		$themessages[8] = __('Error when adding !','xili-dictionary') . ' ('.$message.')';
 		$themessages[9] = __('Error when updating !','xili-dictionary');
-		$themessages[10] = __('Wait during terms importing process until the multilingual terms list appears below!','xili-dictionary');
+		$themessages[10] = __('Wait during terms importing process until the entries (msgid and msgstr) list appears below!','xili-dictionary');
 
 		/* form datas in array for do_meta_boxes() */
 		$data = array(
@@ -9595,6 +9587,8 @@ function verifybefore(id) {
 
 		if ( 'xdmsg_page_dictionary_page' == $screen->id ) {
 			$about_infos =
+			'<p>' . sprintf ( __('xili-dictionary is a plugin (compatible with xili-language) to build a multilingual dictionary saved in the post tables of WordPress as custom post type (%s). With this dictionary, it is possible to create and update .mo file in the current theme folder. And more...','xili-dictionary'), '<em>' . $this->xdmsg . '</em>' ) .
+			'</p>' .
 			'<p>' . __('Things to remember to set xili-dictionary:','xili-dictionary') . '</p>' .
 			'<ul>' .
 			'<li>' . __('Verify that the theme is localizable (like WP bundled themes from twentyten to twentyfourteen).','xili-dictionary') . '</li>' .
@@ -9921,7 +9915,8 @@ function xili_dictionary_start () {
 	$xili_dictionary = new xili_dictionary();
 	if ( is_admin() ){
 		$plugin_path = dirname(__FILE__) ;
-		require( $plugin_path . '/includes/class-extractor.php' );
+		require_once ( $plugin_path . '/includes/class-extractor.php' );
+		require_once ( ABSPATH . WPINC . '/pomo/po.php'); /* not included in wp-settings - here 2.12.3 */
 	}
 }
 add_action( 'plugins_loaded', 'xili_dictionary_start', 20 ); // 20 = after xili-language and xili-dictionary
