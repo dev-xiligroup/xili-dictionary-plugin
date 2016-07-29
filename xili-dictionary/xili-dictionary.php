@@ -4,12 +4,15 @@ Plugin Name: xili-dictionary
 Plugin URI: http://dev.xiligroup.com/xili-dictionary/
 Description: A tool using wordpress's CPT and taxonomy for localized themes or multilingual themes managed by xili-language - a powerful tool to create .mo file(s) on the fly in the theme's folder and more... - ONLY for >= WP 3.2.1 -
 Author: dev.xiligroup - MS
-Version: 2.12.3
+Version: 2.12.5
 Author URI: http://dev.xiligroup.com
 License: GPLv2
 Text Domain: xili-dictionary
 Domain Path: /languages/
 */
+
+# 2.12.5 - 160729 - wp_get_theme integration
+# 2.12.4 - 160216 - pot generation: now bbp addon integrated in xl (glotpress)
 
 # 2.12.3 - 151021 - fixes menu when just activated, cleaning code lines
 # 2.12.2 - 150926 - better compatibility w polylang before xl install - import polylang_mo custom posts, categories,... - improves msgid_exists
@@ -18,7 +21,6 @@ Domain Path: /languages/
 # 2.11.2 - 150527 - link title added, more terms from post-template, core import process improved
 # 2.11.1 - 150514 - fixes import terms from comment-template.php
 # 2.11.0 - 150422 - add way to create only POT w/o import msgid in dictionary
-
 # 2.10.3 - 150322 - improves adding context after draft state only, import get_the_archive_title msgid (since WP 4.1) - new datatables JS & css
 # 2.10.2 - 150312 - fixes no context msgid creation after creation with context
 # 2.10.1 - 150228 - pre-test with WP4.2 alpha - manages plugin language files in WP_LANG_DIR
@@ -75,7 +77,7 @@ if ( !function_exists( 'add_action' ) ) {
 	exit;
 }
 
-define( 'XILIDICTIONARY_VER', '2.12.3' );
+define( 'XILIDICTIONARY_VER', '2.12.5' );
 define( 'XILIDICTIONARY_DEBUG', false ); // WP_DEBUG must be also true !
 
 // the class
@@ -3388,10 +3390,23 @@ function verifybefore(id) {
 		return $theme_name;
 	}
 
+	function get_option_theme_full_name ( $child_of = false ) {
+		$current_theme_obj = wp_get_theme();
+		if ( is_child_theme() ) { // 1.8.1 and WP 3.0
+			$parent_theme_obj = wp_get_theme( get_option("template") );
+			$theme_name = $current_theme_obj->get('Name');
+			if ( $child_of )
+				$theme_name = $current_theme_obj->get('Name') . ' ' . __('child of','xili-dictionary') . ' ' . $parent_theme_obj->get('Name'); //replace slug of theme
+		} else {
+			$theme_name = $current_theme_obj->get('Name'); // get_option("current_theme"); // name of theme
+		}
+		return $theme_name;
+	}
+
 	function on_sidebox_info_content() {
 		$template_directory = $this->active_theme_directory;
 
-		$cur_theme_name = $this->get_option_theme_name ( true );
+		$cur_theme_name = $this->get_option_theme_full_name ( true );
 		if ( $this->xililanguage_ms ) {
 			echo '<p><em>'.__('xili-language-ms is active !','xili-dictionary').'</em></p>';
 
@@ -3521,7 +3536,7 @@ function verifybefore(id) {
 		extract( $data );
 		$do = true;
 
-		$cur_theme_name = $this->get_option_theme_name();
+		$cur_theme_name = $this->get_option_theme_full_name();
 
 		?>
 <div class="metabox-content" >
@@ -3529,7 +3544,7 @@ function verifybefore(id) {
 
 		<p id="add_edit"><?php _e( $formhow, 'xili-dictionary') ?></p>
 		<?php
-		$cur_theme_name = $this->get_option_theme_name( true );
+		$cur_theme_name = $this->get_option_theme_full_name( true );
 		if ( in_array ( $action , array ( 'importbloginfos', 'importtaxonomy', 'importpluginmsgs' ) ) ) {
 
 			echo '<p><em>' . sprintf( __('Before importing terms, verify that the %1$strash%2$s is empty !', 'xili-dictionary') , '<a href="edit.php?post_type='.XDMSG .'">', '</a>' ) . '</em></p>';
@@ -4832,7 +4847,7 @@ function verifybefore(id) {
 								}
 						?>
 					</div>
-					<h4><a href="http://dev.xiligroup.com/xili-dictionary" title="Plugin page and docs" target="_blank" style="text-decoration:none" ><img style="vertical-align:middle" src="<?php echo plugins_url( 'images/XD-full-logo-32.png', __FILE__ ) ; ?>" alt="xili-dictionary logo"/></a> - © <a href="http://dev.xiligroup.com" target="_blank" title="<?php _e('Author'); ?>" >xiligroup.com</a>™ - msc 2007-2015 - v. <?php echo XILIDICTIONARY_VER; ?></h4>
+					<h4><a href="http://dev.xiligroup.com/xili-dictionary" title="Plugin page and docs" target="_blank" style="text-decoration:none" ><img style="vertical-align:middle" src="<?php echo plugins_url( 'images/XD-full-logo-32.png', __FILE__ ) ; ?>" alt="xili-dictionary logo"/></a> - © <a href="http://dev.xiligroup.com" target="_blank" title="<?php _e('Author'); ?>" >xiligroup.com</a>™ - msc 2007-2016 - v. <?php echo XILIDICTIONARY_VER; ?></h4>
 				</div>
 			</div>
 			<br class="clear" />
@@ -5519,9 +5534,9 @@ function verifybefore(id) {
 		// the table array
 		$table_mo = $this->from_cpt_to_POMO( $curlang, $obj, $extract );
 		$site_mo = new MO () ;
-
+		$current_theme_obj = wp_get_theme();
 		$translation ='
-	Project-Id-Version: theme: '.get_option("template").'\n
+	Project-Id-Version: theme: ' . $current_theme_obj->get("Name") . '\n
 	Report-Msgid-Bugs-To: contact@xiligroup.com\n
 	POT-Creation-Date: '.date("c").'\n
 	PO-Revision-Date: '.date("c").'\n
@@ -8762,8 +8777,9 @@ function verifybefore(id) {
 			<label for="_xd_place"><?php _e( 'Place of source files', 'xili-dictionary' ); ?>:&nbsp;</label>
 			<select name="_xd_place" id="_xd_place" class='postform'>
 				<option value="theme" > <?php _e('from the current theme','xili-dictionary') ?> </option>
-				<?php if ( is_child_theme ()) { ?>
-				<option value="parenttheme" > <?php printf(__('from the current parent theme (%s)','xili-dictionary'), get_option( "template" ) ) ?> </option>
+				<?php if ( is_child_theme ()) {
+					$parent_theme_obj = wp_get_theme( get_option( 'template' ) )?>
+				<option value="parenttheme" > <?php printf(__('from the current parent theme (%s)','xili-dictionary'), $parent_theme_obj->get('Name') ) ?> </option>
 				<?php } ?>
 				<option value="plugin" > <?php _e('from a selected plugin','xili-dictionary') ?> </option>
 			</select>
@@ -9071,7 +9087,7 @@ function verifybefore(id) {
 		switch ( $plugin_key ) {
 
 			case 'xili-language/xili-language.php' :
-				$the_project['excludes'] = array( 'xili-xl-bbp-addon.php', 'xili-includes/locales.php' );
+				$the_project['excludes'] = array( 'xili-includes/locales.php' ); // now bbp addon integrated xl 2.21.2
 				break;
 			case 'xili-language/xili-xl-bbp-addon.php' :
 				$the_project['includes'] = array( 'xili-xl-bbp-addon.php' );
