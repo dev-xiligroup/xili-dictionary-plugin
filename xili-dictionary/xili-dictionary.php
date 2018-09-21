@@ -3321,6 +3321,7 @@ function verifybefore(id) {
 	}
 	/**
 	 * @since 1.02
+	 * OBSOLETE
 	 */
 	function fill_default_languages_list() {
 		if ( $this->xililanguage == 'neveractive' || $this->xililanguage == 'wasactive' ) {
