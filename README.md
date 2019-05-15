@@ -6,6 +6,10 @@ When displayed, in [WordPress repository](https://wordpress.org/plugins/xili-dic
 
 The other files are available for comments or fixes. Only the version in [WordPress xili-dictionary repository](https://wordpress.org/plugins/xili-dictionary/) is for use.
 
+## Since 2019 05 -15 - master branch contains rewritten sources
+
+The branch xd 2.12 is previous version (WP < 4.9)
+
 ## Preliminary infos:
 
 1. This readme.txt follow the rules of developers described [here](https://wordpress.org/plugins/about/)
