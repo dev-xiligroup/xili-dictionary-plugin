@@ -90,6 +90,7 @@ require_once XILIDICTIONARY_PLUGIN_DIR . 'class-xili-dictionary.php';
 require_once XILIDICTIONARY_PLUGIN_DIR . 'admin-includes/functions-xd-admin-help.php';
 require_once XILIDICTIONARY_PLUGIN_DIR . 'admin-includes/functions-xd-various.php';
 require_once XILIDICTIONARY_PLUGIN_DIR . 'admin-includes/class-xili-dictionary-dashboard.php';
+require_once XILIDICTIONARY_PLUGIN_DIR . 'admin-includes/class-xili-dictionary-xml-pll.php';
 
 /**
  * filter wp_upload_dir (/wp-includes/functions.php)
@@ -119,6 +120,7 @@ function xili_dictionary_start() {
 		require_once $plugin_path . '/includes/class-extractor.php';
 		require_once ABSPATH . WPINC . '/pomo/po.php'; /* not included in wp-settings - here 2.12.3 */
 		$xili_dictionary_dashboard = new Xili_Dictionary_Dashboard( $xili_dictionary );
+		$xili_dictionary_xml_pll = new Xili_Dictionary_Xml_Pll( $xili_dictionary );
 	}
 }
 add_action( 'plugins_loaded', 'xili_dictionary_start', 20 ); // 20 = after xili-language and xili-dictionary

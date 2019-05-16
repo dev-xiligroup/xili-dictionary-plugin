@@ -1,6 +1,6 @@
 <?php
 /**
-* XD Admin class help and pointer functions
+* XD Admin class sideboxes
 *
 * @package Xili-Dictionary
 * @subpackage admin
