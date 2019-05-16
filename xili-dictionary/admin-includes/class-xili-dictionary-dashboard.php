@@ -163,18 +163,36 @@ class Xili_Dictionary_Dashboard {
 		</label><br />
 		<?php if ( '' != $xili_dictionary->get_wplang() ) { ?>
 		<label for="wplangenable">
-			<input type="checkbox" id="wplangenable" name="wplangenable" value="enable" <?php if ( isset( $xili_dictionary->xili_settings['wplang'] ) && 'enable' == $xili_dictionary->xili_settings['wplang'] ) echo 'checked="checked"' ?> />&nbsp;<?php echo 'WPLANG= ' . $xili_dictionary->get_wplang(); ?>
+			<input type="checkbox" id="wplangenable" name="wplangenable" value="enable"
+			<?php
+			if ( isset( $xili_dictionary->xili_settings['wplang'] ) && 'enable' == $xili_dictionary->xili_settings['wplang'] ) {
+				echo ' checked="checked" ';
+			}
+			echo '/>&nbsp;WPLANG= ' . $xili_dictionary->get_wplang();
+			?>
 		</label><br />
 		<?php } ?>
 		<label for="versionenable">
-			<input type="checkbox" id="versionenable" name="versionenable" value="enable" <?php if ( isset( $xili_dictionary->xili_settings['version-wp'] ) && 'enable' == $xili_dictionary->xili_settings['version-wp']) echo 'checked="checked"' ?> />&nbsp;<?php echo "WP version: " . $wp_version; ?>
+			<input type="checkbox" id="versionenable" name="versionenable" value="enable"
+			<?php
+			if ( isset( $xili_dictionary->xili_settings['version-wp'] ) && 'enable' == $xili_dictionary->xili_settings['version-wp'] ) {
+				echo ' checked="checked" ';
+			}
+			echo '/>&nbsp;WP version: ' . $wp_version;
+			?>
 		</label><br /><br />
 		<?php
 		$list = xd_check_other_xili_plugins();
 		if ( '' != $list ) {
 		?>
 		<label for="xiliplugenable">
-			<input type="checkbox" id="xiliplugenable" name="xiliplugenable" value="enable" <?php if ( isset( $xili_dictionary->xili_settings['xiliplug'] ) && 'enable' == $xili_dictionary->xili_settings['xiliplug'] ) echo 'checked="checked"' ?> />&nbsp;<?php echo "Other xili plugins = " . $list; ?>
+			<input type="checkbox" id="xiliplugenable" name="xiliplugenable" value="enable"
+			<?php
+			if ( isset( $xili_dictionary->xili_settings['xiliplug'] ) && 'enable' == $xili_dictionary->xili_settings['xiliplug'] ) {
+				echo ' checked="checked" ';
+			}
+			echo '/>&nbsp;Other xili plugins = ' . $list;
+			?>
 		</label><br /><br />
 		<?php } ?>
 		<label for="webmestre"><?php esc_html_e( 'Type of webmaster:', 'xili-dictionary' ); ?>
