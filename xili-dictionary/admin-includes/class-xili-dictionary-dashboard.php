@@ -143,8 +143,9 @@ class Xili_Dictionary_Dashboard {
 				<input type="checkbox" id="urlenable" name="urlenable" value="enable"
 				<?php
 				if ( isset( $xili_dictionary->xili_settings['url'] ) && 'enable' == $xili_dictionary->xili_settings['url'] ) {
-					echo ' checked="checked" />&nbsp;' . bloginfo( 'url' );
+					echo ' checked="checked" ';
 				}
+				echo '/>&nbsp;' . bloginfo( 'url' );
 				?>
 			</label><br />
 		<?php } else { ?>
@@ -155,9 +156,9 @@ class Xili_Dictionary_Dashboard {
 			<input type="checkbox" id="themeenable" name="themeenable" value="enable"
 			<?php
 			if ( isset( $xili_dictionary->xili_settings['theme'] ) && 'enable' == $xili_dictionary->xili_settings['theme'] ) {
-				echo ' checked="checked" />&nbsp;';
-				echo 'Theme name= ' . get_option( 'stylesheet' );
+				echo ' checked="checked" ';
 			}
+			echo '/>&nbsp;Theme name= ' . get_option( 'stylesheet' );
 			?>
 		</label><br />
 		<?php if ( '' != $xili_dictionary->get_wplang() ) { ?>
