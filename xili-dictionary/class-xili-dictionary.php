@@ -4175,7 +4175,7 @@ function verifybefore(id) {
 		}
 		//
 		echo '<option value="">' . esc_html__( 'Choose…', 'xili-dictionary' ) . '</option>';
-		foreach ( $this->examples_list as $key => $value) {
+		foreach ( $this->examples_list as $key => $value ) {
 			// $selected = ( ''!=$language_name && $language_name == $key) ? 'selected=selected' : '';
 			$selected = '';
 			echo '<option value="' . $key . '" ' . $selected . '>' . $value . ' ( ' . $key . ' )</option>';
@@ -4197,8 +4197,8 @@ function verifybefore(id) {
 			$lefttext = esc_html__( 'not translated in', 'xili-dictionary' ) . ' ';
 		}
 		foreach ( $listdictlanguages as $dictlanguage ) {
-			$checked = ( $this->subselect == $left_line . $dictlanguage->slug) ? 'selected="selected"' : '';
-		$optionlist .= '<option value="' . $left_line . $dictlanguage->slug . '" ' . $checked.' >' . $lefttext . $dictlanguage->name . ' ( ' . $dictlanguage->description . ' )</option>';
+			$checked = ( $this->subselect == $left_line . $dictlanguage->slug ) ? 'selected="selected"' : '';
+		$optionlist .= '<option value="' . $left_line . $dictlanguage->slug . '" ' . $checked . ' >' . $lefttext . $dictlanguage->name . ' ( ' . $dictlanguage->description . ' )</option>';
 		}
 		return $optionlist;
 	}
@@ -4624,11 +4624,11 @@ function verifybefore(id) {
 									}
 								}
 							} else {
-								$extract_array [ 'origin' ] = $checked_themes;
+								$extract_array ['origin'] = $checked_themes;
 								$local = '';
 
 								if ( 'parenttheme' == $_POST['languagesfolder'] ) {
-									$selectlang1 = ( $file_suffix == '.pot' ) ? $this->theme_domain() : $selectlang;
+									$selectlang1 = ( '.pot' == $file_suffix ) ? $this->theme_domain() : $selectlang;
 									$file = get_template_directory() . $this->parentlangfolder . $selectlang1 . $file_suffix;
 								} else {
 									if ( 'contentlanguages' == $_POST['languagesfolder'] ) {
@@ -4978,7 +4978,7 @@ function verifybefore(id) {
 
 				<div id="post-body" <?php echo $postbody_class; ?> >
 					<div id="<?php echo $postright_id; ?>" class="<?php echo $postright_class; ?>">
-							<?php do_meta_boxes( $this->thehook, 'side', $data); ?>
+							<?php do_meta_boxes( $this->thehook, 'side', $data ); ?>
 					</div>
 					<div id="post-body-content" >
 						<div <?php echo $postleft_id; ?> <?php echo $postleft_class; ?> style="min-width:360px">
@@ -5251,9 +5251,9 @@ function verifybefore(id) {
 				}
 				$p = '';
 				foreach ( $names as $plugin_path ) {
-					$plugin_res = $this->is_saved_cpt_in_plugin( $plugin_path, htmlspecialchars_decode( $dictioline->post_content), $type, $context );
+					$plugin_res = $this->is_saved_cpt_in_plugin( $plugin_path, htmlspecialchars_decode( $dictioline->post_content ), $type, $context );
 					if ( $plugin_res ) {
-						$p .= sprintf( '<small>' . esc_html__( 'P{%s}:', 'xili-dictionary' ), $this->get_plugin_name ( $plugin_path) ) . ' ' . implode( ' - ', $plugin_res ) . '</small><br />';
+						$p .= sprintf( '<small>' . esc_html__( 'P{%s}:', 'xili-dictionary' ), $this->get_plugin_name( $plugin_path) ) . ' ' . implode( ' - ', $plugin_res ) . '</small><br />';
 					}
 				}
 				$save_state .= '<br />' . $p;
@@ -5335,8 +5335,8 @@ function verifybefore(id) {
 						'key' => $this->msglang_meta,
 						'value' => $curlang,
 						'compare' => 'LIKE', // 2.1.2
-						),
 					),
+				),
 				'tax_query' => array(
 					array(
 						'taxonomy' => 'origin',
@@ -5711,7 +5711,7 @@ function verifybefore(id) {
 			//$thesite_ID = $wpdb->blogid;
 			if ( ( $uploads = wp_upload_dir() ) && false === $uploads['error'] ) {
 				//if ( $thesite_ID > 1) {
-				if ( $local == true ) {
+				if ( true == $local ) {
 					$mofile = $uploads['basedir'] . '/languages/local-' . $lang . '.mo';
 				} else {
 					$mofile = $uploads['basedir'] . '/languages/' . $lang . '.mo'; //normally inside theme's folder if root wp-net
@@ -6406,13 +6406,13 @@ function verifybefore(id) {
 					if ( false === $cur_msgid->ctxt ) {
 						$entry_array = array(
 							'singular' => $cur_msgid->post_content,
-							'translations'=> '',
+							'translations' => '',
 						);
 					} else {
 						$entry_array = array(
 							'context' => $cur_msgid->ctxt,
 							'singular' => $cur_msgid->post_content,
-							'translations'=> '',
+							'translations' => '',
 						);
 					}
 				} else {
@@ -6793,7 +6793,7 @@ function verifybefore(id) {
 		global $wp_registered_widgets;
 		$sidebars = wp_get_sidebars_widgets();
 		foreach ( $sidebars as $sidebar => $widgets ) {
-			if ( 'wp_inactive_widgets' == $sidebar || empty( $widgets) ) {
+			if ( 'wp_inactive_widgets' == $sidebar || empty( $widgets ) ) {
 				continue;
 			}
 
@@ -7322,7 +7322,7 @@ function verifybefore(id) {
 	public function xd_erasing_setting_callback_main_section() {
 		?>
 
-		<p><?php _e( "Here it now possible to erase your dictionary (here in WP database) after creating the .mo files (and saving the .po files which is readable with any text editor). <strong>This erasing process don't delete the .mo or .po files.</strong>", 'xili-dictionary' ); ?></p>
+		<p><?php esc_html_e( "Here it now possible to erase your dictionary (here in WP database) after creating the .mo files (and saving the .po files which is readable with any text editor). <strong>This erasing process don't delete the .mo or .po files.</strong>", 'xili-dictionary' ); ?></p>
 
 		<?php
 	}
@@ -7967,20 +7967,19 @@ function verifybefore(id) {
 					if ( empty( $start ) || 'no-list' == $back ) {
 
 						if ( 'loop-full' == $back ) {
-							$this->looping_output( sprintf( esc_html__( 'No more msgs to erase (%s)', 'xili-dictionary' ), $back ) , 'loading' );
+							$this->looping_output( sprintf( esc_html__( 'No more msgs to erase (%s)', 'xili-dictionary' ), $back ), 'loading' );
 						} else {
-							$this->looping_output( sprintf( esc_html__( 'No msgs to erase (%s)', 'xili-dictionary' ), $back ) , 'error' );
+							$this->looping_output( sprintf( esc_html__( 'No msgs to erase (%s)', 'xili-dictionary' ), $back ), 'error' );
 
 						}
 					}
-
 				} else {
 
 					update_option( '_xd_erasing_start', $max + 1 );
 
 					$count_lines = get_option( '_xd_erasing_count_lines', $max + 1 );
 					$end = ( $count_lines > $max ) ? $max + 1 : $count_lines;
-
+					/* translators: */
 					$this->looping_output( sprintf( esc_html__( 'Erasing msgs (%1$s - %2$s)', 'xili-dictionary' ), $min, $end ), 'loading' );
 
 				}
@@ -7994,7 +7993,7 @@ function verifybefore(id) {
 				delete_option( '_xd_erasing_count_lines' );
 				delete_option( '_xd_deletion_type' );
 				delete_option( '_xd_cache_temp_array_IDs' );
-
+				/* translators: */
 				$this->looping_output( sprintf( esc_html__( 'Erasing Complete (%1$s)', 'xili-dictionary' ), $count_lines ), 'success' );
 				break;
 
@@ -8200,7 +8199,7 @@ function verifybefore(id) {
 				'post_type' => XDMSG,
 				'suppress_filters' => true,
 				'meta_query' => array(
-				'relation' => 'AND',
+					'relation' => 'AND',
 					array(
 						'key' => $xili_dictionary->msgtype_meta,
 						'value' => 'msgid',
@@ -8252,18 +8251,18 @@ function verifybefore(id) {
 				'post_type' => XDMSG,
 				'suppress_filters' => true,
 				'meta_query' => array(
-						'relation' => 'AND',
-						array(
-							'key' => $xili_dictionary->msgtype_meta,
-							'value' => 'msgid',
-							'compare' => '=',
-						),
-						array(
-							'key' => $xili_dictionary->msglang_meta,
-							'value' => $selected_lang,
-							'compare' => 'LIKE',
-						),
+					'relation' => 'AND',
+					array(
+						'key' => $xili_dictionary->msgtype_meta,
+						'value' => 'msgid',
+						'compare' => '=',
 					),
+					array(
+						'key' => $xili_dictionary->msglang_meta,
+						'value' => $selected_lang,
+						'compare' => 'LIKE',
+					),
+				),
 			);
 
 			if ( $only_local ) {
@@ -8290,11 +8289,11 @@ function verifybefore(id) {
 			} else {
 
 				$array_tax = array(
-						'taxonomy' => 'origin',
-						'field' => 'slug',
-						'terms' => $origins,
-						'operator' => 'IN',
-					);
+					'taxonomy' => 'origin',
+					'field' => 'slug',
+					'terms' => $origins,
+					'operator' => 'IN',
+				);
 			}
 			$query['tax_query'] = array( $array_tax );
 
@@ -8336,16 +8335,18 @@ function verifybefore(id) {
 			echo '<div id="message" class="updated fade' . $class_error . '"><p>';
 			echo $themessages[ $msg ];
 			if ( 'error' == $msg ) {
-				$sub_type = ( $_POST['download_sub_type_file'] == 'local' ) ? 'local-': '';
-				if ( $_POST['download_type_file'] == 'pot' ) $sub_type = $this->theme_domain();
-				echo ' “' . $sub_type . $_POST['language_file'] . '.' .$_POST['download_type_file'];
+				$sub_type = ( 'local' == $_POST['download_sub_type_file'] ) ? 'local-': '';
+				if ( 'pot' == $_POST['download_type_file'] ) {
+					$sub_type = $this->theme_domain();
+				}
+				echo ' “' . $sub_type . $_POST['language_file'] . '.' . $_POST['download_type_file'];
 
 				$place = ( $_POST['download_place_file'] == 'parenttheme' ) ? esc_html__( 'Parent theme', 'xili-dictionary' ): esc_html__( 'Child theme', 'xili-dictionary' );
-				echo '”&nbsp;' . esc_html__( 'from', 'xili-dictionary' ) . '&nbsp;' .$place;
+				echo '”&nbsp;' . esc_html__( 'from', 'xili-dictionary' ) . '&nbsp;' . $place;
 			}
 
 			if ( $this->download_uri ) {
-				$basename = basename ( $this->download_uri );
+				$basename = basename( $this->download_uri );
 				echo ' <a href="' . $this->download_uri . '" /><strong>' . sprintf( esc_html__( 'Click here to download file %s', 'xili-dictionary' ), $basename ) . '</strong></a>';
 			}
 			?>
@@ -8414,7 +8415,7 @@ function verifybefore(id) {
 				<option value=""> <?php esc_html_e( 'Select language', 'xili-dictionary' ); ?> </option>
 
 			<?php
-			$listlanguages = $this->get_terms_of_groups_lite( $this->langs_group_id, TAXOLANGSGROUP,TAXONAME, 'ASC' );
+			$listlanguages = $this->get_terms_of_groups_lite( $this->langs_group_id, TAXOLANGSGROUP, TAXONAME, 'ASC' );
 			foreach ( $listlanguages as $language ) {
 				$selected = ( isset( $_GET[ QUETAG ] ) && $language->name == $_GET[ QUETAG ] ) ? 'selected=selected' : '';
 				echo '<option value="' . $language->name . '" ' . $selected . ' >' . __( $language->description, 'xili-dictionary' ) . '</option>';
@@ -8642,7 +8643,7 @@ function verifybefore(id) {
 			//	$zip->addFile( $diskfile);
 			//	$zip->close();
 			//}
-			$zip -> create( $diskfile, PCLZIP_OPT_REMOVE_PATH, dirname( $diskfile . '/' ) );
+			$zip->create( $diskfile, PCLZIP_OPT_REMOVE_PATH, dirname( $diskfile . '/' ) );
 			$diskfile = $zip_diskfile;
 
 		}
@@ -8973,7 +8974,7 @@ function verifybefore(id) {
 
 	public function xd_setting_callback_tech_section() {
 		?>
-		<p><?php _e( "These settings below are reserved for future uses, leave values 'as is'.", 'xili-dictionary' ); ?></p>
+		<p><?php esc_html_e( "These settings below are reserved for future uses, leave values 'as is'.", 'xili-dictionary' ); ?></p>
 		<?php
 	}
 
@@ -9298,7 +9299,7 @@ function verifybefore(id) {
 					delete_option( '_xd_importing_count_entries' );
 
 					if ( 'files' == $from_what ) {
-						if ( false === strpos( $lang , '_' ) && 'po' == $type ) {
+						if ( false === strpos( $lang, '_' ) && 'po' == $type ) {
 							$type = 'pot';
 						}
 						// special case
@@ -9489,7 +9490,7 @@ function verifybefore(id) {
 		$plugin_paths = array();
 		// get origins
 		$origins = get_terms( 'origin' );
-		if ( ! is_wp_error( $origins ) && array() != $origins  ) {
+		if ( ! is_wp_error( $origins ) && array() != $origins ) {
 			// if in list plugins
 			$list_plugins_keys = array_keys( get_plugins() );
 			foreach ( $origins as $one_origin ) {
@@ -9619,7 +9620,7 @@ function verifybefore(id) {
 
 				$params = ( in_array( $_POST['backup_pot'], array( 'onlypot', 'both' ) ) ) ? $projects[ $project_key ] : array();
 
-				unset( $xd_extractor);
+				unset( $xd_extractor );
 
 			}
 		} elseif ( 'theme' == $place || 'parenttheme' == $place ) {
@@ -9650,7 +9651,7 @@ function verifybefore(id) {
 			$xd_extractor = new XD_extractor( $projects );
 
 			$entries = $xd_extractor->generate_entries( $origin_theme );
-			unset( $xd_extractor);
+			unset( $xd_extractor );
 
 		}
 		if ( false !== $entries ) {
@@ -9682,7 +9683,7 @@ function verifybefore(id) {
 			$infos = $file_pot_title . ':' . $xili_dictionary->display_file_states( $xili_dictionary->state_of_file( $projects[ $cur_key ]['file'] ) );
 			return array(
 				'count' => $c,
-				'infos' => $infos
+				'infos' => $infos,
 			);
 
 		} else {
@@ -9724,7 +9725,7 @@ function verifybefore(id) {
 				if ( $i < $start ) {
 					continue;
 				}
-				if ( $i > ( $start + $count ) -1 ) {
+				if ( $i > ( $start + $count ) - 1 ) {
 					break;
 				}
 				if ( $i > $count_entries ) {
@@ -9732,7 +9733,7 @@ function verifybefore(id) {
 				}
 				$xili_dictionary->importing_mode = true; // not manual
 				// add local_tag if mo local file imported
-				if (  'local' == $_POST['_xd_place'] && 'mo' == $_POST['_xd_file_extend'] ) {
+				if ( 'local' == $_POST['_xd_place'] && 'mo' == $_POST['_xd_file_extend'] ) {
 					$pomsgstr->extracted_comments = $xili_dictionary->local_tag . ' (imported from mo) ' . $pomsgstr->extracted_comments;
 				}
 				$lines = $xili_dictionary->pomo_entry_to_xdmsg(
