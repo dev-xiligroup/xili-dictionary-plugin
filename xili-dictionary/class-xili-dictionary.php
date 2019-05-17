@@ -598,9 +598,11 @@ class Xili_Dictionary {
 			echo '<p>' . esc_html__( 'Reference', 'xili-dictionary' ) . '<br />';
 			echo '<em>' . esc_html__( 'This text (msgid) is the Reference and must modified <strong>ONLY IF</strong> you are sure that it will be the same as in source code or text.', 'xili-dictionary' ) . '</em><br />';
 			/* translators: */
-			echo '<em>' . sprintf( esc_html__( 'To create or edit translations (msgstr), see %s in the table of box %s.', 'xili-dictionary' ),
+			echo '<em>' . sprintf(
+				esc_html__( 'To create or edit translations (msgstr), see %1$s in the table of box %2$s.', 'xili-dictionary' ),
 				'<a style="background:yellow;" href="#msg_state" >' . esc_html__( 'links', 'xili-dictionary' ) . '</a>',
-			 '</em>' . sprintf( esc_html__( 'msg %s', 'xili-dictionary' ), $singular_name)  ) . '</p>';
+				'</em>' . sprintf( esc_html__( 'msg %s', 'xili-dictionary' ), $singular_name )
+			) . '</p>';
 		} else { // msgstr
 			if ( false === strpos( $type, '_' ) ) {
 				/* translators: */
@@ -1078,11 +1080,11 @@ class Xili_Dictionary {
 							if ( isset( $thelangs['msgstrlangs'][ $target_lang ] ) && $thelangs['msgstrlangs'][ $target_lang ] == array( ) ) {
 								unset( $thelangs['msgstrlangs'][ $target_lang ] ); // 2.3
 							}
-							if ( isset( $thelangs['msgstrlangs'] ) && $thelangs['msgstrlangs'] == array( ) ) {
+							if ( isset( $thelangs['msgstrlangs'] ) && array() == $thelangs['msgstrlangs'] ) {
 								unset( $thelangs['msgstrlangs'] ); // 2.3
 							}
 
-							if ( $thelangs != array() ) {
+							if ( array() != $thelangs ) {
 								update_post_meta( $msgid_id, $this->msglang_meta, $thelangs ); // update id post_meta
 							} else {
 								delete_post_meta( $msgid_id, $this->msglang_meta ); // 2.9
@@ -1139,7 +1141,7 @@ class Xili_Dictionary {
 
 				$result = $this->msgid_exists( $post->post_content, $the_context );
 
-				if (  empty( $result) || ( in_array( $post_id, $result ) && 1 == count( $result ) ) ) {
+				if ( empty( $result ) || ( in_array( $post_id, $result ) && 1 == count( $result ) ) ) {
 					return;
 				} elseif ( 'msgid' == $type ) { // only msgid tested
 					$found_others = array();
@@ -1182,7 +1184,7 @@ class Xili_Dictionary {
 	public function add_custom_box_in_post_msg() {
 		$msg = esc_html__( 'msg', 'xili-dictionary' );
 		/* translators: */
-		add_meta_box( 'msg_state', sprintf( esc_html__( 'the entry with the %s', 'xili-dictionary' ), $msg ), array( &$this, 'msg_state_box' ), XDMSG , 'normal', 'high' );
+		add_meta_box( 'msg_state', sprintf( esc_html__( 'the entry with the %s', 'xili-dictionary' ), $msg ), array( &$this, 'msg_state_box' ), XDMSG, 'normal', 'high' );
 		if ( get_current_screen()->action != 'add' ) {
 			// only for edit not new
 			/* translators: */
@@ -1351,10 +1353,9 @@ function verifybefore(id) {
 					$extract_array['projet_id_version'] = 'theme = ' . $cur_theme_name;
 					$mo = $this->from_cpt_to_pomo_wpmu( $selectlang, 'mo', true, $extract_array ); // do diff if not superadmin
 				}
-
 			} else { // standalone
 
-				if ( 'updatelocal' ==  $filetype ) {
+				if ( 'updatelocal' == $filetype ) {
 					$local = 'local-';
 					$extract_array [ $this->msg_extracted_comments ] = $this->local_tag;
 					$extract_array [ 'like-' . $this->msg_extracted_comments ] = true;
@@ -1376,9 +1377,11 @@ function verifybefore(id) {
 					/* translators: */
 					$this->msg_action_message = sprintf( '<span class="alert">' . esc_html__( 'Error with File %s !', 'xili-dictionary' ) . '</span> ( ' . $file . ' )', $local . $selectlang . '.mo' );
 				} else {
+					/* translators: */
 					$this->msg_action_message = sprintf( esc_html__( 'File %1$s updated with %2$s msgids', 'xili-dictionary' ), $local.$selectlang . '.mo', count( $mo->entries ) );
 				}
 			} else {
+				/* translators: */
 				$this->msg_action_message = sprintf( '<span class="alert">' . esc_html__( 'Nothing modified in %s, file not updated', 'xili-dictionary' ) . '</span>', $local . $selectlang . '.mo' );
 			}
 		}
@@ -1593,9 +1596,10 @@ function verifybefore(id) {
 			<?php
 			$context = get_post_meta( $post_ID, $this->ctxt_meta, true );
 			$res = $this->is_saved_cpt_in_theme( htmlspecialchars_decode( $post->post_content ), $type, $context );
+			/* translators: */
 			$save_state = '<br />' . ( ( false === strpos( $res[0], '**</span>' ) ) ? sprintf( esc_html__( 'theme folder %s', 'xili-dictionary' ), $res[0] ) : '' ) . ( ( false == strpos( $res[2], '?</span>' ) ) ? ' (theme local-' . $res[2] . ' )' : '' );
 			if ( is_multisite() ) {
-				$save_state .= '<br />' . esc_html__( 'this site', 'xili-dictionary' ) . ( ( false === strpos( $res[1], '**</span>' ) ) ? sprintf( esc_html__( 'folder %s', 'xili-dictionary' ) ,$res[1] ) : ' ' ) . ( ( false == strpos( $res[3], '?</span>' ) ) ? ' (theme local-' . $res[3] . ' )' : '' );
+				$save_state .= '<br />' . esc_html__( 'this site', 'xili-dictionary' ) . ( ( false === strpos( $res[1], '**</span>' ) ) ? sprintf( esc_html__( 'folder %s', 'xili-dictionary' ), $res[1] ) : ' ' ) . ( ( false == strpos( $res[3], '?</span>' ) ) ? ' (theme local-' . $res[3] . ' )' : '' );
 			}
 
 			echo $type . ' <em>' . $post->post_content . '</em> ' . esc_html__( 'saved in ', 'xili-dictionary' ) . $save_state;
@@ -1604,6 +1608,7 @@ function verifybefore(id) {
 			foreach ( $names as $plugin_path ) {
 				$plugin_res = $this->is_saved_cpt_in_plugin( $plugin_path, htmlspecialchars_decode( $post->post_content ), $type, $context );
 				if ( $plugin_res ) {
+					/* translators: */
 					echo sprintf( '<br /><small>' . esc_html__( 'Plugin ( %s ):', 'xili-dictionary' ), $this->get_plugin_name( $plugin_path ) ) . '</small> ' . implode( ' - ', $plugin_res ) . '<br />';
 				}
 			}
@@ -1731,7 +1736,6 @@ function verifybefore(id) {
 				if ( '' != $args['origin_theme'] ) {
 					wp_set_object_terms( $msgid_post_id_plural, $args['origin_theme'], 'origin', true ); // true to append to existing
 				}
-
 			}
 		}
 
@@ -1848,8 +1852,8 @@ function verifybefore(id) {
 				if (! empty( $entry->flags) ) $po[] = PO::comment_block(implode(", ", $entry->flags), ',' );
 			*/
 		if ( null != $entry ) {
-			$references = ( ! empty( $entry->references ) ) ? implode( ' #: ',  $entry->references ) : '';
-			$flags = ( ! empty( $entry->flags ) ) ? implode( ', ',  $entry->flags ) : '';
+			$references = ( ! empty( $entry->references ) ) ? implode( ' #: ', $entry->references ) : '';
+			$flags = ( ! empty( $entry->flags ) ) ? implode( ', ', $entry->flags ) : '';
 			$extracted_comments = ( ! empty( $entry->extracted_comments ) ) ? $entry->extracted_comments : '';
 			$translator_comments = ( ! empty( $entry->translator_comments ) ) ? $entry->translator_comments : '';
 		} else {
@@ -2002,7 +2006,7 @@ function verifybefore(id) {
 
 	}
 
-	public function xili_manage_column_row( $column , $id ) {
+	public function xili_manage_column_row( $column, $id ) {
 		global $post;
 		$type = get_post_meta( $id, $this->msgtype_meta, true );
 
@@ -2044,7 +2048,7 @@ function verifybefore(id) {
 					$names[] = $this->get_plugin_name( $origin->name, esc_html__( 'Plugin:', 'xili-dictionary' ) ); // if not: no prefix 2.6.0
 				}
 				/* translators: */
-				printf( esc_html__( '<small>From:</small> %s', 'xili-dictionary' ) , implode( ', ', $names ) );
+				printf( esc_html__( '<small>From:</small> %s', 'xili-dictionary' ), implode( ', ', $names ) );
 			}
 		}
 
@@ -2201,7 +2205,7 @@ function verifybefore(id) {
 
 		} else {
 			/* translators: */
-			echo '</p><p>' . sprintf( esc_html__( 'None of these %d terms are available in the msgid list of xili-dictionary. Click button above to populate dictionary before you will translate.', 'xili-dictionary' ), count( $this->taxlist) ) . '</p>';
+			echo '</p><p>' . sprintf( esc_html__( 'None of these %d terms are available in the msgid list of xili-dictionary. Click button above to populate dictionary before you will translate.', 'xili-dictionary' ), count( $this->taxlist ) ) . '</p>';
 		}
 
 		?>
@@ -2696,7 +2700,7 @@ function verifybefore(id) {
 				}
 
 				if ( ( 'msgstr' == $_GET['msgaction'] ) && $doit ) {
-				// create post
+					// create post
 					if ( ! isset( $thechilds['msgid']['plural'] ) ) {
 						/* translators: */
 						$msgstr_post_id = $this->insert_one_cpt_and_meta( sprintf( esc_html__( 'XD say to translate in %s:', 'xili-dictionary' ), $target_lang ) . ' ' . $temp_post_msg_id->post_content, null, 'msgstr', 0 );
@@ -2712,7 +2716,7 @@ function verifybefore(id) {
 						// create msgstr_0
 						/* translators: */
 						$msgstr_post_id = $this->insert_one_cpt_and_meta( sprintf( esc_html__( 'XD say to translate in %s (msgstr[0] ): ', 'xili-dictionary' ), $target_lang ) . ' ' . $temp_post_msg_id->post_content, null, 'msgstr_0', 0 );
-						wp_set_object_terms( $msgstr_post_id, $this->target_lang( $target_lang), TAXONAME );
+						wp_set_object_terms( $msgstr_post_id, $this->target_lang( $target_lang ), TAXONAME );
 						$thelangs['msgstrlangs'][ $target_lang ]['msgstr_0'] = $msgstr_post_id;
 						update_post_meta( $msgid_id, $this->msglang_meta, $thelangs );
 						update_post_meta( $msgstr_post_id, $this->msgidlang_meta, $msgid_id );
@@ -2723,8 +2727,9 @@ function verifybefore(id) {
 						// create msgstr_1
 						$temp_post_msg_id_plural = $this->temp_get_post( $thechilds['msgid']['plural'] );
 						$content_plural = htmlspecialchars( $temp_post_msg_id_plural->post_content );
-						$msgstr_1_post_id = $this->insert_one_cpt_and_meta( sprintf( esc_html__( 'XD say to translate in %s (msgstr[1] ): ', 'xili-dictionary' ), $target_lang ). ' ' . $content_plural , null, 'msgstr_1',  $msgstr_post_id );
-						wp_set_object_terms( $msgstr_1_post_id, $this->target_lang( $target_lang), TAXONAME );
+						/* translators: */
+						$msgstr_1_post_id = $this->insert_one_cpt_and_meta( sprintf( esc_html__( 'XD say to translate in %s (msgstr[1] ): ', 'xili-dictionary' ), $target_lang ) . ' ' . $content_plural, null, 'msgstr_1',  $msgstr_post_id );
+						wp_set_object_terms( $msgstr_1_post_id, $this->target_lang( $target_lang ), TAXONAME );
 						$thelangs['msgstrlangs'][ $target_lang ]['plural'][1] = $msgstr_1_post_id;
 						update_post_meta( $msgid_id, $this->msglang_meta, $thelangs );
 						update_post_meta( $msgstr_1_post_id, $this->msgidlang_meta, $msgid_id );
@@ -2746,7 +2751,7 @@ function verifybefore(id) {
 				}
 			} elseif ( isset( $_GET['msgaction'] ) && 'msgid_plural' == $_GET['msgaction'] && ! isset( $thelangs['msgstrlangs'] ) ) {
 				check_admin_referer( 'xd-plural' );
-				$msgid_plural_post_id = $this->insert_one_cpt_and_meta ( esc_html__( 'XD say id to plural: ', 'xili-dictionary' ) . $temp_post_msg_id->post_content , null, 'msgid_plural',  $msgid_id );
+				$msgid_plural_post_id = $this->insert_one_cpt_and_meta( esc_html__( 'XD say id to plural: ', 'xili-dictionary' ) . $temp_post_msg_id->post_content, null, 'msgid_plural', $msgid_id );
 				$res = get_post_meta( $msgid_id, $this->msgchild_meta, false );
 				$thechilds = ( is_array( $res ) && array() != $res ) ? $res[0] : array();
 				$url_redir = admin_url() . 'post.php?post=' . $msgid_plural_post_id . '&action=edit';
@@ -2779,11 +2784,11 @@ function verifybefore(id) {
 			$line .= '&nbsp;<strong>' . htmlspecialchars( $temp_post_msg_id->post_content ) . '</strong>';
 			if ( $post->ID != $msgid_id ) {
 				/* translators: */
-				$line .= sprintf( __( '( <a href="%1$s" title="link to:%2$d" >%3$s</a> )<br />', 'xili-dictionary' ),'post.php?post=' . $msgid_id.'&action=edit', $msgid_id, esc_html__( 'Edit' ) );
+				$line .= sprintf( __( '( <a href="%1$s" title="link to:%2$d" >%3$s</a> )<br />', 'xili-dictionary' ), 'post.php?post=' . $msgid_id . '&action=edit', $msgid_id, esc_html__( 'Edit' ) );
 			} else {
 				$line .= '<br />';
 			}
-			$this->hightlight_line ( $line, $type, 'msgid' );
+			$this->hightlight_line( $line, $type, 'msgid' );
 			//}
 			if ( isset( $thechilds['msgid']['plural'] ) ) {
 				$post_status = get_post_status( $thechilds['msgid']['plural'] );
@@ -2800,7 +2805,7 @@ function verifybefore(id) {
 				$line .= '<strong>' . $content_plural . '</strong> ';
 				if ( $post->ID != $thechilds['msgid']['plural'] ) {
 					/* translators: */
-					$line .= sprintf( __( '( <a href="%1$s" title="link to:%2$d" >%3$s</a> )<br />', 'xili-dictionary' ),'post.php?post=' . $thechilds['msgid']['plural'] . '&action=edit', $thechilds['msgid']['plural'], esc_html__( 'Edit' ) );
+					$line .= sprintf( __( '( <a href="%1$s" title="link to:%2$d" >%3$s</a> )<br />', 'xili-dictionary' ), 'post.php?post=' . $thechilds['msgid']['plural'] . '&action=edit', $thechilds['msgid']['plural'], esc_html__( 'Edit' ) );
 				}
 				$this->hightlight_line( $line, $type, 'msgid_plural' );
 
@@ -2816,7 +2821,7 @@ function verifybefore(id) {
 			}
 
 			// display series
-			$listlanguages = $this->get_terms_of_groups_lite( $this->langs_group_id, TAXOLANGSGROUP,TAXONAME, 'ASC' ); //get_terms(TAXONAME, array( 'hide_empty' => false) );
+			$listlanguages = $this->get_terms_of_groups_lite( $this->langs_group_id, TAXOLANGSGROUP, TAXONAME, 'ASC' ); //get_terms(TAXONAME, array( 'hide_empty' => false) );
 			if ( isset( $thelangs['msgstrlangs'] ) ) {
 				$translated_langs = array();
 				echo '<br /><table class="widefat"><thead><tr><th class="column-msgtrans">';
@@ -2843,7 +2848,7 @@ function verifybefore(id) {
 						$temp_post = $this->temp_get_post( $strid );
 
 						if ( $temp_post ) { // if base corrupted - 2.12.2
-							echo '<tr class="lang-' . strtolower( $curlang) . '" ><th><span>';
+							echo '<tr class="lang-' . strtolower( $curlang ) . '" ><th><span>';
 							printf( '%s : ', $curlang );
 							echo '</span></th><td>';
 							$translated_langs[] = $curlang;
@@ -2924,7 +2929,9 @@ function verifybefore(id) {
 				$this->create_line_lang = '';
 				if ( ! isset( $_POST['msgaction'] ) || ( isset( $_GET['msgaction'] ) && 'msgid_plural' == $_GET['msgaction'] ) ) {
 					/* translators: */
-					esc_html_e( 'not yet translated.', 'xili-dictionary' ); echo '&nbsp;'; printf( esc_html__( 'Status: %s', 'xili-dictionary' ), $post->post_status );
+					esc_html_e( 'not yet translated.', 'xili-dictionary' );
+					echo '&nbsp;';
+					printf( esc_html__( 'Status: %s', 'xili-dictionary' ), $post->post_status );
 					if ( 'auto-draft' != $post->post_status ) {
 						echo '<br /><table class="widefat"><thead><tr><th class="column-msgtrans">';
 						esc_html_e( 'Translation in', 'xili-dictionary' );
@@ -2938,7 +2945,7 @@ function verifybefore(id) {
 								printf( '%s : ', $tolang->name );
 								echo '</span></th><td>';
 								/* translators: */
-								printf( '&nbsp; <a class="lang-' . strtolower( $tolang->name) . '" href="%s" >' . esc_html__( 'Create and edit', 'xili-dictionary' ) . '</a>', $nonce_url );
+								printf( '&nbsp; <a class="lang-' . strtolower( $tolang->name ) . '" href="%s" >' . esc_html__( 'Create and edit', 'xili-dictionary' ) . '</a>', $nonce_url );
 								echo '</td></tr>';
 
 						}
@@ -3057,9 +3064,9 @@ function verifybefore(id) {
 			if ( isset( $_GET['msgaction'] ) && isset( $_GET['langstr'] ) && $display ) {
 				$target_lang = $_GET['langstr'];
 				if ( 'msgstr' == $_GET['msgaction'] && ! isset( $thelangs['msgstrlangs'][ $target_lang ] ) ) {
-				// create post
+					// create post
 					if ( ! isset( $thechilds['msgid']['plural'] ) ) {
-
+						/* translators: */
 						$msgstr_post_id = $this->insert_one_cpt_and_meta( sprintf( esc_html__( 'XD say to translate in %s: ', 'xili-dictionary' ), $target_lang ) . ' ' . $post->post_content, null, 'msgstr', 0 );
 						wp_set_object_terms( $msgstr_post_id, $this->target_lang( $target_lang ), TAXONAME );
 						$thelangs['msgstrlangs'][ $target_lang ]['msgstr'] = $msgstr_post_id;
@@ -3080,6 +3087,7 @@ function verifybefore(id) {
 						sprintf( 'msgstr[0] created in %s <br/>', $target_lang );
 
 						// create msgstr_1
+						/* translators: */
 						$msgstr_1_post_id = $this->insert_one_cpt_and_meta( sprintf( esc_html__( 'XD say to translate in %s (msgstr[1] ): ', 'xili-dictionary' ), $target_lang ) . ' ' . $content_plural, null, 'msgstr_1',  $msgstr_post_id );
 						wp_set_object_terms( $msgstr_1_post_id, $this->target_lang( $target_lang ), TAXONAME );
 						$thelangs['msgstrlangs'][ $target_lang ]['plural'][1] = $msgstr_1_post_id;
@@ -3090,7 +3098,7 @@ function verifybefore(id) {
 					}
 				} elseif ( 'msgid_plural' == $_GET['msgaction'] && ! isset( $thelangs['msgstrlangs'][ $target_lang ] ) ) {
 
-					$msgid_plural_post_id = $this->insert_one_cpt_and_meta( esc_html__( 'XD say id to plural: ', 'xili-dictionary' ) . $post->post_content, null, 'msgid_plural',  $id );
+					$msgid_plural_post_id = $this->insert_one_cpt_and_meta( esc_html__( 'XD say id to plural: ', 'xili-dictionary' ) . $post->post_content, null, 'msgid_plural', $id );
 
 				}
 			}
@@ -3178,7 +3186,7 @@ function verifybefore(id) {
 						}
 					}
 				} // end foreach
-				if ( ! count( $translated_langs) && ! $display ) {
+				if ( ! count( $translated_langs ) && ! $display ) {
 					esc_html_e( 'not yet translated.', 'xili-dictionary' );
 				}
 				if ( $display ) {
@@ -3226,8 +3234,8 @@ function verifybefore(id) {
 				$is_plural = false;
 			}
 
-			$span_msgid = ( 'trash' == get_post_status ( $msgid_id ) || false === get_post_status( $msgid_id ) );
-			$span_parent = ( 'trash' == get_post_status ( $post->post_parent ) || false === get_post_status( $post->post_parent ) );
+			$span_msgid = ( 'trash' == get_post_status( $msgid_id ) || false === get_post_status( $msgid_id ) );
+			$span_parent = ( 'trash' == get_post_status( $post->post_parent ) || false === get_post_status( $post->post_parent ) );
 
 			if ( $display ) {
 				echo '<div class="msg-saved" >';
@@ -3722,7 +3730,7 @@ function verifybefore(id) {
 			if ( $do_it ) {
 			?>
 		<hr /><label for="target"><input class="target" name="target" type="radio" value="targetplugin" />&nbsp;<?php esc_html_e( 'Plugin language folder', 'xili-dictionary' ); ?></label>
-		<br /><label for="target"><input class="target" name="target" type="radio" value="targetpluginwplang" />&nbsp;<?php printf( esc_html__( 'Plugin language file in %s', 'xili-dictionary' ), str_replace( WP_CONTENT_DIR, '', WP_LANG_DIR . '/plugins/' ) ); ?></label>
+		<br /><label for="target"><input class="target" name="target" type="radio" value="targetpluginwplang" />&nbsp;<?php /* translators: */ printf( esc_html__( 'Plugin language file in %s', 'xili-dictionary' ), str_replace( WP_CONTENT_DIR, '', WP_LANG_DIR . '/plugins/' ) ); ?></label>
 		<hr />
 		<?php
 			}
@@ -3871,7 +3879,7 @@ function verifybefore(id) {
 						$po = $l10n[ $domain ];
 						if ( count( $po->entries ) > 0 ) {
 							/* translators: */
-							echo sprintf( esc_html__( 'This domain named %s has %d active entries.', 'xili-dictionary' ), '<strong>' . $domain . '</strong>', count( $po->entries) ) . '</br>';
+							echo sprintf( esc_html__( 'This domain named %1$s has %2$d active entries.', 'xili-dictionary' ), '<strong>' . $domain . '</strong>', count( $po->entries ) ) . '</br>';
 							print_r( $po->headers);
 							$checked_domains[] = $domain;
 						} else {
@@ -4014,20 +4022,20 @@ function verifybefore(id) {
 		<a class="action-button blue-button" href="<?php echo $this->xd_settings_page . '&amp;action=importtaxonomy'; ?>" title="<?php esc_html_e( 'Import name and description of taxonomy', 'xili-dictionary' ); ?>"><?php esc_html_e( 'Import texts of taxonomy', 'xili-dictionary' ); ?></a>
 
 		<h4 id="manage_website_infos"><?php esc_html_e( 'The website infos (title, sub-title and more…)', 'xili-dictionary' ); ?></h4>
-				<?php
-				if ( class_exists( 'xili_language' ) && version_compare( XILILANGUAGE_VER, '2.3.9', '>' )	) {
-					_e ( '…and comment, locale, date terms, archive,…', 'xili-dictionary' );
-					echo '<br /><br />';
-				}
-				?>
-		<a class="action-button blue-button" href="<?php echo $this->xd_settings_page . '&amp;action=importbloginfos'; ?>" title="<?php esc_html_e( 'Import infos of website and more to become translatable...', 'xili-dictionary' ) ?>"><?php _e( "Import texts of website's infos", 'xili-dictionary' ); ?></a>
+		<?php
+		if ( class_exists( 'xili_language' ) && version_compare( XILILANGUAGE_VER, '2.3.9', '>' ) ) {
+			esc_html_e( '…and comment, locale, date terms, archive,…', 'xili-dictionary' );
+			echo '<br /><br />';
+		}
+		?>
+		<a class="action-button blue-button" href="<?php echo $this->xd_settings_page . '&amp;action=importbloginfos'; ?>" title="<?php esc_html_e( 'Import infos of website and more to become translatable...', 'xili-dictionary' ); ?>"><?php _e( "Import texts of website's infos", 'xili-dictionary' ); ?></a>
 
 		<h4 id="manage_dictionary"><?php esc_html_e( 'Dictionary in database', 'xili-dictionary' ); ?></h4>
-			<a class="action-button grey-button" href="edit.php?post_type=<?php echo XDMSG; ?>&amp;page=erase_dictionary_page" title="<?php esc_html_e( 'Erase selected msg of dictionary ! (but not .mo or .po files)', 'xili-dictionary' ); ?>"><?php esc_html_e( 'Erase (selection of) msg', 'xili-dictionary' ) ?></a>
-			<a class="action-button grey-button" href="edit.php?post_type=<?php echo XDMSG; ?>&amp;page=import_dictionary_page&amp;scan=sources" title="<?php esc_html_e( 'Import translatable texts from files', 'xili-dictionary' ); ?>"><?php esc_html_e( 'Import texts from source files', 'xili-dictionary' ) ?></a>
-				<?php if ( isset( $_GET['test'] ) ) { /* during testing phase 2.3.5 */ ?>
+			<a class="action-button grey-button" href="edit.php?post_type=<?php echo XDMSG; ?>&amp;page=erase_dictionary_page" title="<?php esc_html_e( 'Erase selected msg of dictionary ! (but not .mo or .po files)', 'xili-dictionary' ); ?>"><?php esc_html_e( 'Erase (selection of) msg', 'xili-dictionary' ); ?></a>
+			<a class="action-button grey-button" href="edit.php?post_type=<?php echo XDMSG; ?>&amp;page=import_dictionary_page&amp;scan=sources" title="<?php esc_html_e( 'Import translatable texts from files', 'xili-dictionary' ); ?>"><?php esc_html_e( 'Import texts from source files', 'xili-dictionary' ); ?></a>
+		<?php if ( isset( $_GET['test'] ) ) { /* during testing phase 2.3.5 */ ?>
 		<h4 id="manage_dictionary"><?php esc_html_e( 'Selection of plugin’s msgs for front-end', 'xili-dictionary' ); ?></h4>
-			<a class="action-button grey-button" href="<?php echo $this->xd_settings_page . '&amp;action=importpluginmsgs'; ?>" title="<?php esc_html_e( 'Import translatable texts for current active plugin', 'xili-dictionary' ); ?>"><?php esc_html_e( 'Import texts from plugins', 'xili-dictionary' ) ?></a>
+			<a class="action-button grey-button" href="<?php echo $this->xd_settings_page . '&amp;action=importpluginmsgs'; ?>" title="<?php esc_html_e( 'Import translatable texts for current active plugin', 'xili-dictionary' ); ?>"><?php esc_html_e( 'Import texts from plugins', 'xili-dictionary' ); ?></a>
 
 		<?php
 		}
@@ -7124,7 +7132,11 @@ function verifybefore(id) {
 		$domain_to_detect = get_option( 'xd_test_importation', false );
 
 		if ( $domain_to_detect && $domain == $domain_to_detect && isset( $this->domain_to_detect_list ) ) {
-			if ( ! isset( $this->domain_to_detect_list[ $locale ] ) || ! in_array( array( 'msgid' => $text, 'msgstr' => $translation ), $this->domain_to_detect_list[ $locale ] ) ) {
+			if ( ! isset( $this->domain_to_detect_list[ $locale ] )
+				|| ! in_array( array(
+					'msgid' => $text,
+					'msgstr' => $translation
+				), $this->domain_to_detect_list[ $locale ] ) ) {
 				$this->domain_to_detect_list[ $locale ][] = array(
 					'msgid' => $text,
 					'msgstr' => $translation,
@@ -9116,7 +9128,7 @@ function verifybefore(id) {
 
 						?>
 			</select>
-			<p class="description"><?php _e( "Language of the file or POT type if available in theme's folder when importing .po file. Submit button is active if file exists!", 'xili-dictionary' ); ?></p>
+			<p class="description"><?php esc_html_e( "Language of the file or POT type if available in theme's folder when importing .po file. Submit button is active if file exists!", 'xili-dictionary' ); ?></p>
 		</div>
 	<?php
 		$this->echo_div_source_comments();
