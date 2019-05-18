@@ -6,7 +6,13 @@ When displayed, in [WordPress repository](https://wordpress.org/plugins/xili-dic
 
 The other files are available for comments or fixes. Only the version in [WordPress xili-dictionary repository](https://wordpress.org/plugins/xili-dictionary/) is for use.
 
-## Since 2019 05 -15 - master branch contains rewritten sources
+## Since 2019-05-15 - master branch contains rewritten sources
+
+Contains latest dev with rewritten sources code with [WP Coding Standards](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards).
+ 
+**REQUIRES PHP 7.1+ !**
+
+**pre-tested with WP 5.2**
 
 The branch xd 2.12 is previous version (WP < 4.9)
 
