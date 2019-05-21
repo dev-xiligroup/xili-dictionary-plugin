@@ -15,7 +15,6 @@ class Xili_Dictionary_Dashboard {
 
 	public static function on_sidebox_info_content() {
 		global $xili_dictionary;
-		echo '<p><em>' . esc_html__( 'xili-language-ms is active !', 'xili-dictionary' ) . '</em></p>';
 		$template_directory = $xili_dictionary->active_theme_directory;
 
 		$cur_theme_name = $xili_dictionary->get_option_theme_full_name( true );
