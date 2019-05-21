@@ -596,7 +596,7 @@ class Xili_Dictionary {
 			/* translators: */
 			echo '<h3>' . sprintf( _x( '%s', 'form', 'xili-dictionary' ), $type ) . '</h3>';
 			echo '<p>' . esc_html__( 'Reference', 'xili-dictionary' ) . '<br />';
-			echo '<em>' . esc_html__( 'This text (msgid) is the Reference and must modified <strong>ONLY IF</strong> you are sure that it will be the same as in source code or text.', 'xili-dictionary' ) . '</em><br />';
+			echo '<em>' . __( 'This text (msgid) is the Reference and must modified <strong>ONLY IF</strong> you are sure that it will be the same as in source code or text.', 'xili-dictionary' ) . '</em><br />';
 			/* translators: */
 			echo '<em>' . sprintf(
 				esc_html__( 'To create or edit translations (msgstr), see %1$s in the table of box %2$s.', 'xili-dictionary' ),
@@ -2048,7 +2048,7 @@ function verifybefore(id) {
 					$names[] = $this->get_plugin_name( $origin->name, esc_html__( 'Plugin:', 'xili-dictionary' ) ); // if not: no prefix 2.6.0
 				}
 				/* translators: */
-				printf( esc_html__( '<small>From:</small> %s', 'xili-dictionary' ), implode( ', ', $names ) );
+				printf( __( '<small>From:</small> %s', 'xili-dictionary' ), implode( ', ', $names ) );
 			}
 		}
 
@@ -2755,7 +2755,7 @@ function verifybefore(id) {
 				$res = get_post_meta( $msgid_id, $this->msgchild_meta, false );
 				$thechilds = ( is_array( $res ) && array() != $res ) ? $res[0] : array();
 				$url_redir = admin_url() . 'post.php?post=' . $msgid_plural_post_id . '&action=edit';
-				//2.3		
+				//2.3
 				?>
 	<script type="text/javascript">
 	<!--
@@ -3810,7 +3810,7 @@ function verifybefore(id) {
 	echo 'var pluginpotfile = "plugin pot file";';
 
 	?>
-	public function update_ui_state() {
+	function update_ui_state() {
 		var x = jQuery( '#_xd_file_extend' ).val();
 		var place = jQuery( '#languagesfolder' ).val().replace ( 'current', '' );
 		place = place.replace ( 'content', '' );
@@ -3953,9 +3953,9 @@ function verifybefore(id) {
 							var rb = jQuery(this).val();
 							if ( rb == 'theme' ) {
 								jQuery( '#_xd_plugin' ).val( '' );
-								jQuery("#import_start").val( t + ' : ' + curthemename );
+								jQuery( "#import_start" ).val( t + ' : ' + curthemename );
 								jQuery( '#backup_pot_label' ).html( '( '+ potfile + '.pot)' );
-							} elseif ( rb == 'plugin' ) {
+							} else if ( rb == 'plugin' ) {
 								plugin = jQuery( '#_xd_plugin' ).val();
 								if ( 'string' == typeof (plugin) && plugin != '' ) jQuery( '#backup_pot_label' ).html( '( '+ plugindatas[plugin]['domain'] + '.pot)' );
 								if ( 'string' == typeof (plugin) && plugin != '' ) jQuery("#import_start").val( t + ' : ' + plugindatas[plugin]['name'] );
@@ -4689,15 +4689,15 @@ function verifybefore(id) {
 				$formhow = esc_html__( 'To import terms of blog info and others defining this current website (title, date, comment, archive...), click below.', 'xili-dictionary' );
 				// current around 30 but...
 				if ( class_exists( 'xili_language' ) ) {
-					$formhow .= '<br />' . esc_html__( 'The process will import around 140 <strong>msgid</strong> from db and sources, so be patient.', 'xili-dictionary' );
+					$formhow .= '<br />' . __( 'The process will import around 140 <strong>msgid</strong> from db and sources, so be patient.', 'xili-dictionary' );
 				}
 
 				// $UI_lang = get_locale();
 				if ( 'en_US' != get_locale() ) {
 					/* translators: */
-					$formhow .= '<br />' . sprintf( esc_html__( 'The language of dashboard is not <em>en_US</em>, so the process will try to import translations in %s.', 'xili-dictionary' ), '<strong>' . get_locale() . '</strong>' );
+					$formhow .= '<br />' . sprintf( __( 'The language of dashboard is not <em>en_US</em>, so the process will try to import translations in %s.', 'xili-dictionary' ), '<strong>' . get_locale() . '</strong>' );
 				} else {
-					$formhow .= '<br />' . esc_html__( 'If you switch language of dashboard in one other than in <em>en_US</em>, then the process will try to import translations of chosen language.', 'xili-dictionary' );
+					$formhow .= '<br />' . __( 'If you switch language of dashboard in one other than in <em>en_US</em>, then the process will try to import translations of chosen language.', 'xili-dictionary' );
 				}
 
 				// detect xml
@@ -7334,7 +7334,7 @@ function verifybefore(id) {
 	public function xd_erasing_setting_callback_main_section() {
 		?>
 
-		<p><?php esc_html_e( "Here it now possible to erase your dictionary (here in WP database) after creating the .mo files (and saving the .po files which is readable with any text editor). <strong>This erasing process don't delete the .mo or .po files.</strong>", 'xili-dictionary' ); ?></p>
+		<p><?php _e( "Here it now possible to erase your dictionary (here in WP database) after creating the .mo files (and saving the .po files which is readable with any text editor). <strong>This erasing process don't delete the .mo or .po files.</strong>", 'xili-dictionary' ); ?></p>
 
 		<?php
 	}
@@ -7741,7 +7741,7 @@ function verifybefore(id) {
 
 				function xd_importing_grab_data() {
 					var values = {};
-					jQuery.each(jQuery( '#xd-looping-settings' ).serializearray(), function(i, field) {
+					jQuery.each(jQuery('#xd-looping-settings').serializeArray(), function(i, field) {
 						values[field.name] = field.value;
 					});
 
@@ -7783,7 +7783,7 @@ function verifybefore(id) {
 
 						xd_looping_stop();
 						jQuery( '#xd-looping-start' ).hide();
-					} elseif ( xd_looping_is_running ) { // keep going
+					} else if ( xd_looping_is_running ) { // keep going
 						jQuery( '#xd-looping-progress' ).show();
 						clearTimeout( xd_looping_run_timer );
 						xd_looping_run_timer = setTimeout( 'xd_importing_run()', xd_looping_delay_time );
@@ -7796,7 +7796,7 @@ function verifybefore(id) {
 
 				function xd_erasing_grab_data() {
 					var values = {};
-					jQuery.each(jQuery( '#xd-looping-settings' ).serializearray(), function(i, field) {
+					jQuery.each(jQuery( '#xd-looping-settings' ).serializeArray(), function(i, field) {
 						values[field.name] = field.value;
 					});
 
@@ -7818,7 +7818,7 @@ function verifybefore(id) {
 						jQuery( '#xd-looping-start' ).hide();
 						jQuery( '#xd-looping-stop' ).show();
 						jQuery( '#xd-looping-progress' ).show();
-						xd_looping_log( '<p class="loading"><?php echo esc_js( esc_html__( 'Starting Erasing', 'xili-dictionary' ) ); ?></p>' );
+						xd_looping_log( '<p class="loading"><?php echo esc_js( __( 'Starting Erasing', 'xili-dictionary' ) ); ?></p>' );
 						xd_erasing_run();
 					}
 				}
@@ -7839,7 +7839,7 @@ function verifybefore(id) {
 						xd_looping_log( '<p><?php echo esc_js( __( 'Go to the list of msgs:', 'xili-dictionary' ) ); ?> <a href="<?php echo admin_url(); ?>edit.php?post_type=<?php echo XDMSG; ?>&page=dictionary_page"><?php echo esc_js( __( 'Continue', 'xili-dictionary' ) ); ?></a></p>' );
 						xd_looping_stop();
 						jQuery( '#xd-looping-start' ).hide();
-					} elseif ( xd_looping_is_running ) {
+					} else if ( xd_looping_is_running ) {
 						// keep going
 						jQuery( '#xd-looping-progress' ).show();
 						clearTimeout( xd_looping_run_timer );
@@ -8757,7 +8757,7 @@ function verifybefore(id) {
 		?>
 	jQuery(document).ready( function() {
 
-		public function bbtvalue ( pot ) {
+		function bbtvalue( pot ) {
 		var fromwhat = jQuery( '#from-what' ).val();
 		var x = jQuery( '#_xd_file_extend' ).val();
 		var lo = jQuery( '#_xd_local' ).val();
@@ -8784,7 +8784,7 @@ function verifybefore(id) {
 			jQuery("#_origin_theme").val( curthemename );
 			jQuery(".title_origin_theme").html( curthemename );
 
-		} elseif ( place == 'theme' || place == 'parenttheme' ) {
+		} else if ( place == 'theme' || place == 'parenttheme' ) {
 			if ( fromwhat == 'sources' ) {
 				submitval = t+' '+sources[place]+' : '+ curthemename;
 			} else {
@@ -8798,7 +8798,7 @@ function verifybefore(id) {
 				}
 			}
 
-		} elseif ( place == 'plugin' ) {
+		} else if ( place == 'plugin' ) {
 
 			if ( fromwhat == 'sources' ) {
 				if ( 'string' == typeof (plugin) && plugin != '' ) {
@@ -8824,7 +8824,7 @@ function verifybefore(id) {
 			} else {
 				jQuery(".title_origin_theme").html( ' ' );
 			}
-		} elseif ( place == 'pluginwplang' ) {
+		} else if ( place == 'pluginwplang' ) {
 			if ( la == pluginpotfile ) {
 					if ( 'string' == typeof (plugin) && plugin != '' ) submitval = t+' : ' + plugindatas[plugin]['domain'] + '.pot';
 				} else {
@@ -8893,16 +8893,16 @@ function verifybefore(id) {
 			if ( x == 'languages' || x == 'local' ) {
 				jQuery("#_xd_lang").find("option[value='" + potfile + "']").remove();
 				jQuery("#_xd_lang").find("option[value='" + pluginpotfile + "']").remove();
-			} elseif ( x == 'theme' && ext == 'po' ) {
+			} else if ( x == 'theme' && ext == 'po' ) {
 				jQuery("#_xd_lang").append( new Option( potfile+'.pot', potfile) );
-			} elseif ( (x == 'theme' || x == 'parenttheme' ) && fromwhat == 'sources' ) {
+			} else if ( (x == 'theme' || x == 'parenttheme' ) && fromwhat == 'sources' ) {
 				if (x == 'theme' ) {
 					jQuery(".title_origin_theme").html( curthemename );
 				} else {
 					jQuery(".title_origin_theme").html( parentthemename );
 				}
 				jQuery( '#backup_pot_label' ).html( '( '+ potfile + '.pot)' );
-			} elseif ( x == 'plugin' || x == 'pluginwplang' ) {
+			} else if ( x == 'plugin' || x == 'pluginwplang' ) {
 				jQuery( '#plugins-option' ).show();
 				jQuery("#_xd_lang").find("option[value='" + potfile + "']").remove();
 				jQuery("#_xd_lang").append( new Option( pluginpotfile , pluginpotfile) );

@@ -196,7 +196,7 @@ function xd_add_help_text( $contextual_help, $screen_id, $screen ) {
 			'<li>' . __( 'If you want to create a pot file just check the option. This file will be saved in the language sub-folder.', 'xili-dictionary' ) . '</li>' .
 			'<li>' . __( 'During scanning process, a temporary window appears at bottom of the screen with some progressing infos.', 'xili-dictionary' ) . '</li>' .
 			'</ul>' .
-			'<p>' . /* translators: */ sprintf( __( '<a href="%s" target="_blank">Xili Wiki Documentation</a>', 'xili-dictionary' ), $this->wikilink ) . '</p>';
+			'<p>' . /* translators: */ sprintf( __( '<a href="%s" target="_blank">Xili Wiki Documentation</a>', 'xili-dictionary' ), $xili_dictionary->wikilink ) . '</p>';
 
 			$screen->add_help_tab(
 				array(
