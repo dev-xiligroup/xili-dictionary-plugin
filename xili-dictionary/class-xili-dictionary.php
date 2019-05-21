@@ -2152,15 +2152,15 @@ function verifybefore(id) {
 
 			if ( array() != $quantities[3] ) {
 				/* translators: */
-				echo '<p><strong>' . sprintf( esc_html__( '%3$s terms of %1$s were just imported, <a href="%2$s">display those terms</a> in msg list of xili-dictionary.', 'xili-dictionary' ), $taxonomy_obj->labels->name, 'edit.php?post_type=' . XDMSG . '&amp;only_' . XDMSG . '=' . implode( ',', $quantities[3] ), $quantities[0] + $quantities[1] ) . '</strong></p>';
+				echo '<p><strong>' . sprintf( __( '%3$s terms of %1$s were just imported, <a href="%2$s">display those terms</a> in msg list of xili-dictionary.', 'xili-dictionary' ), $taxonomy_obj->labels->name, 'edit.php?post_type=' . XDMSG . '&amp;only_' . XDMSG . '=' . implode( ',', $quantities[3] ), $quantities[0] + $quantities[1] ) . '</strong></p>';
 
 			}
 			if ( array() != $quantities[2] ) {
 				/* translators: */
-				echo '<p><strong>' . sprintf( esc_html__( 'All %1$s terms are checked , <a href="%2$s">display those terms</a> in xili-dictionary.', 'xili-dictionary' ), $taxonomy_obj->labels->name, 'edit.php?post_type=' . XDMSG . '&amp;only_' . XDMSG . '=' . implode( ',', $quantities[2] ) ) . '</strong></p>';
+				echo '<p><strong>' . sprintf( __( 'All %1$s terms are checked , <a href="%2$s">display those terms</a> in xili-dictionary.', 'xili-dictionary' ), $taxonomy_obj->labels->name, 'edit.php?post_type=' . XDMSG . '&amp;only_' . XDMSG . '=' . implode( ',', $quantities[2] ) ) . '</strong></p>';
 			}
 			/* translators: */
-			echo '<p style="text-align:right">' . sprintf( esc_html__( '<a href="%2$s">Refresh</a> %3$s column of %1$s table.', 'xili-dictionary' ), $taxonomy_obj->labels->name, admin_url() . 'edit-tags.php?taxonomy=' . $taxonomy, esc_html__( 'Language', 'xili-dictionary' ) ) . '</p></div>';
+			echo '<p style="text-align:right">' . sprintf( __( '<a href="%2$s">Refresh</a> %3$s column of %1$s table.', 'xili-dictionary' ), $taxonomy_obj->labels->name, admin_url() . 'edit-tags.php?taxonomy=' . $taxonomy, esc_html__( 'Language', 'xili-dictionary' ) ) . '</p></div>';
 		}
 		?>
 		<p><?php /* translators: */ printf( esc_html__( '%1$s terms can be imported inside xili-dictionary msgid list', 'xili-dictionary' ), $taxonomy_obj->labels->name ); ?>
