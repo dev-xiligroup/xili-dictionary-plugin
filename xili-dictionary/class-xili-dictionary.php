@@ -5757,8 +5757,10 @@ function verifybefore(id) {
 	MIME-Version: 1.0\n
 	Content-Type: text/plain; charset=utf-8\n
 	Content-Transfer-Encoding: 8bit\n
-	Plural-Forms: ' . $this->plural_forms_rule( $curlang ) . '\n
+	Plural-Forms: ' . $this->plural_forms_rule( $curlang ) . ';\n
 	X-Poedit-Language: ' . $curlang . '\n
+	Language: ' . $curlang . '\n
+	X-Generator: xili-dictionary ' . XILIDICTIONARY_VER . '\n
 	X-Poedit-Country: ' . $curlang . '\n
 	X-Poedit-SourceCharset: utf-8\n';
 
@@ -6251,7 +6253,9 @@ function verifybefore(id) {
 				MIME-Version: 1.0\n
 				Content-Type: text/plain; charset=utf-8\n
 				Content-Transfer-Encoding: 8bit\n
-				Plural-Forms: ' . $this->plural_forms_rule( $curlang ) . '\n
+				Plural-Forms: ' . $this->plural_forms_rule( $curlang ) . ';\n
+				Language: ' . $curlang . '\n
+				X-Generator: xili-dictionary ' . XILIDICTIONARY_VER . '\n
 				X-Poedit-Language: ' . $curlang . '\n
 				X-Poedit-Country: ' . $curlang . '\n
 				X-Poedit-SourceCharset: utf-8\n';
