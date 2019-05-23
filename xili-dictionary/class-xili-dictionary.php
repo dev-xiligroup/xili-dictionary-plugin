@@ -5017,7 +5017,7 @@ function verifybefore(id) {
 		}
 		?>
 					</div>
-					<h4><a href="http://dev.xiligroup.com/xili-dictionary" title="Plugin page and docs" target="_blank" style="text-decoration:none" ><img style="vertical-align:middle" src="<?php echo plugins_url( 'images/XD-full-logo-32.png', __FILE__ ); ?>" alt="xili-dictionary logo"/></a> - © <a href="http://dev.xiligroup.com" target="_blank" title="<?php esc_html_e( 'Author' ); ?>" >xiligroup.com</a>™ - msc 2007-2016 - v. <?php echo XILIDICTIONARY_VER; ?></h4>
+					<h4><a href="http://dev.xiligroup.com/xili-dictionary" title="Plugin page and docs" target="_blank" style="text-decoration:none" ><img style="vertical-align:middle" src="<?php echo plugins_url( 'images/XD-full-logo-32.png', __FILE__ ); ?>" alt="xili-dictionary logo"/></a> - © <a href="http://dev.xiligroup.com" target="_blank" title="<?php esc_html_e( 'Author' ); ?>" >xiligroup.com</a>™ - msc 2007-2019 - v. <?php echo XILIDICTIONARY_VER; ?></h4>
 				</div>
 			</div>
 			<br class="clear" />
@@ -6760,6 +6760,17 @@ function verifybefore(id) {
 				$temp[17]['ctxt'] = 'post format archive title';
 				$temp[18]['msgid'] = 'Archives: %s';
 				$temp[19]['msgid'] = '%1$s: %2$s';
+
+				// search form - general template
+
+				$temp[20]['msgid'] = 'Search for:';
+				$temp[20]['ctxt'] = 'label';
+
+				$temp[21]['msgid'] = 'Search';
+				$temp[21]['ctxt'] = 'submit button';
+
+				$temp[22]['msgid'] = 'Search &hellip;';
+				$temp[22]['ctxt'] = 'placeholder';
 
 				foreach ( $temp as $oneline ) {
 					$oneline['msgstr'] = '';
