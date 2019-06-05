@@ -4,12 +4,14 @@ Plugin Name: xili-dictionary
 Plugin URI: http://dev.xiligroup.com/xili-dictionary/
 Description: A tool using WordPress CPT and taxonomy for localized themes or multilingual themes managed by xili-language - a powerful tool to create .mo file(s) on the fly in the theme's folder and more... - ONLY for >= WP 4.6.1 -
 Author: dev.xiligroup - MS
-Version: 2.14.03
+Version: 2.14.10
 Author URI: http://dev.xiligroup.com
 License: GPLv2
 Text Domain: xili-dictionary
 Domain Path: /languages/
 */
+
+# 2.14.10 - 1900605 - WPCS and main class splitted in Traits
 
 # 2.14.0 - 190513 - WP Standards PHP Code Sniffer rewriting
 
@@ -81,16 +83,39 @@ if ( ! function_exists( 'add_action' ) ) {
 	exit;
 }
 
-define( 'XILIDICTIONARY_VER', '2.14.03' );
+define( 'XILIDICTIONARY_VER', '2.14.10' );
 define( 'XILIDICTIONARY_DEBUG', false ); // WP_DEBUG must be also true !
 define( 'XILIDICTIONARY_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+define( 'XILIDICTIONARY_PLUGIN_URL', plugins_url( '', __FILE__ ) );
 // the class
 /********************* the CLASS **********************/
+// TRAITS
+require_once XILIDICTIONARY_PLUGIN_DIR . 'admin-includes/trait-xili-dictionary-dashboard.php';
+require_once XILIDICTIONARY_PLUGIN_DIR . 'admin-includes/trait-xili-dictionary-settings.php';
+require_once XILIDICTIONARY_PLUGIN_DIR . 'admin-includes/trait-xili-dictionary-imports.php';
+require_once XILIDICTIONARY_PLUGIN_DIR . 'admin-includes/trait-xili-dictionary-download.php';
+require_once XILIDICTIONARY_PLUGIN_DIR . 'admin-includes/trait-xili-dictionary-erase.php';
+require_once XILIDICTIONARY_PLUGIN_DIR . 'admin-includes/trait-xili-dictionary-javascripts.php';
+require_once XILIDICTIONARY_PLUGIN_DIR . 'admin-includes/trait-xili-dictionary-msg-metabox.php';
+require_once XILIDICTIONARY_PLUGIN_DIR . 'admin-includes/trait-xili-dictionary-msg-entries.php';
+require_once XILIDICTIONARY_PLUGIN_DIR . 'admin-includes/trait-xili-dictionary-msg-import.php';
+require_once XILIDICTIONARY_PLUGIN_DIR . 'admin-includes/trait-xili-dictionary-msg-list.php';
+
+require_once XILIDICTIONARY_PLUGIN_DIR . 'admin-includes/trait-xili-dictionary-import-test-pomo.php';
+require_once XILIDICTIONARY_PLUGIN_DIR . 'admin-includes/trait-xili-dictionary-export-pomo.php';
+
+require_once XILIDICTIONARY_PLUGIN_DIR . 'admin-includes/trait-xili-dictionary-admin-styles.php';
+require_once XILIDICTIONARY_PLUGIN_DIR . 'admin-includes/trait-xili-dictionary-various.php';
+
+require_once XILIDICTIONARY_PLUGIN_DIR . 'admin-includes/trait-xili-dictionary-help.php';
+
+require_once XILIDICTIONARY_PLUGIN_DIR . 'admin-includes/trait-xili-dictionary-xml-pll.php';
+
 require_once XILIDICTIONARY_PLUGIN_DIR . 'class-xili-dictionary.php';
-require_once XILIDICTIONARY_PLUGIN_DIR . 'admin-includes/functions-xd-admin-help.php';
-require_once XILIDICTIONARY_PLUGIN_DIR . 'admin-includes/functions-xd-various.php';
-require_once XILIDICTIONARY_PLUGIN_DIR . 'admin-includes/class-xili-dictionary-dashboard.php';
-require_once XILIDICTIONARY_PLUGIN_DIR . 'admin-includes/class-xili-dictionary-xml-pll.php';
+
+
+
+
 
 /**
  * filter wp_upload_dir (/wp-includes/functions.php)
@@ -119,8 +144,6 @@ function xili_dictionary_start() {
 		$plugin_path = dirname( __FILE__ );
 		require_once $plugin_path . '/includes/class-extractor.php';
 		require_once ABSPATH . WPINC . '/pomo/po.php'; /* not included in wp-settings - here 2.12.3 */
-		$xili_dictionary_dashboard = new Xili_Dictionary_Dashboard( $xili_dictionary );
-		$xili_dictionary_xml_pll = new Xili_Dictionary_Xml_Pll( $xili_dictionary );
 	}
 }
 add_action( 'plugins_loaded', 'xili_dictionary_start', 20 ); // 20 = after xili-language and xili-dictionary

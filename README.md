@@ -9,7 +9,8 @@ The other files are available for comments or fixes. Only the version in [WordPr
 ## Since 2019-05-15 - master branch contains rewritten sources
 
 Contains latest dev with rewritten sources code with [WP Coding Standards](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards).
- 
+Version 2.24.10 introduces Trait files structure to split main class.
+
 **REQUIRES PHP 7.1+ !**
 
 **pre-tested with WP 5.2**

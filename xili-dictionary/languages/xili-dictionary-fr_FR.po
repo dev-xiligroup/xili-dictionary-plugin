@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xili_dictionary\n"
 "Report-Msgid-Bugs-To: http://dev.xiligroup.com/\n"
-"POT-Creation-Date: 2019-05-21 11:17:35+00:00\n"
-"PO-Revision-Date: 2019-05-21 14:07+0200\n"
+"POT-Creation-Date: 2019-06-05 11:46:18+00:00\n"
+"PO-Revision-Date: 2019-06-05 13:47+0200\n"
 "Last-Translator: dev.xiligroup <contact@xiligroup.com>\n"
 "Language-Team: Michel SCRIBAN <michel@scriban.eu>\n"
 "Language: fr_FR\n"
@@ -16,28 +16,48 @@ msgstr ""
 "X-Generator: Poedit 2.2.1\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: admin-includes/class-xili-dictionary-dashboard.php:18
-#: admin-includes/class-xili-dictionary-dashboard.php:23
+#: admin-includes/trait-xili-dictionary-admin-styles.php:192
+msgid "xd-style.css is in sub-folder xili-css of current theme folder"
+msgstr "xd-style.css est dans le sous-dossier xili-css du thème courant"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-admin-styles.php:198
+msgid "xd-style.css is in sub-folder xili-css of %s folder"
+msgstr "xd-style.css est dans le sous-dossier xili-css du dossier %s"
+
+#: admin-includes/trait-xili-dictionary-admin-styles.php:203
+msgid ""
+"xd-style.css is in sub-folder xili-css of xili-dictionary plugin folder "
+"(example)"
+msgstr ""
+"xd-style.css est dans le sous-dossier xili-css de l’extension xili-"
+"dictionary (exemple à ne pas modifier)"
+
+#: admin-includes/trait-xili-dictionary-admin-styles.php:205
+msgid "no xd-style.css"
+msgstr "pas fichier xd-style.css"
+
+#: admin-includes/trait-xili-dictionary-dashboard.php:18
 msgid "xili-language-ms is active !"
 msgstr "xili-language multisite est actif !"
 
-#: admin-includes/class-xili-dictionary-dashboard.php:28
+#: admin-includes/trait-xili-dictionary-dashboard.php:23
 msgid "xili-language plugin is not present !"
 msgstr "L'extension xili-language n’est pas présente !"
 
-#: admin-includes/class-xili-dictionary-dashboard.php:31
+#: admin-includes/trait-xili-dictionary-dashboard.php:26
 msgid "xili-language plugin is not activated !"
 msgstr "L'extension xili-language n'est pas activée !"
 
-#: admin-includes/class-xili-dictionary-dashboard.php:37
+#: admin-includes/trait-xili-dictionary-dashboard.php:32
 msgid "Theme’s informations:"
 msgstr "A propos du thème :"
 
-#: admin-includes/class-xili-dictionary-dashboard.php:41
+#: admin-includes/trait-xili-dictionary-dashboard.php:36
 msgid "Languages sub-folder:"
 msgstr "Sous-dossier langages :"
 
-#: admin-includes/class-xili-dictionary-dashboard.php:49
+#: admin-includes/trait-xili-dictionary-dashboard.php:44
 msgid ""
 "No languages files are present in theme's folder or theme's sub-folder: "
 "<strong>add at least a .po or a .mo inside.</strong><br /> Errors will occur "
@@ -47,129 +67,129 @@ msgstr ""
 "thème !  <strong>déposer y au moins un fichier .po or a .mo ,</strong><br /"
 ">Des erreurs risquent d'arriver si vous tentez des imports ou exports !"
 
-#: admin-includes/class-xili-dictionary-dashboard.php:55
+#: admin-includes/trait-xili-dictionary-dashboard.php:50
 msgid "Available MO files:"
 msgstr "Fichiers MO dispo :"
 
-#: admin-includes/class-xili-dictionary-dashboard.php:74
+#: admin-includes/trait-xili-dictionary-dashboard.php:69
 msgid "External file xd-style.css for dashboard (flags, customization)"
 msgstr ""
 "Fichier xd-style.css pour le tableau de bord (drapeau, personnalisation)"
 
-#: admin-includes/class-xili-dictionary-dashboard.php:78
+#: admin-includes/trait-xili-dictionary-dashboard.php:73
 msgid "There is no style for dashboard"
 msgstr "Il n'y a de style pour le tableau de bord"
 
-#: admin-includes/class-xili-dictionary-dashboard.php:87
+#: admin-includes/trait-xili-dictionary-dashboard.php:82
 msgid "No style for dashboard"
 msgstr "Pas de style"
 
-#: admin-includes/class-xili-dictionary-dashboard.php:92
+#: admin-includes/trait-xili-dictionary-dashboard.php:87
 msgid "Activate style for dashboard"
 msgstr "Activer le style"
 
-#: admin-includes/class-xili-dictionary-dashboard.php:97
+#: admin-includes/trait-xili-dictionary-dashboard.php:92
 msgid "Dictionary Styles"
 msgstr "Style du dictionnaire"
 
-#: admin-includes/class-xili-dictionary-dashboard.php:102
+#: admin-includes/trait-xili-dictionary-dashboard.php:97
 msgid "Change style mode"
 msgstr "Changer le type de style"
 
-#: admin-includes/class-xili-dictionary-dashboard.php:106
+#: admin-includes/trait-xili-dictionary-dashboard.php:101
 msgid "Capabilities for editor role"
 msgstr "Capacités pour le rôle éditeur"
 
-#: admin-includes/class-xili-dictionary-dashboard.php:107
+#: admin-includes/trait-xili-dictionary-dashboard.php:102
 msgid "Here, as admin, set capabilities of the editor role:"
 msgstr "En tant qu'admin, affecter les capacités du role éditeur :"
 
-#: admin-includes/class-xili-dictionary-dashboard.php:111
+#: admin-includes/trait-xili-dictionary-dashboard.php:106
 msgid "No capability"
 msgstr "Aucune capacité"
 
-#: admin-includes/class-xili-dictionary-dashboard.php:112
+#: admin-includes/trait-xili-dictionary-dashboard.php:107
 msgid "Editor can edit MSGs"
 msgstr "Le role éditeur peut modifier les MSGs"
 
-#: admin-includes/class-xili-dictionary-dashboard.php:113
+#: admin-includes/trait-xili-dictionary-dashboard.php:108
 msgid "Can edit MSGs and save local-xx_XX.mo"
 msgstr "Peut éditer les MSGs et sauver en local-xx_XX.mo"
 
-#: admin-includes/class-xili-dictionary-dashboard.php:117
+#: admin-includes/trait-xili-dictionary-dashboard.php:112
 msgid "Update Role…"
 msgstr "Mettre à jour le role…"
 
-#: admin-includes/class-xili-dictionary-dashboard.php:135
+#: admin-includes/trait-xili-dictionary-dashboard.php:130
 msgid "Note:"
 msgstr "Note et message :"
 
-#: admin-includes/class-xili-dictionary-dashboard.php:138
+#: admin-includes/trait-xili-dictionary-dashboard.php:133
 msgid "Mail to dev.xiligroup"
 msgstr "Courriel pour dev.xiligroup"
 
-#: admin-includes/class-xili-dictionary-dashboard.php:139
+#: admin-includes/trait-xili-dictionary-dashboard.php:134
 msgid "Cc: (Reply to:)"
 msgstr "Cc: (Répondre à :)"
 
-#: admin-includes/class-xili-dictionary-dashboard.php:154
+#: admin-includes/trait-xili-dictionary-dashboard.php:149
 msgid "When checking and giving detailled infos, support will be better !"
 msgstr ""
 "En cochant et en donnant des infos détaillées, le support sera meilleur !"
 
-#: admin-includes/class-xili-dictionary-dashboard.php:198
+#: admin-includes/trait-xili-dictionary-dashboard.php:193
 msgid "Type of webmaster:"
 msgstr "Type de webmestre :"
 
-#: admin-includes/class-xili-dictionary-dashboard.php:205
+#: admin-includes/trait-xili-dictionary-dashboard.php:200
 msgid "Define your experience as webmaster…"
 msgstr "Definissez votre expérience de webmestre…"
 
-#: admin-includes/class-xili-dictionary-dashboard.php:206
+#: admin-includes/trait-xili-dictionary-dashboard.php:201
 msgid "Newbie in WP"
 msgstr "Apprenti en WP"
 
-#: admin-includes/class-xili-dictionary-dashboard.php:207
+#: admin-includes/trait-xili-dictionary-dashboard.php:202
 msgid "Good knowledge in WP and few in php"
 msgstr "Bonne connaissance en WP et peu en php"
 
-#: admin-includes/class-xili-dictionary-dashboard.php:208
+#: admin-includes/trait-xili-dictionary-dashboard.php:203
 msgid "Good knowledge in WP, CMS and good in php"
 msgstr "Bonne connaissance en WP, en CMS et bonne en php"
 
-#: admin-includes/class-xili-dictionary-dashboard.php:209
+#: admin-includes/trait-xili-dictionary-dashboard.php:204
 msgid "WP theme and /or plugin developper"
 msgstr "Développeur de thème et/ou d'extension WP"
 
-#: admin-includes/class-xili-dictionary-dashboard.php:212
+#: admin-includes/trait-xili-dictionary-dashboard.php:207
 msgid "Subject:"
 msgstr "Sujet :"
 
-#: admin-includes/class-xili-dictionary-dashboard.php:215
+#: admin-includes/trait-xili-dictionary-dashboard.php:210
 msgid "Choose topic..."
 msgstr "Choisir la thématique..."
 
-#: admin-includes/class-xili-dictionary-dashboard.php:216
+#: admin-includes/trait-xili-dictionary-dashboard.php:211
 msgid "Message"
 msgstr "Message"
 
-#: admin-includes/class-xili-dictionary-dashboard.php:217
+#: admin-includes/trait-xili-dictionary-dashboard.php:212
 msgid "Question"
 msgstr "Question"
 
-#: admin-includes/class-xili-dictionary-dashboard.php:218
+#: admin-includes/trait-xili-dictionary-dashboard.php:213
 msgid "Encouragement"
 msgstr "Encouragement"
 
-#: admin-includes/class-xili-dictionary-dashboard.php:219
+#: admin-includes/trait-xili-dictionary-dashboard.php:214
 msgid "Support need"
 msgstr "Support attendu"
 
-#: admin-includes/class-xili-dictionary-dashboard.php:221
+#: admin-includes/trait-xili-dictionary-dashboard.php:216
 msgid "Your message here…"
 msgstr "Votre message ici... (soyez précis svp)"
 
-#: admin-includes/class-xili-dictionary-dashboard.php:224
+#: admin-includes/trait-xili-dictionary-dashboard.php:219
 msgid ""
 "Before send the mail, check the infos to be sent and complete textarea. A "
 "copy (Cc:) is sent to webmaster email (modify it if needed) . "
@@ -178,1056 +198,20 @@ msgstr ""
 "support et compléter les autres champs. Une copie est envoyée au webmestre "
 "(courriel à modifier si nécessaire) ."
 
-#: admin-includes/class-xili-dictionary-dashboard.php:228
+#: admin-includes/trait-xili-dictionary-dashboard.php:223
 msgid "Send email"
 msgstr "Envoyer le courriel"
 
-#: admin-includes/class-xili-dictionary-xml-pll.php:34
-msgid "A config.xml file is available."
-msgstr "Un fichier config.xml est disponible."
+#: admin-includes/trait-xili-dictionary-dashboard.php:239
+msgid "Uncommon filename"
+msgstr "Fichier non conforme"
 
-#: admin-includes/class-xili-dictionary-xml-pll.php:36
-msgid ""
-"Check below if you want to add in dictionary the terms described inside this "
-"file. <br />(Do not forget to fill values in customizer before.)"
-msgstr ""
-"Cocher ci-dessous pour ajouter dans le dictionnaire les termes décrits dans "
-"ce fichier. <br />(Ne pas oublier auparavant de saisir ces valeurs dans "
-"l’écran de personnalisation.)"
-
-#: admin-includes/class-xili-dictionary-xml-pll.php:38
-msgid "import theme_mods datas"
-msgstr "importer les données theme_mods"
-
-#: admin-includes/class-xili-dictionary-xml-pll.php:41
-msgid "BUT current PHP install needs <em>simplexml</em> extension !"
-msgstr "MAIS le PHP courant nécessite l’extension <em>simplexml</em> !"
-
-#: admin-includes/class-xili-dictionary-xml-pll.php:85
-msgid "Polylang translation strings are available."
-msgstr "Les chaînes de traduction de Polylang sont disponibles."
-
-#: admin-includes/class-xili-dictionary-xml-pll.php:87
-msgid ""
-"Check below if you want to add in dictionary the terms (and translations) "
-"made by Polylang"
-msgstr ""
-"Cochez ci-dessous si vous souhaitez ajouter dans le dictionnaire les termes "
-"(et traductions) faites par Polylang"
-
-#: admin-includes/class-xili-dictionary-xml-pll.php:89
-msgid "import Polylang strings"
-msgstr "importer les textes de Polylang"
-
-#: admin-includes/functions-xd-admin-help.php:19
-msgid "For more information:"
-msgstr "Pour plus d'information :"
-
-#: admin-includes/functions-xd-admin-help.php:20
-msgid ""
-"<a href=\"http://wiki.xiligroup.org\" target=\"_blank\">Xili Plugins "
-"Documentation and WIKI</a>"
-msgstr ""
-"<a href=\"http://wiki.xiligroup.org\" target=\"_blank\">Wiki de l'extension "
-"xili-dictionary</a>"
-
-#: admin-includes/functions-xd-admin-help.php:21
-msgid ""
-"<a href=\"http://wordpress.org/plugins/xili-dictionary/\" target=\"_blank"
-"\">Xili-dictionary Plugin Documentation</a>"
-msgstr ""
-"<a href=\"http://wordpress.org/plugins/xili-dictionary/\" target=\"_blank"
-"\">Documentation de l’extension xili-dictionary</a>"
-
-#: admin-includes/functions-xd-admin-help.php:22
-msgid ""
-"<a href=\"http://codex.wordpress.org/\" target=\"_blank\">WordPress "
-"Documentation</a>"
-msgstr ""
-"<a href=\"http://codex.wordpress.org/\" target=\"_blank\">Documentation "
-"WordPress (codex)</a>"
-
-#: admin-includes/functions-xd-admin-help.php:23
-msgid ""
-"<a href=\"http://dev.xiligroup.com/?post_type=forum\" target=\"_blank"
-"\">Support Forums</a>"
-msgstr ""
-"<a href=\"http://dev.xiligroup.com/?post_type=forum\" target=\"_blank"
-"\">Forum Support</a>"
+#: admin-includes/trait-xili-dictionary-dashboard.php:244
+msgid "Site's values"
+msgstr "Données du site"
 
 #. translators:
-#: admin-includes/functions-xd-admin-help.php:27
-msgid ""
-"xili-dictionary is a plugin (compatible with xili-language) to build a "
-"multilingual dictionary saved in the post tables of WordPress as custom post "
-"type (%s). With this dictionary, it is possible to create and update .mo "
-"file in the current theme folder. And more..."
-msgstr ""
-"l’extension xili-dictionary est destinée à créer et mettre à jour les "
-"fichiers .mo (et .po aussi) du thème courant. Elle est utile pour les thèmes "
-"internationaux ou les thèmes multilingues 'live' pilotés par xili-language. "
-"Les éléments sont stockés dans les custom post type (%s) des tables de WP."
-
-#: admin-includes/functions-xd-admin-help.php:29
-msgid "Things to remember to set xili-dictionary:"
-msgstr "Eléments à retenir pour paramétrer xili-dictionary :"
-
-#: admin-includes/functions-xd-admin-help.php:31
-msgid ""
-"Verify that the theme is localizable (like WP bundled themes from twentyten "
-"to twentyfourteen)."
-msgstr ""
-"Vérifier que le thème utilisé soit bien localisable (comme les thèmes WP du "
-"kit, de twentyten à twentyfourteen)."
-
-#: admin-includes/functions-xd-admin-help.php:32
-msgid "Define the list of targeted languages."
-msgstr "Définir la liste des langues utilisées."
-
-#: admin-includes/functions-xd-admin-help.php:33
-msgid ""
-"Prepare a sub-folder like /languages/ for .po and .mo files in each language "
-"(use the default delivered with the theme or add the pot of the theme and "
-"put them inside."
-msgstr ""
-"Dans le dossier du thème, préparer un sous-dossier pour les fichiers .po et ."
-"mo de chaque langue (utiliser les fichiers livrés par défaut avec le thème "
-"ou ajouter son .pot et insérer les dedans."
-
-#: admin-includes/functions-xd-admin-help.php:34
-msgid ""
-"If you have files: import them to create a base dictionary. If not : add a "
-"term or use buttons import and/or build in metabox."
-msgstr ""
-"Si vous avez ces fichiers : importer les pour créer la base initiale du "
-"dictionnaire. Sinon, ajouter un terme ou importer les données du site via "
-"les boutons de la fenêtre latérale - Importer et Générer."
-
-#: admin-includes/functions-xd-admin-help.php:35
-msgid ""
-"For xili-language, xili-dictionary creates local-xx_YY files (like local-"
-"fr_FR for french) containing customized website inputs to avoid mixing with "
-"items of the theme itself. .mo is the file used and .po is the text form."
-msgstr ""
-"Pour l’utilisation avec xili-language, xili-dictionary crée des fichiers "
-"local-xx_YY (comme local-fr_FR pour le français) qui contiennent les entrées "
-"personnalisées du site web. Ceci afin d'éviter le mélange avec les données "
-"du thème proprement dit. Le suffixe .mo est le fichier utilisable et le .po "
-"en est sa forme sous texte lisible."
-
-#: admin-includes/functions-xd-admin-help.php:41
-msgid "About xili-dictionary"
-msgstr "A propos de xili-dictionary©"
-
-#: admin-includes/functions-xd-admin-help.php:48
-#: admin-includes/functions-xd-admin-help.php:103
-#: admin-includes/functions-xd-admin-help.php:157
-#: admin-includes/functions-xd-admin-help.php:183
-#: admin-includes/functions-xd-admin-help.php:254
-msgid "For more infos"
-msgstr "Pour plus d'information"
-
-#: admin-includes/functions-xd-admin-help.php:57
-msgid ""
-"Things to remember about the list of translations (msgstr) of term (msgid) "
-"with xili-dictionary:"
-msgstr ""
-"Eléments à retenir concernant la liste des traductions (msgstr) des termes "
-"(msgid) avec xili-dictionary :"
-
-#: admin-includes/functions-xd-admin-help.php:59
-msgid "Column Metas give infos about type of msg and his language"
-msgstr "La colonne Métas donne des infos sur le type des msg et leur langue"
-
-#: admin-includes/functions-xd-admin-help.php:60
-msgid ""
-"Links in Metas redirect to msg in another language if translation exists."
-msgstr ""
-"Les liens dans les Métas donne accès direct aux msg dans une autre "
-"traduction si elle existe."
-
-#: admin-includes/functions-xd-admin-help.php:61
-msgid "It is possible to filter according language or the Origin of msg."
-msgstr ""
-"Il est possible de sous-sélectionner selon la langue ou l'origine du msg."
-
-#: admin-includes/functions-xd-admin-help.php:62
-msgid ""
-"When type of MSG is ‘local’, the couple msgid/msgstr is saved in a local-"
-"xx_YY file of current theme. This translation overhides all the others."
-msgstr ""
-"Quand le type d'un MSG est spécifié comme ‘local’, le couple msgid/msgstr "
-"est généré dans le fichier local-xx_YY du thème courant. Cette traduction va "
-"remplacer les autres."
-
-#. translators:
-#: admin-includes/functions-xd-admin-help.php:65
-msgid "Look %1$s this page %2$s to find a dynamic full list and more tools."
-msgstr ""
-"Voir %1$s cette page %2$s pour découvrir une liste dynamique des msgs et "
-"plus d’outils."
-
-#: admin-includes/functions-xd-admin-help.php:70
-msgid "About MSG list page"
-msgstr "A propos de la liste des MSGs"
-
-#: admin-includes/functions-xd-admin-help.php:78
-msgid ""
-"Things to remember before to create or edit a new translation (msgstr) or a "
-"term (msgid) with xili-dictionary:"
-msgstr ""
-"Eléments à retenir avant de créer ou modifier une nouvelle traduction "
-"(msgstr) ou un nouveau terme de référence (msgid) avec xili-dictionary :"
-
-#: admin-includes/functions-xd-admin-help.php:80
-msgid "As in po files, msgid must be unique if no context is specified."
-msgstr ""
-"Comme dans un fichier po, un msgid doit être unique sauf si le contexte est "
-"définie."
-
-#: admin-includes/functions-xd-admin-help.php:81
-msgid "msgstr is attached (taxonomy) to a language."
-msgstr "un msgstr est attaché à une langue (taxonomy)."
-
-#: admin-includes/functions-xd-admin-help.php:82
-msgid "if msgstr is edited, the box with msg series show untranslated msg."
-msgstr ""
-"si un msgstr est édité, la fenêtre Série de msg indique ceux qui restent à "
-"traduire."
-
-#: admin-includes/functions-xd-admin-help.php:84
-msgid "How to update mo files ?"
-msgstr "Comment mettre à jour les fichiers .mo ?"
-
-#. translators:
-#: admin-includes/functions-xd-admin-help.php:86
-msgid ""
-"if msgstr is edited, the box - shortcuts to update mo files - is available "
-"to quickly update local-xx_YY.mo file w/o going to %s page."
-msgstr ""
-"si un msgstr est édité, la fenêtre - Raccourcis - est disponible pour mettre "
-"à jour rapidement les fichiers local-xx_YY.mo sans aller à la page %s."
-
-#: admin-includes/functions-xd-admin-help.php:86
-msgid "Tools"
-msgstr "Boite à outils"
-
-#: admin-includes/functions-xd-admin-help.php:86
-msgid "The language of mo file is here the language of msgstr being edited."
-msgstr "La langue du fichier est celle du msgstr en cours d'édition."
-
-#. translators:
-#: admin-includes/functions-xd-admin-help.php:88
-msgid "Look %1$s this page %2$s to find more tools."
-msgstr "Voir %1$s cette page %2$s pour découvrir plus d’outils."
-
-#: admin-includes/functions-xd-admin-help.php:93
-msgid "About MSG edit"
-msgstr "A propos de l'édition des MSGs"
-
-#: admin-includes/functions-xd-admin-help.php:112
-msgid "Things to remember to insert terms of category in dictionary msg list:"
-msgstr ""
-"Eléments à retenir pour l'insertion des termes de catégorie dans les msgs de "
-"xili-dictionary :"
-
-#: admin-includes/functions-xd-admin-help.php:114
-msgid ""
-"Import Categories terms button: Transfer / import terms (name, description) "
-"as msg in dictionary."
-msgstr ""
-"Bouton : Transférer les termes : transfert des termes (nom, description) des "
-"catégories dans le dictionnaire comme msg."
-
-#: admin-includes/functions-xd-admin-help.php:115
-msgid ""
-"Display this Categories Terms button: Switch to list of these msgs in "
-"dictionary."
-msgstr ""
-"Bouton : Afficher ces termes des Catégories : Voir la liste de ces msgs dans "
-"le dictionnaire."
-
-#: admin-includes/functions-xd-admin-help.php:116
-msgid "In table, column Language:."
-msgstr "Dans la table, colonne Langue :."
-
-#: admin-includes/functions-xd-admin-help.php:118
-msgid "Indications if terms are present in .mo files."
-msgstr "Indications sur la présence des termes (msg) dans les fichiers .mo."
-
-#: admin-includes/functions-xd-admin-help.php:119
-msgid ""
-"Display in XD button: Show only name and description of the selected "
-"category in XD msg list."
-msgstr ""
-"Bouton - Afficher dans XD : Affiche seulement le nom et la description de "
-"cette catégorie dans la liste des msgs de XD."
-
-#: admin-includes/functions-xd-admin-help.php:121
-msgid "Find more infos in forum and wiki."
-msgstr "Trouver d'autres infos dans les forums et le wiki."
-
-#. translators:
-#: admin-includes/functions-xd-admin-help.php:124
-#: admin-includes/functions-xd-admin-help.php:144
-#: admin-includes/functions-xd-admin-help.php:170
-#: admin-includes/functions-xd-admin-help.php:199
-#: admin-includes/functions-xd-admin-help.php:220
-#: admin-includes/functions-xd-admin-help.php:241
-msgid "<a href=\"%s\" target=\"_blank\">Xili Wiki Documentation</a>"
-msgstr ""
-"<a href=\"%s\" target=\"_blank\"> Documentation Wiki des extensions Xili</a>"
-
-#. translators:
-#: admin-includes/functions-xd-admin-help.php:130
-msgid "About %s dictionary tools"
-msgstr "%s : à propos de l'outil dictionary"
-
-#: admin-includes/functions-xd-admin-help.php:138
-msgid "Things to remember about Origin in xili-dictionary"
-msgstr "Eléments à retenir concernant l’origine avec xili-dictionary"
-
-#: admin-includes/functions-xd-admin-help.php:140
-msgid ""
-"Origin is a taxonomy to describe the origin of a msgid. So it is possible to "
-"share a msg between several theme and rebuild a new language file."
-msgstr ""
-"Origin est une taxinomie pour affecter l’origine d’un msgid. Ainsi, il est "
-"possible de partager un msg entre différents thèmes et de générer des "
-"nouveaux fichiers langue."
-
-#: admin-includes/functions-xd-admin-help.php:141
-msgid ""
-"To manage language file from a plugin, it is important to have only one "
-"origin per plugin. The plugin uses this origin to know from where is the msg "
-"and to build in the good sub-folder the language file (mo or po)."
-msgstr ""
-"Pour gérer les fichiers langue d’une extension, il est obligatoire de "
-"n’avoir qu’une origine par extension. Xili-dictionary utilise cette origine "
-"pour déterminer les messages à sélectionner et pour trouver les dossiers où "
-"sont ces fichiers."
-
-#: admin-includes/functions-xd-admin-help.php:142
-msgid ""
-"In multisite context (WordPress Network), only superadmin can save language "
-"files to plugin folder."
-msgstr ""
-"Dans le contexte multisite (WordPress Network), seul le superadmin pourra "
-"générer les fichiers langages dans le dossier de l'extension."
-
-#. translators:
-#: admin-includes/functions-xd-admin-help.php:150
-msgid "About %s dictionary origins"
-msgstr "A propos de l’origine dans %s dictionary"
-
-#: admin-includes/functions-xd-admin-help.php:164
-msgid "Things to remember about Writer in xili-dictionary"
-msgstr "Eléments à retenir concernant les rédacteurs avec xili-dictionary"
-
-#: admin-includes/functions-xd-admin-help.php:166
-msgid ""
-"Writer is a hierarchic taxonomy to describe writer or translator of a msg. "
-"It can be used as is."
-msgstr ""
-"Writer est une taxinomie pour décrire les rédacteurs et traducteurs des MSG. "
-
-#: admin-includes/functions-xd-admin-help.php:167
-msgid "The hierarchy can be used to group like in office or by language."
-msgstr ""
-"La hiérarchie peut servir à grouper les rédacteurs par bureau ou par langage."
-
-#: admin-includes/functions-xd-admin-help.php:168
-msgid "More settings in next releases."
-msgstr "Plus de détails dans les prochaines versions."
-
-#. translators:
-#: admin-includes/functions-xd-admin-help.php:176
-msgid "About %s dictionary writers"
-msgstr "A propos des rédacteurs dans %s dictionary"
-
-#: admin-includes/functions-xd-admin-help.php:191
-msgid ""
-"Things to remember about scanning source files and importing inside xili-"
-"dictionary"
-msgstr ""
-"Eléments à retenir concernant l'exploration des fichiers source et de "
-"l'importation dans xili-dictionary"
-
-#: admin-includes/functions-xd-admin-help.php:193
-msgid ""
-"Here, you can scan files from the current theme or a selected plugin to "
-"import translatable entries (terms) in dictionary."
-msgstr ""
-"Il est ici possible d'explorer les fichiers source et d'importer les "
-"éléments (termes) traduisibles dans le dictionnaire."
-
-#: admin-includes/functions-xd-admin-help.php:194
-msgid ""
-"Each msg (id) become a “custom post type xdmsg” and ready to be translated. "
-"Use this way only if the author do not provide po or pot files."
-msgstr ""
-"Chaque msgid devient un “custom post type xdmsg” et est prêt à être traduit. "
-"N'utiliser cette approche que si l'auteur ne fournit pas de fichiers po ou "
-"pot."
-
-#: admin-includes/functions-xd-admin-help.php:195
-msgid ""
-"Msgid attributes are filled with Origin (theme or plugin) and comments "
-"available in sources to help translation."
-msgstr ""
-"Chaque msgid est associé à des attributs (Origine, langue, commentaires,...) "
-"et des commentaires mis à disposition dans les sources pour aider la "
-"traduction."
-
-#: admin-includes/functions-xd-admin-help.php:196
-msgid ""
-"If you want to create a pot file just check the option. This file will be "
-"saved in the language sub-folder."
-msgstr ""
-"Si vous souhaitez créer une copie de l'extraction sour forme de fichier ."
-"pot, cochez l'option. Ce fichier est sauvé dans le sous-dossier language."
-
-#: admin-includes/functions-xd-admin-help.php:197
-msgid ""
-"During scanning process, a temporary window appears at bottom of the screen "
-"with some progressing infos."
-msgstr ""
-"Pendant la phase d'exploration et d'importation, une fenêtre temporaire "
-"apparaît en bas d'écran et affiche des informations du processus."
-
-#. translators:
-#: admin-includes/functions-xd-admin-help.php:205
-msgid "About scanning source files with %s dictionary"
-msgstr "A propos de l'exploration des fichiers source dans %s dictionary"
-
-#: admin-includes/functions-xd-admin-help.php:212
-msgid "Things to remember about importing mo/po files in xili-dictionary"
-msgstr ""
-"Eléments à retenir concernant l’importation des fichiers po/mo avec xili-"
-"dictionary"
-
-#: admin-includes/functions-xd-admin-help.php:214
-msgid ""
-"Importing process inserts po/mo files contents inside dictionary. Each msg "
-"(id or str) become a “custom post type xdmsg”."
-msgstr ""
-"Le processus d’importation insère les couples msgid/msgstr des fichiers po/"
-"mo dans le dictionnaire. Chaque msg (id ou str) devient un “custom post type "
-"xdmsg”."
-
-#: admin-includes/functions-xd-admin-help.php:215
-msgid ""
-"Files are coming from current theme or installed plugin languages folders."
-msgstr ""
-"Les fichiers proviennent du thème courant ou des extensions installées."
-
-#: admin-includes/functions-xd-admin-help.php:216
-msgid ""
-"Msg attributes are filled with Origin, language, comment infos. A msgstr is "
-"linked to his msgid if it is a translation."
-msgstr ""
-"Chaque MSG est associé à des attributs (Origine, langue, commentaires,...) "
-"Un MSGSTR est lié à un MSGID s'il en est la traduction."
-
-#: admin-includes/functions-xd-admin-help.php:217
-msgid ""
-"During importing process, a temporary window appears at bottom of the screen "
-"with some progressing infos."
-msgstr ""
-"Pendant la phase d'importation, une fenêtre temporaire apparaît en bas "
-"d'écran et elle affiche des informations successives."
-
-#. translators:
-#: admin-includes/functions-xd-admin-help.php:226
-msgid "About %s dictionary files importing"
-msgstr "A propos de l'importation des fichiers dans %s dictionary"
-
-#: admin-includes/functions-xd-admin-help.php:235
-msgid "Things to remember about download language files with xili-dictionary"
-msgstr ""
-"Eléments à retenir concernant le téléchargement de fichier avec xili-"
-"dictionary"
-
-#: admin-includes/functions-xd-admin-help.php:237
-msgid ""
-"With this screen, it is possible to choose a language file (.mo or .po) to "
-"download to your computer. Useful for further works or archiving."
-msgstr ""
-"Cet écran permet de choisir les fichiers langage (.mo or .po) à télécharger "
-"sur votre ordinateur pour traitement avec vos outils ou pour archivage."
-
-#: admin-includes/functions-xd-admin-help.php:238
-msgid ""
-"When the selection is successful, click prepare and the link for download "
-"appears in the green message space under the title."
-msgstr ""
-"Quand la sélection est conforme, cliquer le bouton Préparer et le lien pour "
-"télécharger apparaît dans le message sous le titre."
-
-#. translators:
-#: admin-includes/functions-xd-admin-help.php:247
-msgid "About %s dictionary download files"
-msgstr "Concerne le téléchargement des fichiers dans %s dictionary"
-
-#: admin-includes/functions-xd-admin-help.php:269
-msgid "Docs about xili-dictionary"
-msgstr "Docs sur le dictionnaire xili©"
-
-#: admin-includes/functions-xd-admin-help.php:279
-msgid "xili-dictionary updated"
-msgstr "nouvelle version de xili-dictionary"
-
-#. translators:
-#: admin-includes/functions-xd-admin-help.php:281
-msgid "xili-dictionary was updated to version %s"
-msgstr "xili-dictionary vient d’être mise à jour en version %s"
-
-#. translators:
-#: admin-includes/functions-xd-admin-help.php:283
-msgid ""
-"This new version %s is compatible with WP 5.2 and XL 2.23+ able to import "
-"parent sources if child theme active, writers are displayed in list, also "
-"compatible with Polylang taxonomy and xml importing."
-msgstr ""
-"La nouvelle version %s est compatible avec WP 5.2 and XILI-LANGUAGE 2.23 "
-"capable d’importer des sources parent si le thème enfant est actif, les "
-"rédacteurs sont affichés dans une liste, également compatible avec la "
-"taxonomie Polylang et l’importation xml."
-
-#. translators:
-#: admin-includes/functions-xd-admin-help.php:285
-msgid ""
-"In previous version of %s, if you switch language of dashboard is other than "
-"in en_US, then the import process of sources msgid will try to import "
-"translations of chosen language."
-msgstr ""
-"Dans la précédente version %s, si au lieu du <em>en_US</em>, vous changez la "
-"langue du tableau de bord, alors le processus va essayer d’importer les "
-"traductions disponibles dans le langage choisi."
-
-#: admin-includes/functions-xd-admin-help.php:287
-msgid "See submenu"
-msgstr "Voir le menu"
-
-#: admin-includes/functions-xd-admin-help.php:287
-#: class-xili-dictionary.php:3389
-msgid "Tools, Files po mo"
-msgstr "Outils, Fichiers po mo"
-
-#. translators:
-#: admin-includes/functions-xd-admin-help.php:289
-msgid ""
-"Before to question dev.xiligroup support, do not forget to visit %s "
-"documentation"
-msgstr ""
-"Avant de questionner le support dev.xiligroup, n’oubliez pas de cocher les "
-"infos du site et de lire la doc. sur %s"
-
-#: admin-includes/functions-xd-various.php:48 class-xili-dictionary.php:3574
-msgid "child of"
-msgstr "enfant de"
-
-#: class-xili-dictionary.php:479
-msgctxt "post type general name"
-msgid "xili-dictionary©"
-msgstr "Dictionnaire xili©"
-
-#: class-xili-dictionary.php:480
-msgctxt "post type singular name"
-msgid "Msg"
-msgstr "Msg"
-
-#: class-xili-dictionary.php:481
-msgid "New Msgid"
-msgstr "Ajout msgid"
-
-#: class-xili-dictionary.php:482
-msgid "Add New Msgid"
-msgstr "Ajout msgid"
-
-#: class-xili-dictionary.php:483
-msgid "Edit Msg"
-msgstr "Editer le msg"
-
-#: class-xili-dictionary.php:484
-msgid "New Msg"
-msgstr "Nouveau msg"
-
-#: class-xili-dictionary.php:485
-msgid "View Msg"
-msgstr "Afficher"
-
-#: class-xili-dictionary.php:486
-msgid "Search Msg"
-msgstr "Chercher msg"
-
-#: class-xili-dictionary.php:487
-msgid "No Msg found"
-msgstr "Pas de msg trouvé"
-
-#: class-xili-dictionary.php:488
-msgid "No Msg found in Trash"
-msgstr "Pas de msg dans la poubelle"
-
-#: class-xili-dictionary.php:521 class-xili-dictionary.php:528
-msgid "Origins"
-msgstr "Origines"
-
-#: class-xili-dictionary.php:529
-msgid "Origin"
-msgstr "Origine"
-
-#: class-xili-dictionary.php:530
-msgid "Search Origins"
-msgstr "Chercher des origines"
-
-#: class-xili-dictionary.php:531
-msgid "Popular Origins"
-msgstr "Origines fréquentes"
-
-#: class-xili-dictionary.php:532
-msgid "All Origins"
-msgstr "Toutes les origines"
-
-#: class-xili-dictionary.php:533
-msgid "Parent Origin"
-msgstr "Origine parente"
-
-#: class-xili-dictionary.php:534
-msgid "Parent Origin:"
-msgstr "Origine parente :"
-
-#: class-xili-dictionary.php:535
-msgid "Edit Origin"
-msgstr "Modifier l'origine"
-
-#: class-xili-dictionary.php:536
-msgid "Update Origin"
-msgstr "Mettre à jour cette origine"
-
-#: class-xili-dictionary.php:537
-msgid "Add New Origin"
-msgstr "Ajouter une nouvelle origine"
-
-#: class-xili-dictionary.php:538
-msgid "New Origin Name "
-msgstr "Nouveau nom de l'origine"
-
-#: class-xili-dictionary.php:539
-msgid "Separate origins with commas"
-msgstr "Séparer les origines avec une virgule"
-
-#: class-xili-dictionary.php:540
-msgid "Add or remove origins"
-msgstr "Ajouter ou supprimer des origines"
-
-#: class-xili-dictionary.php:541
-msgid "Choose from the most used origins"
-msgstr "Choisir parmi les origines les plus fréquentes"
-
-#: class-xili-dictionary.php:542
-msgid "No origin found"
-msgstr "Pas d’origine trouvée"
-
-#: class-xili-dictionary.php:552 class-xili-dictionary.php:558
-#: class-xili-dictionary.php:2020
-msgid "Writers"
-msgstr "Rédacteurs"
-
-#: class-xili-dictionary.php:559 class-xili-dictionary.php:2020
-msgid "Writer"
-msgstr "Rédacteur"
-
-#: class-xili-dictionary.php:560
-msgid "Search Writers"
-msgstr "Recherche Rédacteurs"
-
-#: class-xili-dictionary.php:561
-msgid "Popular Writers"
-msgstr "Rédacteurs fréquents"
-
-#: class-xili-dictionary.php:562
-msgid "All Writers"
-msgstr "Tous les rédacteurs"
-
-#: class-xili-dictionary.php:563
-msgid "Parent Writer"
-msgstr "Parent du rédacteur"
-
-#: class-xili-dictionary.php:564
-msgid "Parent Writer:"
-msgstr "Parent du rédacteur :"
-
-#: class-xili-dictionary.php:565
-msgid "Edit Writer"
-msgstr "Modifier un rédacteur"
-
-#: class-xili-dictionary.php:566
-msgid "Update Writer"
-msgstr "Mettre à jour un rédacteur"
-
-#: class-xili-dictionary.php:567
-msgid "Add New Writer"
-msgstr "Ajouter un nouveau rédacteur"
-
-#: class-xili-dictionary.php:568
-msgid "New Writer Name "
-msgstr "Nouveau nom de rédacteur"
-
-#: class-xili-dictionary.php:569
-msgid "Separate writers with commas"
-msgstr "Séparer les rédacteurs avec une virgule"
-
-#: class-xili-dictionary.php:570
-msgid "Add or remove writers"
-msgstr "Ajouter ou supprimer des rédacteurs"
-
-#: class-xili-dictionary.php:571
-msgid "Choose from the most used writers"
-msgstr "Choisir parmi les rédacteurs les plus fréquents"
-
-#: class-xili-dictionary.php:572 class-xili-dictionary.php:2018
-msgid "No writer found"
-msgstr "Pas de rédacteur trouvé"
-
-#: class-xili-dictionary.php:593
-msgid "series"
-msgstr "Série"
-
-#. translators:
-#: class-xili-dictionary.php:597 class-xili-dictionary.php:609
-msgctxt "form"
-msgid "%s"
-msgstr "%s"
-
-#: class-xili-dictionary.php:598
-msgid "Reference"
-msgstr "Référence"
-
-#: class-xili-dictionary.php:599
-msgid ""
-"This text (msgid) is the Reference and must modified <strong>ONLY IF</"
-"strong> you are sure that it will be the same as in source code or text."
-msgstr ""
-"Ce texte (msgid) est LA référence et ne doit être modifié <strong>QUE SI</"
-"strong> vous êtes sûr qu'il correspondra bien avec celui du code source ou "
-"de texte ciblé."
-
-#. translators:
-#: class-xili-dictionary.php:602
-msgid ""
-"To create or edit translations (msgstr), see %1$s in the table of box %2$s."
-msgstr ""
-"Pour créer ou éditer (msgstr), voir %1$s dans la table de la boite %2$s."
-
-#: class-xili-dictionary.php:603
-msgid "links"
-msgstr "liens"
-
-#: class-xili-dictionary.php:604
-msgid "msg %s"
-msgstr "%s msg"
-
-#. translators:
-#: class-xili-dictionary.php:615
-msgctxt "form"
-msgid "msgstr[%d]"
-msgstr "msgstr[%d]"
-
-#: class-xili-dictionary.php:619
-msgid "&nbsp;(plural)"
-msgstr "&nbsp;(pluriel)"
-
-#: class-xili-dictionary.php:622
-msgid "Translation%s"
-msgstr "Traduction%s"
-
-#: class-xili-dictionary.php:870
-msgid "xd-style.css is in sub-folder xili-css of current theme folder"
-msgstr "xd-style.css est dans le sous-dossier xili-css du thème courant"
-
-#. translators:
-#: class-xili-dictionary.php:876
-msgid "xd-style.css is in sub-folder xili-css of %s folder"
-msgstr "xd-style.css est dans le sous-dossier xili-css du dossier %s"
-
-#: class-xili-dictionary.php:881
-msgid ""
-"xd-style.css is in sub-folder xili-css of xili-dictionary plugin folder "
-"(example)"
-msgstr ""
-"xd-style.css est dans le sous-dossier xili-css de l’extension xili-"
-"dictionary (exemple à ne pas modifier)"
-
-#: class-xili-dictionary.php:883
-msgid "no xd-style.css"
-msgstr "pas fichier xd-style.css"
-
-#: class-xili-dictionary.php:966
-msgid "A term with the name provided already exists."
-msgstr "Le terme avec ce même nom existe."
-
-#. translators:
-#: class-xili-dictionary.php:1159
-msgid "and context %s"
-msgstr "avec le contexte %s"
-
-#. translators:
-#: class-xili-dictionary.php:1161 class-xili-dictionary.php:1168
-msgid "msgid exists as %1$d with content: %2$s%3$s"
-msgstr "le msgid existe dans %1$d tel que : %2$s%3$s"
-
-#: class-xili-dictionary.php:1166
-msgid "without context"
-msgstr "sans contexte (ctxt)"
-
-#: class-xili-dictionary.php:1185
-msgid "msg"
-msgstr "msg (id ou str)"
-
-#. translators:
-#: class-xili-dictionary.php:1187
-msgid "the entry with the %s"
-msgstr "l’entrée avec ses %s"
-
-#. translators:
-#: class-xili-dictionary.php:1191
-msgid "List of %s from entries to translate"
-msgstr "Liste de %s avec les entrées à traduire"
-
-#: class-xili-dictionary.php:1194
-msgid "Shortcuts to update mo files"
-msgstr "Raccourcis pour mettre à jour les fichiers .mo"
-
-#. translators:
-#: class-xili-dictionary.php:1248
-msgid "This msg translation is in %1$s (%2$s)"
-msgstr "Ce msg traduit en %1$s (%2$s)"
-
-#: class-xili-dictionary.php:1249
-msgid "Updating shortcuts"
-msgstr "Raccourcis de mise à jour"
-
-#. translators:
-#: class-xili-dictionary.php:1252 class-xili-dictionary.php:1266
-msgid "Update"
-msgstr "Mettre à jour"
-
-#. translators:
-#: class-xili-dictionary.php:1255
-msgid "No local translated msgid to be saved in %s"
-msgstr "Pas de msgid 'local' à sauver dans %s"
-
-#. translators:
-#: class-xili-dictionary.php:1258
-msgid "It is possible to update the .mo files of current theme %s"
-msgstr "Il est possible de mettre à jour les fichiers .mo du thème courant %s"
-
-#: class-xili-dictionary.php:1262
-msgid ""
-"Before to use this button, it is very important that you verify that your "
-"term list is quite achieved inside the dictionary. It is because the "
-"original .mo delivered with theme is updated (erased) !!!"
-msgstr ""
-"Avant d'utiliser ce bouton, il est très important de vérifier que la liste "
-"des termes (msg) est presque achevée dans le dictionnaire. En effet, le "
-"fichier original livré avec le thème est écrasé. Donc pensez à les importer "
-"dans le dictionnaire auparavant !!!"
-
-#. translators:
-#: class-xili-dictionary.php:1269
-msgid "No translated msgid to be saved in %s"
-msgstr "Pas de msgid à sauver dans %s"
-
-#: class-xili-dictionary.php:1278
-msgid "Links are available if a translation (msgstr) is edited."
-msgstr ""
-"Les raccourcis sont disponibles si une traduction (msgstr) est en cours."
-
-#: class-xili-dictionary.php:1291
-msgid "Are you sure you want to update mo ? "
-msgstr "Etes vous sûr de vouloir mettre à jour le .mo ?"
-
-#: class-xili-dictionary.php:1310
-msgid ""
-"MO file updating started: see result in meta-box named - Shortcuts... - "
-"below buttons"
-msgstr ""
-"Mise à jour du fichier MO lancée : voir le message résultant dans la boite - "
-"Raccourcis… - sous les boutons"
-
-#: class-xili-dictionary.php:1311
-msgid ""
-"Local MO updating started: see result in meta-box named - Shortcuts... - "
-"below buttons"
-msgstr ""
-"Mise à jour du fichier Local MO lancée : voir le message résultant dans la "
-"boite - Raccourcis… - sous les boutons"
-
-#. translators:
-#: class-xili-dictionary.php:1378
-msgid "Error with File %s !"
-msgstr "Erreur avec le fichier %s !"
-
-#. translators:
-#: class-xili-dictionary.php:1381
-msgid "File %1$s updated with %2$s msgids"
-msgstr "Fichier %1$s mis à jour avec %2$s msgids"
-
-#. translators:
-#: class-xili-dictionary.php:1385
-msgid "Nothing modified in %s, file not updated"
-msgstr "Rien de modifié dans %s, fichhier non mis à jour"
-
-#. translators:
-#: class-xili-dictionary.php:1451 class-xili-dictionary.php:1457
-msgid "MSGs not translated in %1$s. <em>Sub-select in %2$s</em>"
-msgstr "MSGs non traduits en %1$s. <em>Choisir ceux non traduits en %2$s</em>"
-
-#. translators:
-#: class-xili-dictionary.php:1457
-msgid "No selection: Sub-select in %s"
-msgstr "Pas de sélection : Choisir selon %s"
-
-#: class-xili-dictionary.php:1471 class-xili-dictionary.php:3598
-msgid "ID"
-msgstr "ID"
-
-#: class-xili-dictionary.php:1472 class-xili-dictionary.php:3599
-msgid "Text"
-msgstr "Texte"
-
-#: class-xili-dictionary.php:1474 class-xili-dictionary.php:3601
-msgid "relations"
-msgstr "relations"
-
-#: class-xili-dictionary.php:1475 class-xili-dictionary.php:3602
-msgid ".mo status"
-msgstr "état des .mo"
-
-#: class-xili-dictionary.php:1476 class-xili-dictionary.php:3603
-msgid "Action"
-msgstr "Action"
-
-#: class-xili-dictionary.php:1516
-msgid "All lines"
-msgstr "Tous"
-
-#: class-xili-dictionary.php:1519
-msgid "First"
-msgstr "Début"
-
-#: class-xili-dictionary.php:1520
-msgid "Last page"
-msgstr "Fin"
-
-#: class-xili-dictionary.php:1521
-msgid "Next"
-msgstr "Suiv."
-
-#: class-xili-dictionary.php:1522
-msgid "Previous"
-msgstr "Préc."
-
-#: class-xili-dictionary.php:1524
-msgid "Showing (_START_ to _END_) of _TOTAL_ entries"
-msgstr "Affiche (_START_ à _END_) des _TOTAL_ lignes"
-
-#: class-xili-dictionary.php:1525
-msgid "(filtered from _MAX_ total entries)"
-msgstr "(filtrés du total des _MAX_ lignes)"
-
-#: class-xili-dictionary.php:1526
-msgid "Empty table"
-msgstr "Dictionnaire de msg vide !"
-
-#: class-xili-dictionary.php:1527
-msgid "No entry"
-msgstr "Aucune ligne"
-
-#: class-xili-dictionary.php:1528
-msgid "Show _MENU_ entries"
-msgstr "Afficher _MENU_ lignes"
-
-#: class-xili-dictionary.php:1529
-msgid "Filter msg:"
-msgstr "Filtrer les msg :"
-
-#: class-xili-dictionary.php:1573
-msgid "Informations and actions about files .po / mo"
-msgstr "Informations et actions à propos des fichiers .po / mo"
-
-#: class-xili-dictionary.php:1585
-msgid "Come from:"
-msgstr "Origine :"
-
-#: class-xili-dictionary.php:1589
-msgid "Not yet assigned"
-msgstr "Non affecté"
-
-#. translators:
-#: class-xili-dictionary.php:1600
-msgid "theme folder %s"
-msgstr "dossier du thème %s"
-
-#: class-xili-dictionary.php:1602 class-xili-dictionary.php:5251
-msgid "this site"
-msgstr "ce site"
-
-#: class-xili-dictionary.php:1602
-msgid "folder %s"
-msgstr "dossier %s"
-
-#: class-xili-dictionary.php:1605
-msgid "saved in "
-msgstr "sauvé dans"
-
-#. translators:
-#: class-xili-dictionary.php:1612
-msgid "Plugin ( %s ):"
-msgstr "Extension (%s):"
-
-#: class-xili-dictionary.php:1997
-msgid "Content"
-msgstr "Contenu"
-
-#: class-xili-dictionary.php:1998
-msgid "msg / relations"
-msgstr "msg / relations"
-
-#: class-xili-dictionary.php:1999
-msgid "Type / Origin"
-msgstr "Type & Origine"
-
-#: class-xili-dictionary.php:2001 class-xili-dictionary.php:2163
-#: class-xili-dictionary.php:8425 class-xili-dictionary.php:9119
-msgid "Language"
-msgstr "Langue"
-
-#. translators:
-#: class-xili-dictionary.php:2022
-msgid ": %s"
-msgstr "&nbsp;: %s"
-
-#: class-xili-dictionary.php:2039
-msgid "Local"
-msgstr "Local"
-
-#: class-xili-dictionary.php:2048
-msgid "Plugin:"
-msgstr "Extension :"
-
-#. translators:
-#: class-xili-dictionary.php:2051
-msgid "<small>From:</small> %s"
-msgstr "<small>De :</small> %s"
-
-#: class-xili-dictionary.php:2102
-msgid "View all languages"
-msgstr "Voir toutes les langues"
-
-#. translators:
-#: class-xili-dictionary.php:2133
+#: admin-includes/trait-xili-dictionary-dashboard.php:273
 msgid ""
 "xili-dictionary msgid list updated with %1$s terms - %2$s name(s) and %3$s "
 "description(s) - "
@@ -1235,21 +219,21 @@ msgstr ""
 "Dans xili-dictionary, la liste des msgids a été mise à jour avec des termes "
 "de la taxinomie  %1$s  soit %2$s nom(s) et %3$s description(s)."
 
-#: class-xili-dictionary.php:2135
+#: admin-includes/trait-xili-dictionary-dashboard.php:275
 msgid "Security check"
 msgstr "Contrôle de sécurité"
 
-#: class-xili-dictionary.php:2142
+#: admin-includes/trait-xili-dictionary-dashboard.php:282
 msgid "Xili-dictionary tool to prepare translation"
 msgstr "Lien et action pour préparer les traductions avec xili-dictionary"
 
 #. translators:
-#: class-xili-dictionary.php:2151
+#: admin-includes/trait-xili-dictionary-dashboard.php:291
 msgid "Message : %s"
 msgstr "Message : %s"
 
 #. translators:
-#: class-xili-dictionary.php:2155
+#: admin-includes/trait-xili-dictionary-dashboard.php:295
 msgid ""
 "%3$s terms of %1$s were just imported, <a href=\"%2$s\">display those terms</"
 "a> in msg list of xili-dictionary."
@@ -1258,7 +242,7 @@ msgstr ""
 "ces termes</a> dans la liste des msgids de xili-dictionary."
 
 #. translators:
-#: class-xili-dictionary.php:2160
+#: admin-includes/trait-xili-dictionary-dashboard.php:300
 msgid ""
 "All %1$s terms are checked , <a href=\"%2$s\">display those terms</a> in "
 "xili-dictionary."
@@ -1267,24 +251,31 @@ msgstr ""
 "xili-dictionary."
 
 #. translators:
-#: class-xili-dictionary.php:2163
+#: admin-includes/trait-xili-dictionary-dashboard.php:303
 msgid "<a href=\"%2$s\">Refresh</a> %3$s column of %1$s table."
 msgstr "<a href=\"%2$s\">Rafraichir</a> la colonne %3$s de la table %1$s."
 
+#: admin-includes/trait-xili-dictionary-dashboard.php:303
+#: admin-includes/trait-xili-dictionary-download.php:114
+#: admin-includes/trait-xili-dictionary-imports.php:444
+#: admin-includes/trait-xili-dictionary-msg-list.php:63
+msgid "Language"
+msgstr "Langue"
+
 #. translators:
-#: class-xili-dictionary.php:2166
+#: admin-includes/trait-xili-dictionary-dashboard.php:306
 msgid "%1$s terms can be imported inside xili-dictionary msgid list"
 msgstr ""
 "Les termes des %1$s peuvent être transférés dans la liste des msgids de xili-"
 "dictionary"
 
 #. translators:
-#: class-xili-dictionary.php:2170
+#: admin-includes/trait-xili-dictionary-dashboard.php:310
 msgid "Import %1$s terms"
 msgstr "Transférer les termes des %1$s"
 
 #. translators:
-#: class-xili-dictionary.php:2199
+#: admin-includes/trait-xili-dictionary-dashboard.php:339
 msgid ""
 "In the term listed below, %d items are displayed (each has a name and a "
 "description) :"
@@ -1293,12 +284,12 @@ msgstr ""
 "une description) :"
 
 #. translators:
-#: class-xili-dictionary.php:2203
+#: admin-includes/trait-xili-dictionary-dashboard.php:343
 msgid "Display these %s terms in xili-dictionary"
 msgstr "Afficher ces termes des %s dans xili-dictionary"
 
 #. translators:
-#: class-xili-dictionary.php:2208
+#: admin-includes/trait-xili-dictionary-dashboard.php:348
 msgid ""
 "None of these %d terms are available in the msgid list of xili-dictionary. "
 "Click button above to populate dictionary before you will translate."
@@ -1307,1020 +298,169 @@ msgstr ""
 "Cliquer le bouton ci-dessus pour compléter le dictionnaire avant de faire "
 "les traductions."
 
-#: class-xili-dictionary.php:2295
+#: admin-includes/trait-xili-dictionary-dashboard.php:395
 msgid "To display name and description of this term in msgid list"
 msgstr ""
 "Pour afficher le nom et la description de ce terme dans la liste des msgid "
 "de XD."
 
-#: class-xili-dictionary.php:2296
+#: admin-includes/trait-xili-dictionary-dashboard.php:396
 msgid "Display in XD"
 msgstr "Afficher dans XD"
 
-#: class-xili-dictionary.php:2319
-msgid "View all origins"
-msgstr "Voir toutes les origines"
+#: admin-includes/trait-xili-dictionary-download.php:22
+msgid "File is ready for download:"
+msgstr "Fichier prêt à être téléchargé :"
 
-#: class-xili-dictionary.php:2343 class-xili-dictionary.php:5509
-msgid "Translated in"
-msgstr "Traduit en"
+#: admin-includes/trait-xili-dictionary-download.php:23
+msgid "Impossible to download file"
+msgstr "Impossible de télécharger le fichier"
 
-#: class-xili-dictionary.php:2346
-msgid "Name"
-msgstr "Nom"
+#: admin-includes/trait-xili-dictionary-download.php:24
+msgid "Please specify language"
+msgstr "Spécifier le langage"
 
-#: class-xili-dictionary.php:2362
-msgid "Description"
-msgstr "Description"
+#: admin-includes/trait-xili-dictionary-download.php:31
+msgid "Download files (.po, .pot, .mo) to your computer"
+msgstr "Télécharger les fichiers (.po, .pot, .mo) sur votre ordinateur"
+
+#: admin-includes/trait-xili-dictionary-download.php:45
+#: admin-includes/trait-xili-dictionary-download.php:134
+msgid "Parent theme"
+msgstr "Thème parent"
+
+#: admin-includes/trait-xili-dictionary-download.php:45
+#: admin-includes/trait-xili-dictionary-download.php:132
+msgid "Child theme"
+msgstr "Thème enfant"
+
+#: admin-includes/trait-xili-dictionary-download.php:46
+msgid "from"
+msgstr "du"
+
+#: admin-includes/trait-xili-dictionary-download.php:51
+msgid "Click here to download file %s"
+msgstr "Cliquer ici pour télécharger le fichier %s"
 
 #. translators:
-#: class-xili-dictionary.php:2380
-msgid "<a href=\"%s\">Display term(s) in XD</a>"
-msgstr "<a href=\"%s\" >Afficher dans XD</a>"
+#: admin-includes/trait-xili-dictionary-download.php:64
+#: admin-includes/trait-xili-dictionary-erase.php:176
+#: admin-includes/trait-xili-dictionary-imports.php:54
+msgid "<a href=\"%s\">Back</a> to the list of msgs and tools"
+msgstr "<a href=\"%s\">Retour</a> à la liste des messages et aux outils"
 
-#: class-xili-dictionary.php:2385
+#: admin-includes/trait-xili-dictionary-download.php:66
+msgid "Prepare download"
+msgstr "Préparer à télécharger"
+
+#: admin-includes/trait-xili-dictionary-download.php:77
+msgid "Download the files"
+msgstr "Téléchargement des fichiers"
+
+#: admin-includes/trait-xili-dictionary-download.php:80
+msgid "Define the file to download"
+msgstr "Décrire le fichier à télécharger"
+
+#: admin-includes/trait-xili-dictionary-download.php:85
 msgid ""
-"This list above gathers the translations of name and description saved in "
-"current local-xx_XX.mo files of the current theme."
+"Here it is possible to choose a language file of the current theme to "
+"download to your computer for further works or archives."
 msgstr ""
-"La liste ci-dessus regroupe les traductions des noms et descriptions "
-"présentes dans xili-dictionary et les fichiers local-xx_XX.mo du thème "
-"courant."
+"Cet écran permet de choisir les fichiers langage du thème courant à "
+"télécharger sur votre ordinateur pour traitement avec vos outils ou pour "
+"archivage."
 
-#: class-xili-dictionary.php:2408
-msgid "View all writers"
-msgstr "Voir tous les rédacteurs"
+#: admin-includes/trait-xili-dictionary-download.php:95
+#: admin-includes/trait-xili-dictionary-imports.php:388
+msgid "Type"
+msgstr "Type"
 
-#: class-xili-dictionary.php:2481
-msgid "Context"
-msgstr "Contexte"
+#: admin-includes/trait-xili-dictionary-download.php:97
+#: admin-includes/trait-xili-dictionary-imports.php:390
+msgid "Select type..."
+msgstr "Choisir le type..."
 
-#. translators:
-#: class-xili-dictionary.php:2489
-msgid "&nbsp;<a href=\"%s\" >Edit context</a>"
-msgstr "&nbsp;<a href=\"%s\" >Modifier le contexte</a>"
+#: admin-includes/trait-xili-dictionary-download.php:98
+#: admin-includes/trait-xili-dictionary-imports.php:391
+msgid "PO file"
+msgstr "Fichier PO"
 
-#: class-xili-dictionary.php:2494
-msgid "&nbsp;<a href=\"%s\" >Create context</a>"
-msgstr "&nbsp;<a href=\"%s\" >Créer un contexte</a>"
+#: admin-includes/trait-xili-dictionary-download.php:99
+#: admin-includes/trait-xili-dictionary-imports.php:392
+msgid "MO file"
+msgstr "Fichier MO"
 
-#. translators:
-#: class-xili-dictionary.php:2497
-msgid ""
-"After saving this msgid as draft,%s it will be possible to add a context"
+#: admin-includes/trait-xili-dictionary-download.php:100
+msgid "POT file"
+msgstr "Fichier POT"
+
+#: admin-includes/trait-xili-dictionary-download.php:102
+msgid "Type of the file (.mo, .po or .pot)"
+msgstr "Type de fichier ( .mo, .po ou .pot )"
+
+#: admin-includes/trait-xili-dictionary-download.php:105
+msgid "Subtype of file"
+msgstr "Sous type de fichier"
+
+#: admin-includes/trait-xili-dictionary-download.php:107
+msgid "xx_YY"
+msgstr "xx_YY"
+
+#: admin-includes/trait-xili-dictionary-download.php:108
+msgid "local-xx_YY"
+msgstr "local-xx_YY"
+
+#: admin-includes/trait-xili-dictionary-download.php:111
+msgid "Subtype of the file (theme or local ?)"
+msgstr "Sous type de fichier (thème ou local ?)"
+
+#: admin-includes/trait-xili-dictionary-download.php:116
+#: admin-includes/trait-xili-dictionary-imports.php:446
+msgid "Select language"
+msgstr "Sélectionner la langue"
+
+#: admin-includes/trait-xili-dictionary-download.php:124
+msgid "no language (pot)"
+msgstr "pas de langue (pot)"
+
+#: admin-includes/trait-xili-dictionary-download.php:126
+msgid "Language of the file."
+msgstr "Langue du fichier."
+
+#: admin-includes/trait-xili-dictionary-download.php:129
+msgid "Place of file"
+msgstr "Place du fichier"
+
+#: admin-includes/trait-xili-dictionary-download.php:137
+msgid "Place of the file (parent or child theme)"
+msgstr "Emplacement du fichier (thème parent ou enfant)"
+
+#: admin-includes/trait-xili-dictionary-download.php:141
+msgid "Compression of file"
+msgstr "Compression du fichier"
+
+#: admin-includes/trait-xili-dictionary-download.php:143
+msgid "No compression"
+msgstr "Sans compression"
+
+#: admin-includes/trait-xili-dictionary-download.php:144
+msgid "Zip"
+msgstr "Zip"
+
+#: admin-includes/trait-xili-dictionary-download.php:145
+msgid "Gz"
+msgstr "Gz"
+
+#: admin-includes/trait-xili-dictionary-download.php:149
+msgid "Type of compression..."
+msgstr "Type de compression…"
+
+#: admin-includes/trait-xili-dictionary-download.php:151
+msgid "The wanted file do not exist ! Try another selection (language ?) !"
 msgstr ""
-"Après enregistrement comme brouillon, %s il sera alors possible d'ajouter un "
-"contexte"
+"Le fichier attendu n’existe pas ! Essayer une autre sélection (langue ?) !"
 
-#. translators:
-#: class-xili-dictionary.php:2517
-msgid "Return to %s list"
-msgstr "Retour à la liste %s"
-
-#. translators:
-#: class-xili-dictionary.php:2526
-msgid "Extracted comments: %s"
-msgstr "Commentaires extraits : %s"
-
-#. translators:
-#: class-xili-dictionary.php:2532
-msgid "Translator comments: %s"
-msgstr "Commentaires traducteur : %s"
-
-#. translators:
-#: class-xili-dictionary.php:2537
-msgid "Flags: %s"
-msgstr "Drapeaux : %s"
-
-#: class-xili-dictionary.php:2546
-msgid "msgstr Translator comments"
-msgstr "Commentaire traducteur msgstr"
-
-#. translators:
-#: class-xili-dictionary.php:2555
-msgid "Lines: %s"
-msgstr "Lignes : %s"
-
-#. translators:
-#: class-xili-dictionary.php:2560 class-xili-dictionary.php:2582
-msgid "Return to <a href=\"%s\" title=\"Go to msg list\">msg list</a>"
-msgstr ""
-"Retour à la <a href=\"%s\" title=\"Aller à la liste msg\">liste msg</a>"
-
-#. translators:
-#: class-xili-dictionary.php:2569
-msgid "Set in theme (<a href=\"%s\" >set local</a>)"
-msgstr "Mis dans le thème (<a href=\"%s\" >mettre en local</a>)"
-
-#. translators:
-#: class-xili-dictionary.php:2574
-msgid "Set in local (<a href=\"%s\" >unset</a>)"
-msgstr "Affecté en local (<a href=\"%s\" >désaffecter</a>)"
-
-#. translators:
-#: class-xili-dictionary.php:2580
-msgid ""
-"The msgid (%d) was deleted. The msg series must be recreated and commented."
-msgstr ""
-"Le msgid (%d) a été effacé. La série des msgs doit être récréée et commentée."
-
-#. translators:
-#: class-xili-dictionary.php:2706
-msgid "XD say to translate in %s:"
-msgstr "XD indique de traduire en %s :"
-
-#. translators:
-#: class-xili-dictionary.php:2718 class-xili-dictionary.php:3081
-msgid "XD say to translate in %s (msgstr[0] ): "
-msgstr "XD say to translate in %s (msgstr[0] ): "
-
-#. translators:
-#: class-xili-dictionary.php:2731 class-xili-dictionary.php:3091
-msgid "XD say to translate in %s (msgstr[1] ): "
-msgstr "XD say to translate in %s (msgstr[1] ): "
-
-#: class-xili-dictionary.php:2754 class-xili-dictionary.php:3101
-msgid "XD say id to plural: "
-msgstr "XD indique id au plural: "
-
-#: class-xili-dictionary.php:2783
-msgid "msgid:"
-msgstr "msgid :"
-
-#. translators:
-#: class-xili-dictionary.php:2787 class-xili-dictionary.php:2808
-#: class-xili-dictionary.php:3052
-msgid "( <a href=\"%1$s\" title=\"link to:%2$d\" >%3$s</a> )<br />"
-msgstr "( <a href=“%1$s” title=“link to:%2$d” >%3$s</a> )<br />"
-
-#: class-xili-dictionary.php:2787 class-xili-dictionary.php:2808
-#: class-xili-dictionary.php:2867 class-xili-dictionary.php:2894
-#: class-xili-dictionary.php:3052 class-xili-dictionary.php:3160
-#: class-xili-dictionary.php:3179 class-xili-dictionary.php:3254
-#: class-xili-dictionary.php:3272 class-xili-dictionary.php:3292
-#: class-xili-dictionary.php:3295 class-xili-dictionary.php:5270
-msgid "Edit"
-msgstr "Modifier"
-
-#: class-xili-dictionary.php:2799
-msgid "msgid_plural:"
-msgstr "msgid_plural:"
-
-#. translators:
-#: class-xili-dictionary.php:2818 class-xili-dictionary.php:3057
-msgid "&nbsp;<a href=\"%s\" >Create msgid_plural</a>"
-msgstr "&nbsp;<a href=\"%s\" >Créer msgid_plural</a>"
-
-#: class-xili-dictionary.php:2828 class-xili-dictionary.php:3131
-#: class-xili-dictionary.php:3142
-msgid "translated in"
-msgstr "traduit en"
-
-#: class-xili-dictionary.php:2912 class-xili-dictionary.php:2940
-#: class-xili-dictionary.php:3199 class-xili-dictionary.php:3212
-msgid "Create msgstr in: "
-msgstr "Créer un msgstr :"
-
-#. translators:
-#: class-xili-dictionary.php:2920 class-xili-dictionary.php:2948
-msgid "Create and edit"
-msgstr "Créer et éditer"
-
-#. translators:
-#: class-xili-dictionary.php:2932 class-xili-dictionary.php:3190
-#: class-xili-dictionary.php:3209
-msgid "not yet translated."
-msgstr "non traduit."
-
-#: class-xili-dictionary.php:2934
-msgid "Status: %s"
-msgstr "Statut : %s"
-
-#: class-xili-dictionary.php:2937
-msgid "Translation in"
-msgstr "Traduction en"
-
-#. translators:
-#: class-xili-dictionary.php:2958
-msgid "The msgid (%d) was deleted. The msg series must be recreated."
-msgstr "Le msgid (%d) est effacé. La série doit être re-créée."
-
-#: class-xili-dictionary.php:3016
-msgid "msgid saved as: <em>%s</em>"
-msgstr "msgid stocké : <em>%s</em>"
-
-#. translators:
-#: class-xili-dictionary.php:3036
-msgid "has plural: <a href=\"%1$s\" >%2$d</a><br />"
-msgstr "has plural: <a href=“%1$s” >%2$d</a><br />"
-
-#: class-xili-dictionary.php:3044
-msgid "has plural:"
-msgstr "a un plural :"
-
-#. translators:
-#: class-xili-dictionary.php:3070
-msgid "XD say to translate in %s: "
-msgstr "XD indique de traduire en %s :"
-
-#. translators:
-#: class-xili-dictionary.php:3243
-msgid "%1$s saved as: <em>%2$s</em>"
-msgstr "%1$s saved as: <em>%2$s</em>"
-
-#. translators:
-#: class-xili-dictionary.php:3254
-msgid ""
-"msgid plural of: <strong>%s</strong> ( <a href=\"%s\" title=\"link to:%d\" >"
-"%s</a> )<br />"
-msgstr ""
-"msgid plural de : <strong>%s</strong> ( <a href=\"%s\" title=\"lien vers :%d"
-"\" >%s</a> )<br />"
-
-#. translators:
-#: class-xili-dictionary.php:3257
-msgid "msgid plural of: <a href=\"%s\" >%d</a><br />"
-msgstr "msgid plural de : <a href=\"%s\" >%d</a><br />"
-
-#: class-xili-dictionary.php:3272
-msgid "( <a href=\"%1$s\" title = \"link of:%2$d\">%3$s</a> )<br />"
-msgstr "( <a href=“%1$s” title = “link of:%2$d”>%3$s</a> )<br />"
-
-#. translators:
-#: class-xili-dictionary.php:3275 class-xili-dictionary.php:3303
-msgid "msgstr of: <a href=\"%1$s\" >%2$d</a><br />"
-msgstr "msgstr of: <a href=“%1$s” >%2$d</a><br />"
-
-#. translators:
-#: class-xili-dictionary.php:3292
-msgid ""
-"<strong>%1$s</strong> plural of: <strong>%2$s</strong>( <a href=\"%3$s\" "
-"title=\"link to:%4$d\">%5$s</a> )<br />"
-msgstr ""
-"<strong>%1$s</strong> plural of: <strong>%2$s</strong>( <a href=“%3$s” "
-"title=“link to:%4$d”>%5$s</a> )<br />"
-
-#. translators:
-#: class-xili-dictionary.php:3295
-msgid ""
-"<strong>%1$s</strong> translation of: <strong>%2$s</strong>( <a href=\"%3$s"
-"\" title=\"link to:%4$d\">%5$s</a> )<br />"
-msgstr ""
-"<strong>%1$s</strong> translation of: <strong>%2$s</strong>( <a href=“%3$s” "
-"title=“link to:%4$d”>%5$s</a> )<br />"
-
-#. translators:
-#: class-xili-dictionary.php:3312
-msgid "msgstr[%1$d] plural of: <a href=\"%2$s\" >%3$d</a><br />"
-msgstr "msgstr[%1$d] plural of: <a href=“%2$s” >%3$d</a><br />"
-
-#. translators:
-#: class-xili-dictionary.php:3320
-msgid "go to <a href=\"%1$s\" title=\"link to:%2$d\">msgid</a>"
-msgstr "pointer le <a href=“%1$s\" title=\"lien vers :%2$d\">msgid</a>"
-
-#: class-xili-dictionary.php:3389
-msgid "Xili Dictionary"
-msgstr "Dictionnaire xili™"
-
-#: class-xili-dictionary.php:3398
-msgid "Msg list"
-msgstr "Liste msg"
-
-#: class-xili-dictionary.php:3402
-msgid "XD Msg list"
-msgstr "Liste XD msg"
-
-#: class-xili-dictionary.php:3414
-msgid "XD settings"
-msgstr "Réglages  XD"
-
-#: class-xili-dictionary.php:3415
-msgid "Info"
-msgstr "Info"
-
-#: class-xili-dictionary.php:3416
-msgid "Mail & Support"
-msgstr "Courriel et support"
-
-#: class-xili-dictionary.php:3435
-msgid "Settings"
-msgstr "Réglages"
-
-#: class-xili-dictionary.php:3593
-msgid "Drawing table..."
-msgstr "Tableau en cours de mise en place..."
-
-#. translators:
-#: class-xili-dictionary.php:3636 class-xili-dictionary.php:9048
-msgid "Before importing terms, verify that the %1$strash%2$s is empty !"
-msgstr ""
-"Avant d'importer des termes, vérifier que la %1$scorbeille%2$s est vide !"
-
-#: class-xili-dictionary.php:3655
-msgid "Build a .pot file"
-msgstr "Générer un fichier .pot"
-
-#. translators:
-#: class-xili-dictionary.php:3668
-msgid ""
-"Verify before that you are authorized to write in languages folder in theme "
-"named: %s"
-msgstr ""
-"Avant: vérifier que vous êtes bien habilité à modifier les fichiers langues "
-"dans le thème dénommé %s"
-
-#. translators:
-#: class-xili-dictionary.php:3678
-msgid "SuperAdmin: %sonly as theme .mo"
-msgstr "En tant que Super Admin : %smodifier le .mo du thème original"
-
-#. translators:
-#: class-xili-dictionary.php:3681
-msgid "SuperAdmin: %sonly as theme .po"
-msgstr "En tant que Super Admin : %smodifier le .mo du thème original"
-
-#: class-xili-dictionary.php:3698
-msgid "Theme"
-msgstr "Thème courant"
-
-#. translators:
-#: class-xili-dictionary.php:3707
-msgid "Build and save %s file"
-msgstr "Générer le fichier %s"
-
-#. translators:
-#: class-xili-dictionary.php:3709
-msgid "Save only the local-xx_XX.%s sub-selection"
-msgstr "Sauver seulement la sous -sélection local-xx_XX.%s"
-
-#. translators:
-#: class-xili-dictionary.php:3711
-msgid "Save %s w/o local msgs"
-msgstr "Sauve %s en excluant les messages (msg) “local”"
-
-#: class-xili-dictionary.php:3716
-msgid "In which languages subfolder"
-msgstr "Vers quel sous-dossier langages"
-
-#. translators:
-#: class-xili-dictionary.php:3720
-msgid "Sub-folder (%1$s) in current theme (%2$s)"
-msgstr "Sous-dossier (%1$s) du thème courant (%2$s)"
-
-#. translators:
-#: class-xili-dictionary.php:3723
-msgid "Languages sub-folder (%1$s) in parent theme ( %2$s )"
-msgstr "Sous-dossier langues (%1$s) du thème parent ( %2$s )"
-
-#: class-xili-dictionary.php:3725
-msgid "Themes sub-folder in wp-content/languages (WP_LANG_DIR)"
-msgstr "Sous-dossier themes de wp-content/languages (WP_LANG_DIR)"
-
-#: class-xili-dictionary.php:3732
-msgid "Plugin language folder"
-msgstr "Sous-dossier langages de l'extension"
-
-#. translators:
-#: class-xili-dictionary.php:3733
-msgid "Plugin language file in %s"
-msgstr "fichier langue d’une extension dans %s"
-
-#: class-xili-dictionary.php:3755
-msgid "Check Origin(s) to be exported"
-msgstr "Cocher selon les origines à exporter"
-
-#. translators:
-#: class-xili-dictionary.php:3765
-msgid "Plugin: %s"
-msgstr "L’extension : %s"
-
-#: class-xili-dictionary.php:3784
-msgid "The previous file will be overwritten !"
-msgstr "Le fichier actuel sera remplacé !"
-
-#: class-xili-dictionary.php:3864
-msgid "Slug:"
-msgstr "Code :"
-
-#: class-xili-dictionary.php:3876
-msgid "Some active domains are detected in memory"
-msgstr "Plusieurs domaines actifs sont détectés en mémoire."
-
-#. translators:
-#: class-xili-dictionary.php:3882
-msgid "This domain named %1$s has %2$d active entries."
-msgstr "Ce domaine dénommé %1$s a %2$d entrées."
-
-#. translators:
-#: class-xili-dictionary.php:3887
-msgid "No entry in %s (or .mo file badly built) . "
-msgstr "No entry in %s (or .mo file badly built). "
-
-#. translators:
-#: class-xili-dictionary.php:3898
-msgid "Some terms collected from %s !"
-msgstr "Quelques éléments collectés de %s !"
-
-#: class-xili-dictionary.php:3903
-msgid "No terms collected from %s !"
-msgstr "Pas d'élément importé  de %s !"
-
-#: class-xili-dictionary.php:3919
-msgid "Domain : "
-msgstr "Domaine : "
-
-#: class-xili-dictionary.php:3980
-msgid "Now, all the blog and core terms are imported:"
-msgstr ""
-"C'est terminé, tous les termes du coeur et options du site sont importés :"
-
-#: class-xili-dictionary.php:3982
-msgid "This box is used for input dialog, leave it opened and visible…"
-msgstr ""
-"Cette fenêtre est utilisée pour le dialogue : laisser visible et ouverte…"
-
-#: class-xili-dictionary.php:4014
-msgid "The files"
-msgstr "Les fichiers"
-
-#: class-xili-dictionary.php:4015
-msgid "Create or Update mo file in current theme folder"
-msgstr "Crée ou met à jour le fichier .mo dans le dossier du thème actif"
-
-#: class-xili-dictionary.php:4015 class-xili-dictionary.php:4389
-msgid "Build mo file"
-msgstr "Générer le fichier mo"
-
-#: class-xili-dictionary.php:4016
-msgid "Import po/mo file"
-msgstr "Import d'un fichier "
-
-#: class-xili-dictionary.php:4016
-msgid "Import an existing .po file from current theme folder"
-msgstr "Importe un fichier .po existant dans le dossier du thème actif"
-
-#: class-xili-dictionary.php:4017
-msgid "Import an existing .mo file from current theme folder"
-msgstr "Importe un fichier .po existant dans le dossier du thème actif"
-
-#: class-xili-dictionary.php:4018
-msgid "Create or Update po file in current theme folder"
-msgstr "Crée ou met à jour le fichier .po dans le dossier du thème actif"
-
-#: class-xili-dictionary.php:4018 class-xili-dictionary.php:4535
-msgid "Build po file"
-msgstr "Générer le fichier po"
-
-#: class-xili-dictionary.php:4019
-msgid "Download po or file to your computer"
-msgstr "Télécharger le fichier po sur votre ordinateur"
-
-#: class-xili-dictionary.php:4019
-msgid "Download file"
-msgstr "Télécharger le fichier"
-
-#: class-xili-dictionary.php:4021
-msgid "The taxonomies"
-msgstr "Les taxinomies du site."
-
-#: class-xili-dictionary.php:4022
-msgid "Import name and description of taxonomy"
-msgstr "Importe nom et description des taxinomies"
-
-#: class-xili-dictionary.php:4022
-msgid "Import texts of taxonomy"
-msgstr "Importer des textes des taxonomies"
-
-#: class-xili-dictionary.php:4024
-msgid "The website infos (title, sub-title and more…)"
-msgstr "Les infos du site (titre, sous-titre etc…)"
-
-#: class-xili-dictionary.php:4027
-msgid "…and comment, locale, date terms, archive,…"
-msgstr ""
-"… et les termes pour commentaires, locaux et dates ainsi que ceux pour les "
-"archives."
-
-#: class-xili-dictionary.php:4031
-msgid "Import infos of website and more to become translatable..."
-msgstr ""
-"Importer des infos du site Web et bien plus encore pour devenir traduisible…"
-
-#: class-xili-dictionary.php:4031
-msgid "Import texts of website's infos"
-msgstr "Importer des textes d’infos du site"
-
-#: class-xili-dictionary.php:4033
-msgid "Dictionary in database"
-msgstr "Le dictionnaire dans la base"
-
-#: class-xili-dictionary.php:4034
-msgid "Erase selected msg of dictionary ! (but not .mo or .po files)"
-msgstr ""
-"Effacer une sélection ou tous les msg du dictionnaire ! (les fichiers .mo "
-"et .po ne sont pas effacés)"
-
-#: class-xili-dictionary.php:4034
-msgid "Erase (selection of) msg"
-msgstr "Effacer (une sélection) des msg &raquo;"
-
-#: class-xili-dictionary.php:4035
-msgid "Import translatable texts from files"
-msgstr "Importer les textes traduisibles des fichiers"
-
-#: class-xili-dictionary.php:4035
-msgid "Import texts from source files"
-msgstr "Importer les textes traduisibles des fichiers source"
-
-#: class-xili-dictionary.php:4037
-msgid "Selection of plugin’s msgs for front-end"
-msgstr "Sélection des extensions pour le versant visiteur"
-
-#: class-xili-dictionary.php:4038
-msgid "Import translatable texts for current active plugin"
-msgstr "Importer les textes des fichiers d’une extension active"
-
-#: class-xili-dictionary.php:4038
-msgid "Import texts from plugins"
-msgstr "Importer les textes des extensions"
-
-#: class-xili-dictionary.php:4052
-msgid "Sub list of msg"
-msgstr "Sélection de msg"
-
-#: class-xili-dictionary.php:4059
-msgid "Containing:"
-msgstr "Incluant :"
-
-#: class-xili-dictionary.php:4062 class-xili-dictionary.php:4083
-msgid "Sub select…"
-msgstr "Sous sélectionner…"
-
-#: class-xili-dictionary.php:4063
-msgid "No select…"
-msgstr "Sans sélection…"
-
-#: class-xili-dictionary.php:4067
-msgid "Selection by language"
-msgstr "Sélection par langue"
-
-#: class-xili-dictionary.php:4069
-msgid "No sub-selection"
-msgstr "Sans sous-sélection"
-
-#: class-xili-dictionary.php:4072
-msgid "Only MsgID (en_US)"
-msgstr "Que le MsgID (en_US)"
-
-#: class-xili-dictionary.php:4074
-msgid "Only Msgstr"
-msgstr "Only Msgstr"
-
-#: class-xili-dictionary.php:4076
-msgid "Only Msgstr plural"
-msgstr "Only Msgstr plural"
-
-#: class-xili-dictionary.php:4097
-msgid "Language to delete"
-msgstr "Langue à supprimer"
-
-#: class-xili-dictionary.php:4098
-msgid ""
-"Only the languages list is here modified (but not the dictionary's contents)"
-msgstr ""
-"Seule la liste des langages est modifiée mais pas les contenus du "
-"dictionnaire"
-
-#: class-xili-dictionary.php:4101
-msgid "Select..."
-msgstr "Choisir..."
-
-#: class-xili-dictionary.php:4106
-msgid "Delete a language"
-msgstr "Supprimer une langue"
-
-#. translators:
-#: class-xili-dictionary.php:4121
-msgctxt "locales"
-msgid "%1$s/%2$s"
-msgstr "%1$s / %2$s"
-
-#. translators:
-#: class-xili-dictionary.php:4125
-msgctxt "locales"
-msgid "%1$s/%2$s *"
-msgstr "%1$s / %2$s *"
-
-#: class-xili-dictionary.php:4132
-msgid "Language to add"
-msgstr "Langue à ajouter"
-
-#: class-xili-dictionary.php:4138
-msgid "ISO (xx_YY)"
-msgstr "Code (xx_YY)"
-
-#: class-xili-dictionary.php:4140
-msgid "Name (eng.)"
-msgstr "Nom (angl.)"
-
-#: class-xili-dictionary.php:4144
-msgid "Add a language"
-msgstr "Ajouter une langue"
-
-#: class-xili-dictionary.php:4185
-msgid "Choose…"
-msgstr "Choisir…"
-
-#: class-xili-dictionary.php:4205
-msgid "not translated in"
-msgstr "non traduit en"
-
-#: class-xili-dictionary.php:4227
-msgid "Dialog box"
-msgstr "Boite de dialogue"
-
-#: class-xili-dictionary.php:4229
-msgid "Do &raquo;"
-msgstr "Ajouter&raquo;"
-
-#: class-xili-dictionary.php:4230
-msgid "Cancel"
-msgstr "Annuler"
-
-#. translators:
-#: class-xili-dictionary.php:4391 class-xili-dictionary.php:4537
-msgid ""
-"To build a %s file, choose language, destination (current theme or plugin) "
-"and origin."
-msgstr ""
-"Pour construire le fichier %s, choisir la langue, la destination (thème "
-"courant ou extension) et l'origine."
-
-#. translators:
-#: class-xili-dictionary.php:4393 class-xili-dictionary.php:4539
-msgid "Build %s file &raquo;"
-msgstr "Générer le fichier %s &raquo;"
-
-#. translators:
-#: class-xili-dictionary.php:4518 class-xili-dictionary.php:4671
-msgid "error during exporting in %s file."
-msgstr "Erreur pendant la création du fichier %s."
-
-#. translators:
-#: class-xili-dictionary.php:4521 class-xili-dictionary.php:4674
-msgid "exported in %1$s file with %2$s msgids."
-msgstr "exporté dans le fichier %1$s avec %2$s msgids."
-
-#. translators:
-#: class-xili-dictionary.php:4525 class-xili-dictionary.php:4678
-msgid "Nothing saved or updated in %s file !"
-msgstr "Rien de sauvé dans %s, pas de mise à jour !"
-
-#: class-xili-dictionary.php:4688
-msgid "Import terms of blog info and others…"
-msgstr "Importer les termes des infos du site…"
-
-#: class-xili-dictionary.php:4689
-msgid ""
-"To import terms of blog info and others defining this current website "
-"(title, date, comment, archive...), click below."
-msgstr ""
-"Pour importer les termes du thème courant (titre, sous-titre, dates, "
-"commentaires, archives etc...), cliquer ci-dessous."
-
-#: class-xili-dictionary.php:4692
-msgid ""
-"The process will import around 140 <strong>msgid</strong> from db and "
-"sources, so be patient."
-msgstr ""
-"Le processus lancé va importer près de 140 <strong>msgid</strong> de la base "
-"et des sources, soyez donc patient."
-
-#. translators:
-#: class-xili-dictionary.php:4698
-msgid ""
-"The language of dashboard is not <em>en_US</em>, so the process will try to "
-"import translations in %s."
-msgstr ""
-"Le langage du tableau de bord n'est pas <em>en_US</em>, dès lors, le "
-"processus va essayer d’importer les traductions par défaut en %s."
-
-#: class-xili-dictionary.php:4700
-msgid ""
-"If you switch language of dashboard in one other than in <em>en_US</em>, "
-"then the process will try to import translations of chosen language."
-msgstr ""
-"Si, au lieu du <em>en_US</em>, vous changez la langue du tableau de bord, "
-"alors le processus va essayer d’importer les traductions disponibles dans le "
-"langage choisi."
-
-#: class-xili-dictionary.php:4717
-msgid "Import blog info terms &raquo;"
-msgstr "Importer tous les termes &raquo;"
-
-#: class-xili-dictionary.php:4733 class-xili-dictionary.php:4766
-msgid "Import terms from active plugins"
-msgstr "Importer les termes des extensions actives"
-
-#: class-xili-dictionary.php:4734
-msgid "To import terms …, click below."
-msgstr "Pour importer les termes ..., cliquer ci-dessous."
-
-#: class-xili-dictionary.php:4735
-msgid "Import msgs &raquo;"
-msgstr "Importer les msgs &raquo;"
-
-#: class-xili-dictionary.php:4745
-msgid "Start collecting terms from active plugins"
-msgstr "Importer les termes des extensions actives"
-
-#: class-xili-dictionary.php:4746 class-xili-dictionary.php:4767
-msgid "To import terms, open a browser in front-end side."
-msgstr ""
-"Pour importer les termes du thème courant, ouvrir un navigateur sur le côté "
-"visiteur du site."
-
-#: class-xili-dictionary.php:4747
-msgid "Stop msgs collecting &raquo;"
-msgstr "Arrêt de la collecte des msgs &raquo;"
-
-#: class-xili-dictionary.php:4752
-msgid "Error: no domain specified"
-msgstr "Erreur : pas de domaine spécifié"
-
-#: class-xili-dictionary.php:4753
-msgid "Please specify a domain..."
-msgstr "Indiquer un domain..."
-
-#: class-xili-dictionary.php:4754
-msgid "End collecting &raquo;"
-msgstr "Fin de collecte &raquo;"
-
-#: class-xili-dictionary.php:4768
-msgid "Import collected &raquo;"
-msgstr "Importer les éléments collectés &raquo;"
-
-#: class-xili-dictionary.php:4788
-msgid "imported terms = "
-msgstr "termes importés = "
-
-#: class-xili-dictionary.php:4790
-msgid "plugin’s terms pbs!"
-msgstr "problème dans les termes de l'extension !"
-
-#: class-xili-dictionary.php:4802
-msgid "Import terms of taxonomy"
-msgstr "Importer les noms et descriptions des taxinomies"
-
-#: class-xili-dictionary.php:4803
-msgid "To import terms of the current taxonomy named, click below."
-msgstr "Pour importer les termes du thème courant, cliquer çi-dessous."
-
-#: class-xili-dictionary.php:4804
-msgid "Import taxonomy’s terms &raquo;"
-msgstr "Importer &raquo;"
-
-#: class-xili-dictionary.php:4815
-msgid "names = "
-msgstr "names = "
-
-#: class-xili-dictionary.php:4815
-msgid "descs = "
-msgstr "descs = "
-
-#. translators:
-#: class-xili-dictionary.php:4818
-msgid "taxonomy -%s- terms pbs!"
-msgstr "problème avec les termes de la taxinomie -%s- !"
-
-#. translators:
-#: class-xili-dictionary.php:4823
-msgid "taxonomy -%s- do not exists"
-msgstr "la taxinomie -%s- n'existe pas"
-
-#: class-xili-dictionary.php:4830
-msgid "Erase all terms"
-msgstr "Effacer tous les termes"
-
-#: class-xili-dictionary.php:4831
-msgid ""
-"To erase terms of the dictionary, click below. (before, create a .po if "
-"necessary!)"
-msgstr ""
-"Efface tous les termes du dictionnaire ! mais pas les fichiers .po et .mo"
-
-#: class-xili-dictionary.php:4832
-msgid "Erase all terms &raquo;"
-msgstr "Effacer le dictionnaire &raquo;"
-
-#: class-xili-dictionary.php:4842
-msgid "All terms erased !"
-msgstr "Tous les termes effacés !"
-
-#: class-xili-dictionary.php:4896
-msgid "Email sent."
-msgstr "Courriel envoyé."
-
-#. translators:
-#: class-xili-dictionary.php:4899
-msgid "Thanks for your email. A copy was sent to %1$s (%2$s)"
-msgstr "Merci pour votre courriel dont une copie est envoyé à %1$s (%2$s)"
-
-#: class-xili-dictionary.php:4905
-msgid "Find below the list of msg."
-msgstr "Voici ci-dessous la liste des msg."
-
-#: class-xili-dictionary.php:4911
-msgid "Import & export"
-msgstr "Importer et exporter"
-
-#: class-xili-dictionary.php:4913
-msgid "Terms list management"
-msgstr "Gestion de l'affichage des termes (msg)"
-
-#: class-xili-dictionary.php:4916
-msgid "Languages list management"
-msgstr "Gestion de la liste des langues"
-
-#: class-xili-dictionary.php:4922
-msgid "Entries (Msgid and Msgstr)"
-msgstr "Entrées (msgid / msgstr)"
-
-#: class-xili-dictionary.php:4928
-msgid "A new msgid was added."
-msgstr "Un nouveau msgid a été ajouté."
-
-#: class-xili-dictionary.php:4929
-msgid "A msg was updated."
-msgstr "Un msg mis à jour."
-
-#: class-xili-dictionary.php:4930
-msgid "A msg was deleted."
-msgstr "Un msg a été supprimé."
-
-#: class-xili-dictionary.php:4931
-msgid "msg imported from WP: "
-msgstr "msg importés de WP : "
-
-#: class-xili-dictionary.php:4932
-msgid "All msg imported !"
-msgstr "Tous les msg importés !"
-
-#. translators:
-#: class-xili-dictionary.php:4934
-msgid "Result log: %s"
-msgstr "Message : %s"
-
-#: class-xili-dictionary.php:4935
-msgid "All msgs erased !"
-msgstr "Tous les msg effacés !"
-
-#: class-xili-dictionary.php:4936
-msgid "Error when adding !"
-msgstr "Erreur à la création !"
-
-#: class-xili-dictionary.php:4937
-msgid "Error when updating !"
-msgstr "Erreur lors de la mise à jour !"
-
-#: class-xili-dictionary.php:4938
-msgid ""
-"Wait during terms importing process until the entries (msgid and msgstr) "
-"list appears below!"
-msgstr ""
-"Patienter pendant le processus de l’importation des textes jusqu’à "
-"l’affichage ci-dessous de la liste des entrées (msgid et msgstr) !"
-
-#: class-xili-dictionary.php:4962
-msgid "Dictionary"
-msgstr "Dictionnaire"
-
-#. translators:
-#: class-xili-dictionary.php:4998
-msgid "msgid imported with success (%s msgstr)"
-msgstr "msgid importés avec succès (%s msgstr)"
-
-#: class-xili-dictionary.php:5000
-msgid "already imported"
-msgstr "déjà importé"
-
-#. translators:
-#: class-xili-dictionary.php:5012
-msgid "Polylang imported or refreshed (%1$s) - and %2$s category strings."
-msgstr ""
-"Importation ou actualisation (%1$s) de Polylang effectuée et %2$s textes des "
-"catégories."
-
-#: class-xili-dictionary.php:5020
-msgid "Author"
-msgstr "Auteur"
-
-#: class-xili-dictionary.php:5264
-msgid "P{%s}:"
-msgstr "E{%s}&nbsp;:"
-
-#: class-xili-dictionary.php:5493
-msgid "No translations saved in theme's .mo files"
-msgstr "Non traduit dans les .mo du thème"
-
-#: class-xili-dictionary.php:5493
-msgid "Original with translations saved in theme's files: "
-msgstr "Original avec traductions dans les .mo du thème : "
-
-#: class-xili-dictionary.php:5497
-msgid "No translations saved in site's .mo files"
-msgstr "Non traduit dans les .mo du thème"
-
-#: class-xili-dictionary.php:5497 class-xili-dictionary.php:5570
-msgid "Original with translations saved in site's files: "
-msgstr "Original avec traductions dans les .mo du thème : "
-
-#: class-xili-dictionary.php:5504
-msgid "Not yet translated in any language (not in any .mo files)"
-msgstr "Non traduit et disponible dans les .mo du site"
-
-#: class-xili-dictionary.php:5564
-msgid "No translations saved in theme’s .mo files"
-msgstr "Pas de traduction sauvé dans les fichiers .mo du thème"
-
-#: class-xili-dictionary.php:5564
-msgid "Original with translations saved in theme’s files: "
-msgstr "Traductions présentes dans les fichiers du site :"
-
-#: class-xili-dictionary.php:5566
-msgid "No translations saved in local-xx_XX .mo files"
-msgstr "Non traduit dans les local-xx_XX.mo du thème"
-
-#: class-xili-dictionary.php:5566
-msgid "Original with translations saved in local-xx_XX files: "
-msgstr "Original avec traductions dans les local-xx_XX.mo du thème : "
-
-#: class-xili-dictionary.php:5570
-msgid "No translations saved in site’s .mo files"
-msgstr "Non traduit dans les .mo du site"
-
-#: class-xili-dictionary.php:5572
-msgid "No translations saved in site’s local .mo files"
-msgstr "Non traduit dans les local-xx_XX.mo du thème"
-
-#: class-xili-dictionary.php:5572
-msgid "Original with translations saved in site’s local files: "
-msgstr "Original avec traductions dans les local-xx_XX.mo du thème : "
-
-#. translators:
-#: class-xili-dictionary.php:7110
-msgid "Uncommon filename"
-msgstr "Fichier non conforme"
-
-#: class-xili-dictionary.php:7115
-msgid "Site's values"
-msgstr "Données du site"
-
-#: class-xili-dictionary.php:7213
-msgid ""
-"WARNING: xili-dictionary datas are not ready to be imported from XML "
-"generated here. <br />So, it is fully recommended to <strong>desactivate "
-"temporarily xili-dictionary</strong> during export and so, avoid clutter of "
-"the file."
-msgstr ""
-"ATTENTION : Les données de xili-dictionary ne sont pas prêtes à être "
-"importées à partir du fichier XML généré ici. <br/> Aussi il est vivement "
-"recommandé de <strong>désactiver temporairement l'extension xili-dictionary</"
-"strong> pendant l'exportation et éviter ainsi un fichier encombré."
-
-#: class-xili-dictionary.php:7214
-msgid ""
-"To export/import/backup dictionary datas, use .po files built by the plugin."
-msgstr ""
-"Pour sauvegarder/exporter/importer les donnés du dictionnaire, utiliser la "
-"génération des fichiers .po avec l'extension."
-
-#: class-xili-dictionary.php:7283
-msgid "Erasing"
-msgstr "Suppression en cours"
-
-#: class-xili-dictionary.php:7284
-msgid "Erase"
-msgstr "Supprimer"
-
-#: class-xili-dictionary.php:7291
-msgid "Importing files"
-msgstr "Importation en cours du fichier"
-
-#: class-xili-dictionary.php:7292
-msgid "Import"
-msgstr "Importer"
-
-#: class-xili-dictionary.php:7299
-msgid "Downloading files to your computer"
-msgstr "Télécharger les fichiers dans votre ordinateur"
-
-#: class-xili-dictionary.php:7300
-msgid "Download"
-msgstr "Télécharger"
-
-#: class-xili-dictionary.php:7337
+#: admin-includes/trait-xili-dictionary-erase.php:56
 msgid ""
 "Here it now possible to erase your dictionary (here in WP database) after "
 "creating the .mo files (and saving the .po files which is readable with any "
@@ -2333,24 +473,24 @@ msgstr ""
 "- ). <strong>Ces suppressions de la base ne suppriment pas les fichiers .mo "
 "or .po .</strong>"
 
-#: class-xili-dictionary.php:7350
+#: admin-includes/trait-xili-dictionary-erase.php:69
 msgid "Terms (msgid / msgstr) to erase"
 msgstr "Termes (msgid / msgstr) à effacer"
 
-#: class-xili-dictionary.php:7352
+#: admin-includes/trait-xili-dictionary-erase.php:71
 msgid "Original (msgid) and translations or Select language..."
 msgstr "Original (msgid) et traductions ou Sélectionner la langue..."
 
-#: class-xili-dictionary.php:7353
+#: admin-includes/trait-xili-dictionary-erase.php:72
 msgid "Translations (msgstr) in all languages"
 msgstr "Traductions (msgstr) dans toutes les langues"
 
 #. translators:
-#: class-xili-dictionary.php:7358
+#: admin-includes/trait-xili-dictionary-erase.php:77
 msgid "Translations (msgstr) in %s"
 msgstr "Traductions (msgstr) en %s"
 
-#: class-xili-dictionary.php:7362
+#: admin-includes/trait-xili-dictionary-erase.php:81
 msgid ""
 "Language of the translated terms to be erased. Without selection, Original "
 "(msgid) AND translation (msgstr) will both be erased."
@@ -2358,11 +498,11 @@ msgstr ""
 "Langue des termes traduits à supprimer. Sans sélection, les termes originaux "
 "(msgid) ET leurs traductions (msgstr) seront supprimés simultanément."
 
-#: class-xili-dictionary.php:7372
+#: admin-includes/trait-xili-dictionary-erase.php:91
 msgid "Check Origin(s) to be erased"
 msgstr "Cocher selon les origines à supprimer"
 
-#: class-xili-dictionary.php:7387
+#: admin-includes/trait-xili-dictionary-erase.php:106
 msgid ""
 "Origins of the msgs to be erased. Without selection, msg without origin will "
 "be erased"
@@ -2370,296 +510,670 @@ msgstr ""
 "Origines des msgs à supprimer. Sans sélection, tous les messages sont "
 "supprimés"
 
-#: class-xili-dictionary.php:7391
+#: admin-includes/trait-xili-dictionary-erase.php:110
 msgid "Locale msgs only"
 msgstr "Msgs locaux seulement"
 
-#: class-xili-dictionary.php:7392
+#: admin-includes/trait-xili-dictionary-erase.php:111
 msgid "Erase only locale msgs (as saved in local-xx_YY files)"
 msgstr ""
 "Ne supprime que les msgs locaux (comme ceux sauvés dans les fichiers local-"
 "xx_YY)"
 
-#: class-xili-dictionary.php:7402
+#: admin-includes/trait-xili-dictionary-erase.php:121
 msgid "Number of entries in one step"
 msgstr "Nombre d'entrées à chaque étape"
 
-#: class-xili-dictionary.php:7416
+#: admin-includes/trait-xili-dictionary-erase.php:135
 msgid "second(s) delay between each group of rows"
 msgstr "seconde(s) de délai entre chaque groupe de lignes"
 
-#: class-xili-dictionary.php:7417
+#: admin-includes/trait-xili-dictionary-erase.php:136
 msgid "Keep this high to prevent too-many-connection issues."
 msgstr "A laisser élevé pour prévenir un trop grand nombre de connexions."
 
-#: class-xili-dictionary.php:7432
+#: admin-includes/trait-xili-dictionary-erase.php:142
 msgid "Erasing the dictionary"
 msgstr "Nettoyage du dictionnaire"
 
-#: class-xili-dictionary.php:7435
+#: admin-includes/trait-xili-dictionary-erase.php:145
 msgid "What to erase ?"
 msgstr "Que supprimer ?"
 
-#: class-xili-dictionary.php:7439 class-xili-dictionary.php:8967
-#: class-xili-dictionary.php:8983
+#: admin-includes/trait-xili-dictionary-erase.php:149
+#: admin-includes/trait-xili-dictionary-imports.php:292
+#: admin-includes/trait-xili-dictionary-imports.php:308
 msgid "Processing..."
 msgstr "Déroulement..."
 
-#: class-xili-dictionary.php:7456
+#: admin-includes/trait-xili-dictionary-erase.php:166
 msgid "Erasing Dictionary lines"
 msgstr "Suppression des lignes du dictionnaire"
 
-#. translators:
-#: class-xili-dictionary.php:7466 class-xili-dictionary.php:8375
-#: class-xili-dictionary.php:8729
-msgid "<a href=\"%s\">Back</a> to the list of msgs and tools"
-msgstr "<a href=\"%s\">Retour</a> à la liste des messages et aux outils"
-
-#: class-xili-dictionary.php:7468
+#: admin-includes/trait-xili-dictionary-erase.php:178
 msgid "Start erasing"
 msgstr "Démarrer la suppression"
 
-#: class-xili-dictionary.php:7469 class-xili-dictionary.php:8732
+#: admin-includes/trait-xili-dictionary-erase.php:179
+#: admin-includes/trait-xili-dictionary-imports.php:57
 msgid "Stop"
 msgstr "Arrêter"
 
-#: class-xili-dictionary.php:7764
-msgid "Starting Importing"
-msgstr "Démarrer l'importation"
-
-#: class-xili-dictionary.php:7782 class-xili-dictionary.php:7839
-msgid "Go to the list of msgs:"
-msgstr "Voir la liste des msgs:"
-
-#: class-xili-dictionary.php:7782 class-xili-dictionary.php:7839
-msgid "Continue"
-msgstr "Poursuivre"
-
-#: class-xili-dictionary.php:7821
-msgid "Starting Erasing"
-msgstr "Suppression lancée"
-
 #. translators:
-#: class-xili-dictionary.php:7959
+#: admin-includes/trait-xili-dictionary-erase.php:227
 msgid "Lines found ! ( %2$s lines)"
 msgstr "Lignes trouvées ! ( %2$s lignes)"
 
-#: class-xili-dictionary.php:7967
+#: admin-includes/trait-xili-dictionary-erase.php:235
 msgid "No msgs to erase"
 msgstr "Pas de msgs à supprimer"
 
-#: class-xili-dictionary.php:7982
+#: admin-includes/trait-xili-dictionary-erase.php:250
 msgid "No more msgs to erase (%s)"
 msgstr "Plus de msg à supprimer (%s)"
 
-#: class-xili-dictionary.php:7984
+#: admin-includes/trait-xili-dictionary-erase.php:252
 msgid "No msgs to erase (%s)"
 msgstr "Pas de msgs à supprimer (%s)"
 
 #. translators:
-#: class-xili-dictionary.php:7995
+#: admin-includes/trait-xili-dictionary-erase.php:263
 msgid "Erasing msgs (%1$s - %2$s)"
 msgstr "Suppression des msgs en cours (%1$s - %2$s)"
 
 #. translators:
-#: class-xili-dictionary.php:8009
+#: admin-includes/trait-xili-dictionary-erase.php:277
 msgid "Erasing Complete (%1$s)"
 msgstr "Suppression terminée (%1$s)"
 
-#: class-xili-dictionary.php:8333
-msgid "File is ready for download:"
-msgstr "Fichier prêt à être téléchargé :"
+#: admin-includes/trait-xili-dictionary-help.php:21
+msgid "For more information:"
+msgstr "Pour plus d'information :"
 
-#: class-xili-dictionary.php:8334
-msgid "Impossible to download file"
-msgstr "Impossible de télécharger le fichier"
-
-#: class-xili-dictionary.php:8335
-msgid "Please specify language"
-msgstr "Spécifier le langage"
-
-#: class-xili-dictionary.php:8342
-msgid "Download files (.po, .pot, .mo) to your computer"
-msgstr "Télécharger les fichiers (.po, .pot, .mo) sur votre ordinateur"
-
-#: class-xili-dictionary.php:8356 class-xili-dictionary.php:8445
-msgid "Parent theme"
-msgstr "Thème parent"
-
-#: class-xili-dictionary.php:8356 class-xili-dictionary.php:8443
-msgid "Child theme"
-msgstr "Thème enfant"
-
-#: class-xili-dictionary.php:8357
-msgid "from"
-msgstr "du"
-
-#: class-xili-dictionary.php:8362
-msgid "Click here to download file %s"
-msgstr "Cliquer ici pour télécharger le fichier %s"
-
-#: class-xili-dictionary.php:8377
-msgid "Prepare download"
-msgstr "Préparer à télécharger"
-
-#: class-xili-dictionary.php:8388
-msgid "Download the files"
-msgstr "Téléchargement des fichiers"
-
-#: class-xili-dictionary.php:8391
-msgid "Define the file to download"
-msgstr "Décrire le fichier à télécharger"
-
-#: class-xili-dictionary.php:8396
+#: admin-includes/trait-xili-dictionary-help.php:22
 msgid ""
-"Here it is possible to choose a language file of the current theme to "
-"download to your computer for further works or archives."
+"<a href=\"http://wiki.xiligroup.org\" target=\"_blank\">Xili Plugins "
+"Documentation and WIKI</a>"
 msgstr ""
-"Cet écran permet de choisir les fichiers langage du thème courant à "
-"télécharger sur votre ordinateur pour traitement avec vos outils ou pour "
-"archivage."
+"<a href=\"http://wiki.xiligroup.org\" target=\"_blank\">Wiki de l'extension "
+"xili-dictionary</a>"
 
-#: class-xili-dictionary.php:8406 class-xili-dictionary.php:9063
-msgid "Type"
-msgstr "Type"
-
-#: class-xili-dictionary.php:8408 class-xili-dictionary.php:9065
-msgid "Select type..."
-msgstr "Choisir le type..."
-
-#: class-xili-dictionary.php:8409 class-xili-dictionary.php:9066
-msgid "PO file"
-msgstr "Fichier PO"
-
-#: class-xili-dictionary.php:8410 class-xili-dictionary.php:9067
-msgid "MO file"
-msgstr "Fichier MO"
-
-#: class-xili-dictionary.php:8411
-msgid "POT file"
-msgstr "Fichier POT"
-
-#: class-xili-dictionary.php:8413
-msgid "Type of the file (.mo, .po or .pot)"
-msgstr "Type de fichier ( .mo, .po ou .pot )"
-
-#: class-xili-dictionary.php:8416
-msgid "Subtype of file"
-msgstr "Sous type de fichier"
-
-#: class-xili-dictionary.php:8418
-msgid "xx_YY"
-msgstr "xx_YY"
-
-#: class-xili-dictionary.php:8419
-msgid "local-xx_YY"
-msgstr "local-xx_YY"
-
-#: class-xili-dictionary.php:8422
-msgid "Subtype of the file (theme or local ?)"
-msgstr "Sous type de fichier (thème ou local ?)"
-
-#: class-xili-dictionary.php:8427 class-xili-dictionary.php:9121
-msgid "Select language"
-msgstr "Sélectionner la langue"
-
-#: class-xili-dictionary.php:8435
-msgid "no language (pot)"
-msgstr "pas de langue (pot)"
-
-#: class-xili-dictionary.php:8437
-msgid "Language of the file."
-msgstr "Langue du fichier."
-
-#: class-xili-dictionary.php:8440
-msgid "Place of file"
-msgstr "Place du fichier"
-
-#: class-xili-dictionary.php:8448
-msgid "Place of the file (parent or child theme)"
-msgstr "Emplacement du fichier (thème parent ou enfant)"
-
-#: class-xili-dictionary.php:8452
-msgid "Compression of file"
-msgstr "Compression du fichier"
-
-#: class-xili-dictionary.php:8454
-msgid "No compression"
-msgstr "Sans compression"
-
-#: class-xili-dictionary.php:8455
-msgid "Zip"
-msgstr "Zip"
-
-#: class-xili-dictionary.php:8456
-msgid "Gz"
-msgstr "Gz"
-
-#: class-xili-dictionary.php:8460
-msgid "Type of compression..."
-msgstr "Type de compression…"
-
-#: class-xili-dictionary.php:8462
-msgid "The wanted file do not exist ! Try another selection (language ?) !"
+#: admin-includes/trait-xili-dictionary-help.php:23
+msgid ""
+"<a href=\"http://wordpress.org/plugins/xili-dictionary/\" target=\"_blank"
+"\">Xili-dictionary Plugin Documentation</a>"
 msgstr ""
-"Le fichier attendu n’existe pas ! Essayer une autre sélection (langue ?) !"
+"<a href=\"http://wordpress.org/plugins/xili-dictionary/\" target=\"_blank"
+"\">Documentation de l’extension xili-dictionary</a>"
 
-#: class-xili-dictionary.php:8700
+#: admin-includes/trait-xili-dictionary-help.php:24
+msgid ""
+"<a href=\"http://codex.wordpress.org/\" target=\"_blank\">WordPress "
+"Documentation</a>"
+msgstr ""
+"<a href=\"http://codex.wordpress.org/\" target=\"_blank\">Documentation "
+"WordPress (codex)</a>"
+
+#: admin-includes/trait-xili-dictionary-help.php:25
+msgid ""
+"<a href=\"http://dev.xiligroup.com/?post_type=forum\" target=\"_blank"
+"\">Support Forums</a>"
+msgstr ""
+"<a href=\"http://dev.xiligroup.com/?post_type=forum\" target=\"_blank"
+"\">Forum Support</a>"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-help.php:29
+msgid ""
+"xili-dictionary is a plugin (compatible with xili-language) to build a "
+"multilingual dictionary saved in the post tables of WordPress as custom post "
+"type (%s). With this dictionary, it is possible to create and update .mo "
+"file in the current theme folder. And more..."
+msgstr ""
+"l’extension xili-dictionary est destinée à créer et mettre à jour les "
+"fichiers .mo (et .po aussi) du thème courant. Elle est utile pour les thèmes "
+"internationaux ou les thèmes multilingues 'live' pilotés par xili-language. "
+"Les éléments sont stockés dans les custom post type (%s) des tables de WP."
+
+#: admin-includes/trait-xili-dictionary-help.php:31
+msgid "Things to remember to set xili-dictionary:"
+msgstr "Eléments à retenir pour paramétrer xili-dictionary :"
+
+#: admin-includes/trait-xili-dictionary-help.php:33
+msgid ""
+"Verify that the theme is localizable (like WP bundled themes from twentyten "
+"to twentyfourteen)."
+msgstr ""
+"Vérifier que le thème utilisé soit bien localisable (comme les thèmes WP du "
+"kit, de twentyten à twentyfourteen)."
+
+#: admin-includes/trait-xili-dictionary-help.php:34
+msgid "Define the list of targeted languages."
+msgstr "Définir la liste des langues utilisées."
+
+#: admin-includes/trait-xili-dictionary-help.php:35
+msgid ""
+"Prepare a sub-folder like /languages/ for .po and .mo files in each language "
+"(use the default delivered with the theme or add the pot of the theme and "
+"put them inside."
+msgstr ""
+"Dans le dossier du thème, préparer un sous-dossier pour les fichiers .po et ."
+"mo de chaque langue (utiliser les fichiers livrés par défaut avec le thème "
+"ou ajouter son .pot et insérer les dedans."
+
+#: admin-includes/trait-xili-dictionary-help.php:36
+msgid ""
+"If you have files: import them to create a base dictionary. If not : add a "
+"term or use buttons import and/or build in metabox."
+msgstr ""
+"Si vous avez ces fichiers : importer les pour créer la base initiale du "
+"dictionnaire. Sinon, ajouter un terme ou importer les données du site via "
+"les boutons de la fenêtre latérale - Importer et Générer."
+
+#: admin-includes/trait-xili-dictionary-help.php:37
+msgid ""
+"For xili-language, xili-dictionary creates local-xx_YY files (like local-"
+"fr_FR for french) containing customized website inputs to avoid mixing with "
+"items of the theme itself. .mo is the file used and .po is the text form."
+msgstr ""
+"Pour l’utilisation avec xili-language, xili-dictionary crée des fichiers "
+"local-xx_YY (comme local-fr_FR pour le français) qui contiennent les entrées "
+"personnalisées du site web. Ceci afin d'éviter le mélange avec les données "
+"du thème proprement dit. Le suffixe .mo est le fichier utilisable et le .po "
+"en est sa forme sous texte lisible."
+
+#: admin-includes/trait-xili-dictionary-help.php:43
+msgid "About xili-dictionary"
+msgstr "A propos de xili-dictionary©"
+
+#: admin-includes/trait-xili-dictionary-help.php:50
+#: admin-includes/trait-xili-dictionary-help.php:105
+#: admin-includes/trait-xili-dictionary-help.php:159
+#: admin-includes/trait-xili-dictionary-help.php:185
+#: admin-includes/trait-xili-dictionary-help.php:256
+msgid "For more infos"
+msgstr "Pour plus d'information"
+
+#: admin-includes/trait-xili-dictionary-help.php:59
+msgid ""
+"Things to remember about the list of translations (msgstr) of term (msgid) "
+"with xili-dictionary:"
+msgstr ""
+"Eléments à retenir concernant la liste des traductions (msgstr) des termes "
+"(msgid) avec xili-dictionary :"
+
+#: admin-includes/trait-xili-dictionary-help.php:61
+msgid "Column Metas give infos about type of msg and his language"
+msgstr "La colonne Métas donne des infos sur le type des msg et leur langue"
+
+#: admin-includes/trait-xili-dictionary-help.php:62
+msgid ""
+"Links in Metas redirect to msg in another language if translation exists."
+msgstr ""
+"Les liens dans les Métas donne accès direct aux msg dans une autre "
+"traduction si elle existe."
+
+#: admin-includes/trait-xili-dictionary-help.php:63
+msgid "It is possible to filter according language or the Origin of msg."
+msgstr ""
+"Il est possible de sous-sélectionner selon la langue ou l'origine du msg."
+
+#: admin-includes/trait-xili-dictionary-help.php:64
+msgid ""
+"When type of MSG is ‘local’, the couple msgid/msgstr is saved in a local-"
+"xx_YY file of current theme. This translation overhides all the others."
+msgstr ""
+"Quand le type d'un MSG est spécifié comme ‘local’, le couple msgid/msgstr "
+"est généré dans le fichier local-xx_YY du thème courant. Cette traduction va "
+"remplacer les autres."
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-help.php:67
+msgid "Look %1$s this page %2$s to find a dynamic full list and more tools."
+msgstr ""
+"Voir %1$s cette page %2$s pour découvrir une liste dynamique des msgs et "
+"plus d’outils."
+
+#: admin-includes/trait-xili-dictionary-help.php:72
+msgid "About MSG list page"
+msgstr "A propos de la liste des MSGs"
+
+#: admin-includes/trait-xili-dictionary-help.php:80
+msgid ""
+"Things to remember before to create or edit a new translation (msgstr) or a "
+"term (msgid) with xili-dictionary:"
+msgstr ""
+"Eléments à retenir avant de créer ou modifier une nouvelle traduction "
+"(msgstr) ou un nouveau terme de référence (msgid) avec xili-dictionary :"
+
+#: admin-includes/trait-xili-dictionary-help.php:82
+msgid "As in po files, msgid must be unique if no context is specified."
+msgstr ""
+"Comme dans un fichier po, un msgid doit être unique sauf si le contexte est "
+"définie."
+
+#: admin-includes/trait-xili-dictionary-help.php:83
+msgid "msgstr is attached (taxonomy) to a language."
+msgstr "un msgstr est attaché à une langue (taxonomy)."
+
+#: admin-includes/trait-xili-dictionary-help.php:84
+msgid "if msgstr is edited, the box with msg series show untranslated msg."
+msgstr ""
+"si un msgstr est édité, la fenêtre Série de msg indique ceux qui restent à "
+"traduire."
+
+#: admin-includes/trait-xili-dictionary-help.php:86
+msgid "How to update mo files ?"
+msgstr "Comment mettre à jour les fichiers .mo ?"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-help.php:88
+msgid ""
+"if msgstr is edited, the box - shortcuts to update mo files - is available "
+"to quickly update local-xx_YY.mo file w/o going to %s page."
+msgstr ""
+"si un msgstr est édité, la fenêtre - Raccourcis - est disponible pour mettre "
+"à jour rapidement les fichiers local-xx_YY.mo sans aller à la page %s."
+
+#: admin-includes/trait-xili-dictionary-help.php:88
+msgid "Tools"
+msgstr "Boite à outils"
+
+#: admin-includes/trait-xili-dictionary-help.php:88
+msgid "The language of mo file is here the language of msgstr being edited."
+msgstr "La langue du fichier est celle du msgstr en cours d'édition."
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-help.php:90
+msgid "Look %1$s this page %2$s to find more tools."
+msgstr "Voir %1$s cette page %2$s pour découvrir plus d’outils."
+
+#: admin-includes/trait-xili-dictionary-help.php:95
+msgid "About MSG edit"
+msgstr "A propos de l'édition des MSGs"
+
+#: admin-includes/trait-xili-dictionary-help.php:114
+msgid "Things to remember to insert terms of category in dictionary msg list:"
+msgstr ""
+"Eléments à retenir pour l'insertion des termes de catégorie dans les msgs de "
+"xili-dictionary :"
+
+#: admin-includes/trait-xili-dictionary-help.php:116
+msgid ""
+"Import Categories terms button: Transfer / import terms (name, description) "
+"as msg in dictionary."
+msgstr ""
+"Bouton : Transférer les termes : transfert des termes (nom, description) des "
+"catégories dans le dictionnaire comme msg."
+
+#: admin-includes/trait-xili-dictionary-help.php:117
+msgid ""
+"Display this Categories Terms button: Switch to list of these msgs in "
+"dictionary."
+msgstr ""
+"Bouton : Afficher ces termes des Catégories : Voir la liste de ces msgs dans "
+"le dictionnaire."
+
+#: admin-includes/trait-xili-dictionary-help.php:118
+msgid "In table, column Language:."
+msgstr "Dans la table, colonne Langue :."
+
+#: admin-includes/trait-xili-dictionary-help.php:120
+msgid "Indications if terms are present in .mo files."
+msgstr "Indications sur la présence des termes (msg) dans les fichiers .mo."
+
+#: admin-includes/trait-xili-dictionary-help.php:121
+msgid ""
+"Display in XD button: Show only name and description of the selected "
+"category in XD msg list."
+msgstr ""
+"Bouton - Afficher dans XD : Affiche seulement le nom et la description de "
+"cette catégorie dans la liste des msgs de XD."
+
+#: admin-includes/trait-xili-dictionary-help.php:123
+msgid "Find more infos in forum and wiki."
+msgstr "Trouver d'autres infos dans les forums et le wiki."
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-help.php:126
+#: admin-includes/trait-xili-dictionary-help.php:146
+#: admin-includes/trait-xili-dictionary-help.php:172
+#: admin-includes/trait-xili-dictionary-help.php:201
+#: admin-includes/trait-xili-dictionary-help.php:222
+#: admin-includes/trait-xili-dictionary-help.php:243
+msgid "<a href=\"%s\" target=\"_blank\">Xili Wiki Documentation</a>"
+msgstr ""
+"<a href=\"%s\" target=\"_blank\"> Documentation Wiki des extensions Xili</a>"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-help.php:132
+msgid "About %s dictionary tools"
+msgstr "%s : à propos de l'outil dictionary"
+
+#: admin-includes/trait-xili-dictionary-help.php:140
+msgid "Things to remember about Origin in xili-dictionary"
+msgstr "Eléments à retenir concernant l’origine avec xili-dictionary"
+
+#: admin-includes/trait-xili-dictionary-help.php:142
+msgid ""
+"Origin is a taxonomy to describe the origin of a msgid. So it is possible to "
+"share a msg between several theme and rebuild a new language file."
+msgstr ""
+"Origin est une taxinomie pour affecter l’origine d’un msgid. Ainsi, il est "
+"possible de partager un msg entre différents thèmes et de générer des "
+"nouveaux fichiers langue."
+
+#: admin-includes/trait-xili-dictionary-help.php:143
+msgid ""
+"To manage language file from a plugin, it is important to have only one "
+"origin per plugin. The plugin uses this origin to know from where is the msg "
+"and to build in the good sub-folder the language file (mo or po)."
+msgstr ""
+"Pour gérer les fichiers langue d’une extension, il est obligatoire de "
+"n’avoir qu’une origine par extension. Xili-dictionary utilise cette origine "
+"pour déterminer les messages à sélectionner et pour trouver les dossiers où "
+"sont ces fichiers."
+
+#: admin-includes/trait-xili-dictionary-help.php:144
+msgid ""
+"In multisite context (WordPress Network), only superadmin can save language "
+"files to plugin folder."
+msgstr ""
+"Dans le contexte multisite (WordPress Network), seul le superadmin pourra "
+"générer les fichiers langages dans le dossier de l'extension."
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-help.php:152
+msgid "About %s dictionary origins"
+msgstr "A propos de l’origine dans %s dictionary"
+
+#: admin-includes/trait-xili-dictionary-help.php:166
+msgid "Things to remember about Writer in xili-dictionary"
+msgstr "Eléments à retenir concernant les rédacteurs avec xili-dictionary"
+
+#: admin-includes/trait-xili-dictionary-help.php:168
+msgid ""
+"Writer is a hierarchic taxonomy to describe writer or translator of a msg. "
+"It can be used as is."
+msgstr ""
+"Writer est une taxinomie pour décrire les rédacteurs et traducteurs des MSG. "
+
+#: admin-includes/trait-xili-dictionary-help.php:169
+msgid "The hierarchy can be used to group like in office or by language."
+msgstr ""
+"La hiérarchie peut servir à grouper les rédacteurs par bureau ou par langage."
+
+#: admin-includes/trait-xili-dictionary-help.php:170
+msgid "More settings in next releases."
+msgstr "Plus de détails dans les prochaines versions."
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-help.php:178
+msgid "About %s dictionary writers"
+msgstr "A propos des rédacteurs dans %s dictionary"
+
+#: admin-includes/trait-xili-dictionary-help.php:193
+msgid ""
+"Things to remember about scanning source files and importing inside xili-"
+"dictionary"
+msgstr ""
+"Eléments à retenir concernant l'exploration des fichiers source et de "
+"l'importation dans xili-dictionary"
+
+#: admin-includes/trait-xili-dictionary-help.php:195
+msgid ""
+"Here, you can scan files from the current theme or a selected plugin to "
+"import translatable entries (terms) in dictionary."
+msgstr ""
+"Il est ici possible d'explorer les fichiers source et d'importer les "
+"éléments (termes) traduisibles dans le dictionnaire."
+
+#: admin-includes/trait-xili-dictionary-help.php:196
+msgid ""
+"Each msg (id) become a “custom post type xdmsg” and ready to be translated. "
+"Use this way only if the author do not provide po or pot files."
+msgstr ""
+"Chaque msgid devient un “custom post type xdmsg” et est prêt à être traduit. "
+"N'utiliser cette approche que si l'auteur ne fournit pas de fichiers po ou "
+"pot."
+
+#: admin-includes/trait-xili-dictionary-help.php:197
+msgid ""
+"Msgid attributes are filled with Origin (theme or plugin) and comments "
+"available in sources to help translation."
+msgstr ""
+"Chaque msgid est associé à des attributs (Origine, langue, commentaires,...) "
+"et des commentaires mis à disposition dans les sources pour aider la "
+"traduction."
+
+#: admin-includes/trait-xili-dictionary-help.php:198
+msgid ""
+"If you want to create a pot file just check the option. This file will be "
+"saved in the language sub-folder."
+msgstr ""
+"Si vous souhaitez créer une copie de l'extraction sour forme de fichier ."
+"pot, cochez l'option. Ce fichier est sauvé dans le sous-dossier language."
+
+#: admin-includes/trait-xili-dictionary-help.php:199
+msgid ""
+"During scanning process, a temporary window appears at bottom of the screen "
+"with some progressing infos."
+msgstr ""
+"Pendant la phase d'exploration et d'importation, une fenêtre temporaire "
+"apparaît en bas d'écran et affiche des informations du processus."
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-help.php:207
+msgid "About scanning source files with %s dictionary"
+msgstr "A propos de l'exploration des fichiers source dans %s dictionary"
+
+#: admin-includes/trait-xili-dictionary-help.php:214
+msgid "Things to remember about importing mo/po files in xili-dictionary"
+msgstr ""
+"Eléments à retenir concernant l’importation des fichiers po/mo avec xili-"
+"dictionary"
+
+#: admin-includes/trait-xili-dictionary-help.php:216
+msgid ""
+"Importing process inserts po/mo files contents inside dictionary. Each msg "
+"(id or str) become a “custom post type xdmsg”."
+msgstr ""
+"Le processus d’importation insère les couples msgid/msgstr des fichiers po/"
+"mo dans le dictionnaire. Chaque msg (id ou str) devient un “custom post type "
+"xdmsg”."
+
+#: admin-includes/trait-xili-dictionary-help.php:217
+msgid ""
+"Files are coming from current theme or installed plugin languages folders."
+msgstr ""
+"Les fichiers proviennent du thème courant ou des extensions installées."
+
+#: admin-includes/trait-xili-dictionary-help.php:218
+msgid ""
+"Msg attributes are filled with Origin, language, comment infos. A msgstr is "
+"linked to his msgid if it is a translation."
+msgstr ""
+"Chaque MSG est associé à des attributs (Origine, langue, commentaires,...) "
+"Un MSGSTR est lié à un MSGID s'il en est la traduction."
+
+#: admin-includes/trait-xili-dictionary-help.php:219
+msgid ""
+"During importing process, a temporary window appears at bottom of the screen "
+"with some progressing infos."
+msgstr ""
+"Pendant la phase d'importation, une fenêtre temporaire apparaît en bas "
+"d'écran et elle affiche des informations successives."
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-help.php:228
+msgid "About %s dictionary files importing"
+msgstr "A propos de l'importation des fichiers dans %s dictionary"
+
+#: admin-includes/trait-xili-dictionary-help.php:237
+msgid "Things to remember about download language files with xili-dictionary"
+msgstr ""
+"Eléments à retenir concernant le téléchargement de fichier avec xili-"
+"dictionary"
+
+#: admin-includes/trait-xili-dictionary-help.php:239
+msgid ""
+"With this screen, it is possible to choose a language file (.mo or .po) to "
+"download to your computer. Useful for further works or archiving."
+msgstr ""
+"Cet écran permet de choisir les fichiers langage (.mo or .po) à télécharger "
+"sur votre ordinateur pour traitement avec vos outils ou pour archivage."
+
+#: admin-includes/trait-xili-dictionary-help.php:240
+msgid ""
+"When the selection is successful, click prepare and the link for download "
+"appears in the green message space under the title."
+msgstr ""
+"Quand la sélection est conforme, cliquer le bouton Préparer et le lien pour "
+"télécharger apparaît dans le message sous le titre."
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-help.php:249
+msgid "About %s dictionary download files"
+msgstr "Concerne le téléchargement des fichiers dans %s dictionary"
+
+#: admin-includes/trait-xili-dictionary-help.php:271
+msgid "Docs about xili-dictionary"
+msgstr "Docs sur le dictionnaire xili©"
+
+#: admin-includes/trait-xili-dictionary-help.php:281
+msgid "xili-dictionary updated"
+msgstr "nouvelle version de xili-dictionary"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-help.php:283
+msgid "xili-dictionary was updated to version %s"
+msgstr "xili-dictionary vient d’être mise à jour en version %s"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-help.php:285
+msgid ""
+"This new version %s is compatible with WP 5.2 and XL 2.23+ able to import "
+"parent sources if child theme active, writers are displayed in list, also "
+"compatible with Polylang taxonomy and xml importing."
+msgstr ""
+"La nouvelle version %s est compatible avec WP 5.2 and XILI-LANGUAGE 2.23 "
+"capable d’importer des sources parent si le thème enfant est actif, les "
+"rédacteurs sont affichés dans une liste, également compatible avec la "
+"taxonomie Polylang et l’importation xml."
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-help.php:287
+msgid ""
+"In previous version of %s, if you switch language of dashboard is other than "
+"in en_US, then the import process of sources msgid will try to import "
+"translations of chosen language."
+msgstr ""
+"Dans la précédente version %s, si au lieu du <em>en_US</em>, vous changez la "
+"langue du tableau de bord, alors le processus va essayer d’importer les "
+"traductions disponibles dans le langage choisi."
+
+#: admin-includes/trait-xili-dictionary-help.php:289
+msgid "See submenu"
+msgstr "Voir le menu"
+
+#: admin-includes/trait-xili-dictionary-help.php:289
+#: class-xili-dictionary.php:1785
+msgid "Tools, Files po mo"
+msgstr "Outils, Fichiers po mo"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-help.php:291
+msgid ""
+"Before to question dev.xiligroup support, do not forget to visit %s "
+"documentation"
+msgstr ""
+"Avant de questionner le support dev.xiligroup, n’oubliez pas de cocher les "
+"infos du site et de lire la doc. sur %s"
+
+#: admin-includes/trait-xili-dictionary-import-test-pomo.php:178
+msgid "No translations saved in theme's .mo files"
+msgstr "Non traduit dans les .mo du thème"
+
+#: admin-includes/trait-xili-dictionary-import-test-pomo.php:178
+msgid "Original with translations saved in theme's files: "
+msgstr "Original avec traductions dans les .mo du thème : "
+
+#: admin-includes/trait-xili-dictionary-import-test-pomo.php:182
+msgid "No translations saved in site's .mo files"
+msgstr "Non traduit dans les .mo du thème"
+
+#: admin-includes/trait-xili-dictionary-import-test-pomo.php:182
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:1116
+msgid "Original with translations saved in site's files: "
+msgstr "Original avec traductions dans les .mo du thème : "
+
+#: admin-includes/trait-xili-dictionary-import-test-pomo.php:189
+msgid "Not yet translated in any language (not in any .mo files)"
+msgstr "Non traduit et disponible dans les .mo du site"
+
+#: admin-includes/trait-xili-dictionary-import-test-pomo.php:194
+#: class-xili-dictionary.php:1209
+msgid "Translated in"
+msgstr "Traduit en"
+
+#: admin-includes/trait-xili-dictionary-imports.php:25
 msgid "Scanning source files of current theme or plugins"
 msgstr "Explorer les fichiers source du thème courant ou des extensions"
 
-#: class-xili-dictionary.php:8701 class-xili-dictionary.php:8770
+#: admin-includes/trait-xili-dictionary-imports.php:26
+#: admin-includes/trait-xili-dictionary-imports.php:95
 msgid "Start scanning"
 msgstr "Lancer l'extraction"
 
-#: class-xili-dictionary.php:8704
+#: admin-includes/trait-xili-dictionary-imports.php:29
 msgid "Importing files (.po, .pot, .mo)"
 msgstr "Importation de fichiers (.po, .pot, .mo)"
 
-#: class-xili-dictionary.php:8706 class-xili-dictionary.php:8773
+#: admin-includes/trait-xili-dictionary-imports.php:31
+#: admin-includes/trait-xili-dictionary-imports.php:98
 msgid "Start importing"
 msgstr "Lancer l’importation"
 
-#: class-xili-dictionary.php:8771
+#: admin-includes/trait-xili-dictionary-imports.php:96
 msgid "this theme"
 msgstr "du thème"
 
-#: class-xili-dictionary.php:8771
+#: admin-includes/trait-xili-dictionary-imports.php:96
 msgid "parent of this theme"
 msgstr "parent de ce thème"
 
-#: class-xili-dictionary.php:8771
+#: admin-includes/trait-xili-dictionary-imports.php:96
 msgid "this plugin"
 msgstr "de l'extension"
 
-#: class-xili-dictionary.php:8775
+#: admin-includes/trait-xili-dictionary-imports.php:100
 msgid "Start importing from parent theme"
 msgstr "Importer à partir du thème parent"
 
-#: class-xili-dictionary.php:8960
+#: admin-includes/trait-xili-dictionary-imports.php:285
 msgid "Importing the files"
 msgstr "Importer les fichiers"
 
-#: class-xili-dictionary.php:8963
+#: admin-includes/trait-xili-dictionary-imports.php:288
 msgid "Define the file to import"
 msgstr "Définition du fichier à importer"
 
-#: class-xili-dictionary.php:8979
+#: admin-includes/trait-xili-dictionary-imports.php:304
 msgid "Scanning the files"
 msgstr "Fichiers en cours d'examen"
 
-#: class-xili-dictionary.php:8981
+#: admin-includes/trait-xili-dictionary-imports.php:306
 msgid "Define the sources"
 msgstr "Définir les sources"
 
-#: class-xili-dictionary.php:8989
+#: admin-includes/trait-xili-dictionary-imports.php:314
 msgid ""
 "These settings below are reserved for future uses, leave values 'as is'."
 msgstr ""
 "Ces réglages ci-dessous sont réservés à un usage ultérieur, laisser les 'tel-"
 "quel'."
 
-#: class-xili-dictionary.php:9046
+#: admin-includes/trait-xili-dictionary-imports.php:371
 msgid ""
 "Here it is possible to scan the source files and import translatable terms "
 "inside the dictionary."
@@ -2668,69 +1182,77 @@ msgstr ""
 "éléments traduisibles dans le dictionnaire."
 
 #. translators:
-#: class-xili-dictionary.php:9052
+#: admin-includes/trait-xili-dictionary-imports.php:373
+#: admin-includes/trait-xili-dictionary-settings.php:855
+msgid "Before importing terms, verify that the %1$strash%2$s is empty !"
+msgstr ""
+"Avant d'importer des termes, vérifier que la %1$scorbeille%2$s est vide !"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-imports.php:377
 msgid "Here it is possible to import the .%s file inside the dictionary."
 msgstr "Il est ici possible d'importer un fichier .%s dans le dictionnaire."
 
-#: class-xili-dictionary.php:9070
+#: admin-includes/trait-xili-dictionary-imports.php:395
 msgid "Type of file: .mo or .po"
 msgstr "Type de fichier: .mo or .po"
 
-#: class-xili-dictionary.php:9077
+#: admin-includes/trait-xili-dictionary-imports.php:402
 msgid "Folder"
 msgstr "Dossier"
 
-#: class-xili-dictionary.php:9079
+#: admin-includes/trait-xili-dictionary-imports.php:404
 msgid "Site file (blogs.dir)"
 msgstr "Fichier du site (blogs.dir)"
 
-#: class-xili-dictionary.php:9080
+#: admin-includes/trait-xili-dictionary-imports.php:405
 msgid "Original theme file"
 msgstr "Fichier du thème original"
 
-#: class-xili-dictionary.php:9083
+#: admin-includes/trait-xili-dictionary-imports.php:408
 msgid "As superadmin, define origin of file"
 msgstr "En tant que superadmin, définir l'origine du fichier"
 
-#: class-xili-dictionary.php:9091
+#: admin-includes/trait-xili-dictionary-imports.php:416
 msgid "Place of msgs file"
 msgstr "Emplacement des fichiers de msgs"
 
-#: class-xili-dictionary.php:9093
+#: admin-includes/trait-xili-dictionary-imports.php:418
 msgid "xx_XX file in theme"
 msgstr "fichier xx_XX dans le dossier du theme"
 
-#: class-xili-dictionary.php:9094
+#: admin-includes/trait-xili-dictionary-imports.php:419
 msgid "local-xx_XX file in theme"
 msgstr "fichier local-xx_XX dans le dossier du thème"
 
-#: class-xili-dictionary.php:9097
+#: admin-includes/trait-xili-dictionary-imports.php:422
 msgid "xx_XX file in parent theme"
 msgstr "fichier xx_XX dans le dossier du theme parent"
 
 #. translators:
-#: class-xili-dictionary.php:9100
+#: admin-includes/trait-xili-dictionary-imports.php:425
 msgid "%1$s-xx_XX in %2$s"
 msgstr "%1$s-xx_XX dans %2$s"
 
-#: class-xili-dictionary.php:9102
+#: admin-includes/trait-xili-dictionary-imports.php:427
 msgid "language file from a plugin"
 msgstr "fichier langue d’une extension"
 
 #. translators:
-#: class-xili-dictionary.php:9103
+#: admin-includes/trait-xili-dictionary-imports.php:428
 msgid "language file from a plugin in %1$s"
 msgstr "fichier langue d’une extension dans %1$s"
 
-#: class-xili-dictionary.php:9107
+#: admin-includes/trait-xili-dictionary-imports.php:432
 msgid "Define folder where is file."
 msgstr "Choisir le dossier du fichier."
 
-#: class-xili-dictionary.php:9112
+#: admin-includes/trait-xili-dictionary-imports.php:437
 msgid "Select the plugin from where to import language file."
 msgstr "Choix de l’extension de laquelle importer le fichier langue."
 
-#: class-xili-dictionary.php:9112 class-xili-dictionary.php:9217
+#: admin-includes/trait-xili-dictionary-imports.php:437
+#: admin-includes/trait-xili-dictionary-imports.php:542
 msgid ""
 "Each line includes Text Domain (if available in plugin sources header) and "
 "state of plugin."
@@ -2738,7 +1260,7 @@ msgstr ""
 "Pour chaque extension, est indiqué (si disponible dans l'entête des sources) "
 "le Text Domain et son état actif ou non."
 
-#: class-xili-dictionary.php:9131
+#: admin-includes/trait-xili-dictionary-imports.php:456
 msgid ""
 "Language of the file or POT type if available in theme's folder when "
 "importing .po file. Submit button is active if file exists!"
@@ -2747,143 +1269,1671 @@ msgstr ""
 "cas d'importation de type .po). Le bouton Lancer est actif si le fichier "
 "existe !"
 
-#: class-xili-dictionary.php:9146
+#: admin-includes/trait-xili-dictionary-imports.php:471
 msgid "Plugin"
 msgstr "Extension"
 
-#: class-xili-dictionary.php:9148
+#: admin-includes/trait-xili-dictionary-imports.php:473
 msgid "Select the plugin"
 msgstr "Choisir l’extension"
 
-#: class-xili-dictionary.php:9159
+#: admin-includes/trait-xili-dictionary-imports.php:484
 msgid "n. a."
 msgstr "n. d."
 
-#: class-xili-dictionary.php:9162
+#: admin-includes/trait-xili-dictionary-imports.php:487
 msgid "active"
 msgstr "active"
 
-#: class-xili-dictionary.php:9177
+#: admin-includes/trait-xili-dictionary-imports.php:502
 msgid "Name of current source"
 msgstr "Nom de la source"
 
-#: class-xili-dictionary.php:9179
+#: admin-includes/trait-xili-dictionary-imports.php:504
 msgid "Used to assign origin taxonomy. Below the state of the wanted file:"
 msgstr ""
 "Utilisé pour affecter la taxinomie Origine. Ci-dessous l'état du fichier "
 "ciblé :"
 
-#: class-xili-dictionary.php:9184
+#: admin-includes/trait-xili-dictionary-imports.php:509
 msgid "What about comments"
 msgstr "En ce qui concerne les commentaires"
 
-#: class-xili-dictionary.php:9186
+#: admin-includes/trait-xili-dictionary-imports.php:511
 msgid "No change"
 msgstr "Sans changement"
 
-#: class-xili-dictionary.php:9187
+#: admin-includes/trait-xili-dictionary-imports.php:512
 msgid "Imported comments replace those in list"
 msgstr "Les commentaires importés remplacent les anciens"
 
-#: class-xili-dictionary.php:9188
+#: admin-includes/trait-xili-dictionary-imports.php:513
 msgid "Imported comments be appended..."
 msgstr "Les commentaires importés sont ajoutés..."
 
-#: class-xili-dictionary.php:9201
+#: admin-includes/trait-xili-dictionary-imports.php:526
 msgid "Place of source files"
 msgstr "Lieu des fichiers source"
 
-#: class-xili-dictionary.php:9203
+#: admin-includes/trait-xili-dictionary-imports.php:528
 msgid "from the current theme"
 msgstr "du thème courant"
 
 #. translators:
-#: class-xili-dictionary.php:9208
+#: admin-includes/trait-xili-dictionary-imports.php:533
 msgid "from the current parent theme (%s)"
 msgstr "du thème parent courant (%s)"
 
-#: class-xili-dictionary.php:9210
+#: admin-includes/trait-xili-dictionary-imports.php:535
 msgid "from a selected plugin"
 msgstr "d’une extension à choisir"
 
-#: class-xili-dictionary.php:9212
+#: admin-includes/trait-xili-dictionary-imports.php:537
 msgid "Define where to scan files."
 msgstr "Choisir les sources à explorer."
 
-#: class-xili-dictionary.php:9217
+#: admin-includes/trait-xili-dictionary-imports.php:542
 msgid "Select the plugin from where to scan translatable term."
 msgstr "Choix de l’extension de laquelle importer les éléments traduisibles."
 
-#: class-xili-dictionary.php:9221
+#: admin-includes/trait-xili-dictionary-imports.php:546
 msgid "What about found msgid ?"
 msgstr "En ce qui concerne les msgid trouvés ?"
 
-#: class-xili-dictionary.php:9224
+#: admin-includes/trait-xili-dictionary-imports.php:549
 msgid "only import in dictionary"
 msgstr "ne les importer que dans le dictionnaire"
 
-#: class-xili-dictionary.php:9225
+#: admin-includes/trait-xili-dictionary-imports.php:550
 msgid "only import in a POT file"
 msgstr "ne les importer que dans le fichier .pot"
 
-#: class-xili-dictionary.php:9226
+#: admin-includes/trait-xili-dictionary-imports.php:551
 msgid "import and backup in POT"
 msgstr "importer et copier dans le fichier pot"
 
 #. translators:
-#: class-xili-dictionary.php:9301
+#: admin-includes/trait-xili-dictionary-imports.php:626
 msgid "File %3$s%2$s.%1$s found ! (%4$s entries)"
 msgstr "Fichier %3$s%2$s.%1$s trouvé ! (%4$s entrées)"
 
 #. translators:
-#: class-xili-dictionary.php:9304
+#: admin-includes/trait-xili-dictionary-imports.php:629
 msgid "Found %1$s entries in sources of %2$s"
 msgstr "%1$s entrées trouvées dans les sources du %2$s"
 
 #. translators:
-#: class-xili-dictionary.php:9319
+#: admin-includes/trait-xili-dictionary-imports.php:644
 msgid "Impossible to find file %3$s%2$s.%1$s (%4$s)"
 msgstr "Impossible de trouver le fichier %3$s%2$s.%1$s (%4$s)"
 
 #. translators:
-#: class-xili-dictionary.php:9323
+#: admin-includes/trait-xili-dictionary-imports.php:648
 msgid "Impossible to find entries in sources of %1$s"
 msgstr "Impossible de trouver des entrées dans les sources du %1$s"
 
-#: class-xili-dictionary.php:9333
+#: admin-includes/trait-xili-dictionary-imports.php:658
 msgid "msgs only in pot file"
 msgstr "les msgids sont sauvés uniquement dans le fichier .pot"
 
-#: class-xili-dictionary.php:9343
+#: admin-includes/trait-xili-dictionary-imports.php:668
 msgid "No msgs to import"
 msgstr "Pas de msgs à importer"
 
 #. translators:
-#: class-xili-dictionary.php:9351
+#: admin-includes/trait-xili-dictionary-imports.php:676
 msgid "Importing msgs (%1$s - %2$s)"
 msgstr "Importation des msgs en cours (%1$s - %2$s)"
 
-#: class-xili-dictionary.php:9363
+#: admin-includes/trait-xili-dictionary-imports.php:688
 msgid "Importation Complete"
 msgstr "Importation terminée"
 
 #. translators:
-#: class-xili-dictionary.php:9372
+#: admin-includes/trait-xili-dictionary-imports.php:697
 msgid "from plugin: %s"
 msgstr "de l'extension : %s"
 
 #. translators:
-#: class-xili-dictionary.php:9375
+#: admin-includes/trait-xili-dictionary-imports.php:700
 msgid "from theme: %s"
 msgstr "du thème : %s"
 
-#: class-xili-dictionary.php:9694
+#: admin-includes/trait-xili-dictionary-imports.php:960
 msgid "POT file updated"
 msgstr "Fichier POT mis à jour"
 
-#: class-xili-dictionary.php:9694
+#: admin-includes/trait-xili-dictionary-imports.php:960
 msgid "POT file infos"
 msgstr "Infos sur le fichier POT"
+
+#: admin-includes/trait-xili-dictionary-javascripts.php:297
+msgid "Starting Importing"
+msgstr "Démarrer l'importation"
+
+#: admin-includes/trait-xili-dictionary-javascripts.php:315
+#: admin-includes/trait-xili-dictionary-javascripts.php:372
+msgid "Go to the list of msgs:"
+msgstr "Voir la liste des msgs:"
+
+#: admin-includes/trait-xili-dictionary-javascripts.php:315
+#: admin-includes/trait-xili-dictionary-javascripts.php:372
+msgid "Continue"
+msgstr "Poursuivre"
+
+#: admin-includes/trait-xili-dictionary-javascripts.php:354
+msgid "Starting Erasing"
+msgstr "Suppression lancée"
+
+#: admin-includes/trait-xili-dictionary-msg-list.php:29
+msgid "View all origins"
+msgstr "Voir toutes les origines"
+
+#: admin-includes/trait-xili-dictionary-msg-list.php:59
+msgid "Content"
+msgstr "Contenu"
+
+#: admin-includes/trait-xili-dictionary-msg-list.php:60
+msgid "msg / relations"
+msgstr "msg / relations"
+
+#: admin-includes/trait-xili-dictionary-msg-list.php:61
+msgid "Type / Origin"
+msgstr "Type & Origine"
+
+#: admin-includes/trait-xili-dictionary-msg-list.php:80
+#: class-xili-dictionary.php:542
+msgid "No writer found"
+msgstr "Pas de rédacteur trouvé"
+
+#: admin-includes/trait-xili-dictionary-msg-list.php:82
+#: class-xili-dictionary.php:529
+msgid "Writer"
+msgstr "Rédacteur"
+
+#: admin-includes/trait-xili-dictionary-msg-list.php:82
+#: class-xili-dictionary.php:522 class-xili-dictionary.php:528
+msgid "Writers"
+msgstr "Rédacteurs"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-msg-list.php:84
+msgid ": %s"
+msgstr "&nbsp;: %s"
+
+#: admin-includes/trait-xili-dictionary-msg-list.php:101
+msgid "Local"
+msgstr "Local"
+
+#: admin-includes/trait-xili-dictionary-msg-list.php:110
+msgid "Plugin:"
+msgstr "Extension :"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-msg-list.php:113
+msgid "<small>From:</small> %s"
+msgstr "<small>De :</small> %s"
+
+#: admin-includes/trait-xili-dictionary-msg-list.php:164
+msgid "View all languages"
+msgstr "Voir toutes les langues"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:20
+msgid "msg"
+msgstr "msg (id ou str)"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:22
+msgid "the entry with the %s"
+msgstr "l’entrée avec ses %s"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:26
+msgid "List of %s from entries to translate"
+msgstr "Liste de %s avec les entrées à traduire"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:29
+msgid "Shortcuts to update mo files"
+msgstr "Raccourcis pour mettre à jour les fichiers .mo"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:37
+msgid ""
+"MO file updating started: see result in meta-box named - Shortcuts... - "
+"below buttons"
+msgstr ""
+"Mise à jour du fichier MO lancée : voir le message résultant dans la boite - "
+"Raccourcis… - sous les boutons"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:38
+msgid ""
+"Local MO updating started: see result in meta-box named - Shortcuts... - "
+"below buttons"
+msgstr ""
+"Mise à jour du fichier Local MO lancée : voir le message résultant dans la "
+"boite - Raccourcis… - sous les boutons"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:105
+msgid "Error with File %s !"
+msgstr "Erreur avec le fichier %s !"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:108
+msgid "File %1$s updated with %2$s msgids"
+msgstr "Fichier %1$s mis à jour avec %2$s msgids"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:112
+msgid "Nothing modified in %s, file not updated"
+msgstr "Rien de modifié dans %s, fichhier non mis à jour"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:178
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:184
+msgid "MSGs not translated in %1$s. <em>Sub-select in %2$s</em>"
+msgstr "MSGs non traduits en %1$s. <em>Choisir ceux non traduits en %2$s</em>"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:184
+msgid "No selection: Sub-select in %s"
+msgstr "Pas de sélection : Choisir selon %s"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:198
+#: admin-includes/trait-xili-dictionary-settings.php:1221
+msgid "ID"
+msgstr "ID"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:199
+#: admin-includes/trait-xili-dictionary-settings.php:1222
+msgid "Text"
+msgstr "Texte"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:201
+#: admin-includes/trait-xili-dictionary-settings.php:1224
+msgid "relations"
+msgstr "relations"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:202
+#: admin-includes/trait-xili-dictionary-settings.php:1225
+msgid ".mo status"
+msgstr "état des .mo"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:203
+#: admin-includes/trait-xili-dictionary-settings.php:1226
+msgid "Action"
+msgstr "Action"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:243
+msgid "All lines"
+msgstr "Tous"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:246
+msgid "First"
+msgstr "Début"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:247
+msgid "Last page"
+msgstr "Fin"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:248
+msgid "Next"
+msgstr "Suiv."
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:249
+msgid "Previous"
+msgstr "Préc."
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:251
+msgid "Showing (_START_ to _END_) of _TOTAL_ entries"
+msgstr "Affiche (_START_ à _END_) des _TOTAL_ lignes"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:252
+msgid "(filtered from _MAX_ total entries)"
+msgstr "(filtrés du total des _MAX_ lignes)"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:253
+msgid "Empty table"
+msgstr "Dictionnaire de msg vide !"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:254
+msgid "No entry"
+msgstr "Aucune ligne"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:255
+msgid "Show _MENU_ entries"
+msgstr "Afficher _MENU_ lignes"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:256
+msgid "Filter msg:"
+msgstr "Filtrer les msg :"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:300
+msgid "Informations and actions about files .po / mo"
+msgstr "Informations et actions à propos des fichiers .po / mo"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:312
+msgid "Come from:"
+msgstr "Origine :"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:316
+msgid "Not yet assigned"
+msgstr "Non affecté"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:327
+msgid "theme folder %s"
+msgstr "dossier du thème %s"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:329
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:797
+msgid "this site"
+msgstr "ce site"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:329
+msgid "folder %s"
+msgstr "dossier %s"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:332
+msgid "saved in "
+msgstr "sauvé dans"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:339
+msgid "Plugin ( %s ):"
+msgstr "Extension (%s):"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:403
+msgid "XD say to translate in %s:"
+msgstr "XD indique de traduire en %s :"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:415
+#: class-xili-dictionary.php:1477
+msgid "XD say to translate in %s (msgstr[0] ): "
+msgstr "XD say to translate in %s (msgstr[0] ): "
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:428
+#: class-xili-dictionary.php:1487
+msgid "XD say to translate in %s (msgstr[1] ): "
+msgstr "XD say to translate in %s (msgstr[1] ): "
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:451
+#: class-xili-dictionary.php:1497
+msgid "XD say id to plural: "
+msgstr "XD indique id au plural: "
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:480
+msgid "msgid:"
+msgstr "msgid :"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:484
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:505
+#: class-xili-dictionary.php:1448
+msgid "( <a href=\"%1$s\" title=\"link to:%2$d\" >%3$s</a> )<br />"
+msgstr "( <a href=“%1$s” title=“link to:%2$d” >%3$s</a> )<br />"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:484
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:505
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:564
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:591
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:816
+#: class-xili-dictionary.php:1448 class-xili-dictionary.php:1556
+#: class-xili-dictionary.php:1575 class-xili-dictionary.php:1650
+#: class-xili-dictionary.php:1668 class-xili-dictionary.php:1688
+#: class-xili-dictionary.php:1691
+msgid "Edit"
+msgstr "Modifier"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:496
+msgid "msgid_plural:"
+msgstr "msgid_plural:"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:515
+#: class-xili-dictionary.php:1453
+msgid "&nbsp;<a href=\"%s\" >Create msgid_plural</a>"
+msgstr "&nbsp;<a href=\"%s\" >Créer msgid_plural</a>"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:525
+#: class-xili-dictionary.php:1527 class-xili-dictionary.php:1538
+msgid "translated in"
+msgstr "traduit en"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:609
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:637
+#: class-xili-dictionary.php:1595 class-xili-dictionary.php:1608
+msgid "Create msgstr in: "
+msgstr "Créer un msgstr :"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:617
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:645
+msgid "Create and edit"
+msgstr "Créer et éditer"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:629
+#: class-xili-dictionary.php:1586 class-xili-dictionary.php:1605
+msgid "not yet translated."
+msgstr "non traduit."
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:631
+msgid "Status: %s"
+msgstr "Statut : %s"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:634
+msgid "Translation in"
+msgstr "Traduction en"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:655
+msgid "The msgid (%d) was deleted. The msg series must be recreated."
+msgstr "Le msgid (%d) est effacé. La série doit être re-créée."
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:810
+msgid "P{%s}:"
+msgstr "E{%s}&nbsp;:"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:866
+msgid "Context"
+msgstr "Contexte"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:874
+msgid "&nbsp;<a href=\"%s\" >Edit context</a>"
+msgstr "&nbsp;<a href=\"%s\" >Modifier le contexte</a>"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:879
+msgid "&nbsp;<a href=\"%s\" >Create context</a>"
+msgstr "&nbsp;<a href=\"%s\" >Créer un contexte</a>"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:882
+msgid ""
+"After saving this msgid as draft,%s it will be possible to add a context"
+msgstr ""
+"Après enregistrement comme brouillon, %s il sera alors possible d'ajouter un "
+"contexte"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:902
+msgid "Return to %s list"
+msgstr "Retour à la liste %s"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:911
+msgid "Extracted comments: %s"
+msgstr "Commentaires extraits : %s"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:917
+msgid "Translator comments: %s"
+msgstr "Commentaires traducteur : %s"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:922
+msgid "Flags: %s"
+msgstr "Drapeaux : %s"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:931
+msgid "msgstr Translator comments"
+msgstr "Commentaire traducteur msgstr"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:940
+msgid "Lines: %s"
+msgstr "Lignes : %s"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:945
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:967
+msgid "Return to <a href=\"%s\" title=\"Go to msg list\">msg list</a>"
+msgstr ""
+"Retour à la <a href=\"%s\" title=\"Aller à la liste msg\">liste msg</a>"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:954
+msgid "Set in theme (<a href=\"%s\" >set local</a>)"
+msgstr "Mis dans le thème (<a href=\"%s\" >mettre en local</a>)"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:959
+msgid "Set in local (<a href=\"%s\" >unset</a>)"
+msgstr "Affecté en local (<a href=\"%s\" >désaffecter</a>)"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:965
+msgid ""
+"The msgid (%d) was deleted. The msg series must be recreated and commented."
+msgstr ""
+"Le msgid (%d) a été effacé. La série des msgs doit être récréée et commentée."
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:1004
+msgid "This msg translation is in %1$s (%2$s)"
+msgstr "Ce msg traduit en %1$s (%2$s)"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:1005
+msgid "Updating shortcuts"
+msgstr "Raccourcis de mise à jour"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:1008
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:1022
+msgid "Update"
+msgstr "Mettre à jour"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:1011
+msgid "No local translated msgid to be saved in %s"
+msgstr "Pas de msgid 'local' à sauver dans %s"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:1014
+msgid "It is possible to update the .mo files of current theme %s"
+msgstr "Il est possible de mettre à jour les fichiers .mo du thème courant %s"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:1018
+msgid ""
+"Before to use this button, it is very important that you verify that your "
+"term list is quite achieved inside the dictionary. It is because the "
+"original .mo delivered with theme is updated (erased) !!!"
+msgstr ""
+"Avant d'utiliser ce bouton, il est très important de vérifier que la liste "
+"des termes (msg) est presque achevée dans le dictionnaire. En effet, le "
+"fichier original livré avec le thème est écrasé. Donc pensez à les importer "
+"dans le dictionnaire auparavant !!!"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:1025
+msgid "No translated msgid to be saved in %s"
+msgstr "Pas de msgid à sauver dans %s"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:1034
+msgid "Links are available if a translation (msgstr) is edited."
+msgstr ""
+"Les raccourcis sont disponibles si une traduction (msgstr) est en cours."
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:1047
+msgid "Are you sure you want to update mo ? "
+msgstr "Etes vous sûr de vouloir mettre à jour le .mo ?"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:1110
+msgid "No translations saved in theme’s .mo files"
+msgstr "Pas de traduction sauvé dans les fichiers .mo du thème"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:1110
+msgid "Original with translations saved in theme’s files: "
+msgstr "Traductions présentes dans les fichiers du site :"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:1112
+msgid "No translations saved in local-xx_XX .mo files"
+msgstr "Non traduit dans les local-xx_XX.mo du thème"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:1112
+msgid "Original with translations saved in local-xx_XX files: "
+msgstr "Original avec traductions dans les local-xx_XX.mo du thème : "
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:1116
+msgid "No translations saved in site’s .mo files"
+msgstr "Non traduit dans les .mo du site"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:1118
+msgid "No translations saved in site’s local .mo files"
+msgstr "Non traduit dans les local-xx_XX.mo du thème"
+
+#: admin-includes/trait-xili-dictionary-msg-metabox.php:1118
+msgid "Original with translations saved in site’s local files: "
+msgstr "Original avec traductions dans les local-xx_XX.mo du thème : "
+
+#: admin-includes/trait-xili-dictionary-settings.php:25
+msgid "Dialog box"
+msgstr "Boite de dialogue"
+
+#: admin-includes/trait-xili-dictionary-settings.php:27
+msgid "Do &raquo;"
+msgstr "Ajouter&raquo;"
+
+#: admin-includes/trait-xili-dictionary-settings.php:28
+msgid "Cancel"
+msgstr "Annuler"
+
+#: admin-includes/trait-xili-dictionary-settings.php:187
+#: admin-includes/trait-xili-dictionary-settings.php:1353
+msgid "Build mo file"
+msgstr "Générer le fichier mo"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-settings.php:189
+#: admin-includes/trait-xili-dictionary-settings.php:335
+msgid ""
+"To build a %s file, choose language, destination (current theme or plugin) "
+"and origin."
+msgstr ""
+"Pour construire le fichier %s, choisir la langue, la destination (thème "
+"courant ou extension) et l'origine."
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-settings.php:191
+#: admin-includes/trait-xili-dictionary-settings.php:337
+msgid "Build %s file &raquo;"
+msgstr "Générer le fichier %s &raquo;"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-settings.php:316
+#: admin-includes/trait-xili-dictionary-settings.php:469
+msgid "error during exporting in %s file."
+msgstr "Erreur pendant la création du fichier %s."
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-settings.php:319
+#: admin-includes/trait-xili-dictionary-settings.php:472
+msgid "exported in %1$s file with %2$s msgids."
+msgstr "exporté dans le fichier %1$s avec %2$s msgids."
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-settings.php:323
+#: admin-includes/trait-xili-dictionary-settings.php:476
+msgid "Nothing saved or updated in %s file !"
+msgstr "Rien de sauvé dans %s, pas de mise à jour !"
+
+#: admin-includes/trait-xili-dictionary-settings.php:333
+#: admin-includes/trait-xili-dictionary-settings.php:1356
+msgid "Build po file"
+msgstr "Générer le fichier po"
+
+#: admin-includes/trait-xili-dictionary-settings.php:486
+msgid "Import terms of blog info and others…"
+msgstr "Importer les termes des infos du site…"
+
+#: admin-includes/trait-xili-dictionary-settings.php:487
+msgid ""
+"To import terms of blog info and others defining this current website "
+"(title, date, comment, archive...), click below."
+msgstr ""
+"Pour importer les termes du thème courant (titre, sous-titre, dates, "
+"commentaires, archives etc...), cliquer ci-dessous."
+
+#: admin-includes/trait-xili-dictionary-settings.php:490
+msgid ""
+"The process will import around 140 <strong>msgid</strong> from db and "
+"sources, so be patient."
+msgstr ""
+"Le processus lancé va importer près de 140 <strong>msgid</strong> de la base "
+"et des sources, soyez donc patient."
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-settings.php:496
+msgid ""
+"The language of dashboard is not <em>en_US</em>, so the process will try to "
+"import translations in %s."
+msgstr ""
+"Le langage du tableau de bord n'est pas <em>en_US</em>, dès lors, le "
+"processus va essayer d’importer les traductions par défaut en %s."
+
+#: admin-includes/trait-xili-dictionary-settings.php:498
+msgid ""
+"If you switch language of dashboard in one other than in <em>en_US</em>, "
+"then the process will try to import translations of chosen language."
+msgstr ""
+"Si, au lieu du <em>en_US</em>, vous changez la langue du tableau de bord, "
+"alors le processus va essayer d’importer les traductions disponibles dans le "
+"langage choisi."
+
+#: admin-includes/trait-xili-dictionary-settings.php:515
+msgid "Import blog info terms &raquo;"
+msgstr "Importer tous les termes &raquo;"
+
+#: admin-includes/trait-xili-dictionary-settings.php:531
+#: admin-includes/trait-xili-dictionary-settings.php:564
+msgid "Import terms from active plugins"
+msgstr "Importer les termes des extensions actives"
+
+#: admin-includes/trait-xili-dictionary-settings.php:532
+msgid "To import terms …, click below."
+msgstr "Pour importer les termes ..., cliquer ci-dessous."
+
+#: admin-includes/trait-xili-dictionary-settings.php:533
+msgid "Import msgs &raquo;"
+msgstr "Importer les msgs &raquo;"
+
+#: admin-includes/trait-xili-dictionary-settings.php:543
+msgid "Start collecting terms from active plugins"
+msgstr "Importer les termes des extensions actives"
+
+#: admin-includes/trait-xili-dictionary-settings.php:544
+#: admin-includes/trait-xili-dictionary-settings.php:565
+msgid "To import terms, open a browser in front-end side."
+msgstr ""
+"Pour importer les termes du thème courant, ouvrir un navigateur sur le côté "
+"visiteur du site."
+
+#: admin-includes/trait-xili-dictionary-settings.php:545
+msgid "Stop msgs collecting &raquo;"
+msgstr "Arrêt de la collecte des msgs &raquo;"
+
+#: admin-includes/trait-xili-dictionary-settings.php:550
+msgid "Error: no domain specified"
+msgstr "Erreur : pas de domaine spécifié"
+
+#: admin-includes/trait-xili-dictionary-settings.php:551
+msgid "Please specify a domain..."
+msgstr "Indiquer un domain..."
+
+#: admin-includes/trait-xili-dictionary-settings.php:552
+msgid "End collecting &raquo;"
+msgstr "Fin de collecte &raquo;"
+
+#: admin-includes/trait-xili-dictionary-settings.php:566
+msgid "Import collected &raquo;"
+msgstr "Importer les éléments collectés &raquo;"
+
+#: admin-includes/trait-xili-dictionary-settings.php:586
+msgid "imported terms = "
+msgstr "termes importés = "
+
+#: admin-includes/trait-xili-dictionary-settings.php:588
+msgid "plugin’s terms pbs!"
+msgstr "problème dans les termes de l'extension !"
+
+#: admin-includes/trait-xili-dictionary-settings.php:600
+msgid "Import terms of taxonomy"
+msgstr "Importer les noms et descriptions des taxinomies"
+
+#: admin-includes/trait-xili-dictionary-settings.php:601
+msgid "To import terms of the current taxonomy named, click below."
+msgstr "Pour importer les termes du thème courant, cliquer çi-dessous."
+
+#: admin-includes/trait-xili-dictionary-settings.php:602
+msgid "Import taxonomy’s terms &raquo;"
+msgstr "Importer &raquo;"
+
+#: admin-includes/trait-xili-dictionary-settings.php:613
+msgid "names = "
+msgstr "names = "
+
+#: admin-includes/trait-xili-dictionary-settings.php:613
+msgid "descs = "
+msgstr "descs = "
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-settings.php:616
+msgid "taxonomy -%s- terms pbs!"
+msgstr "problème avec les termes de la taxinomie -%s- !"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-settings.php:621
+msgid "taxonomy -%s- do not exists"
+msgstr "la taxinomie -%s- n'existe pas"
+
+#: admin-includes/trait-xili-dictionary-settings.php:628
+msgid "Erase all terms"
+msgstr "Effacer tous les termes"
+
+#: admin-includes/trait-xili-dictionary-settings.php:629
+msgid ""
+"To erase terms of the dictionary, click below. (before, create a .po if "
+"necessary!)"
+msgstr ""
+"Efface tous les termes du dictionnaire ! mais pas les fichiers .po et .mo"
+
+#: admin-includes/trait-xili-dictionary-settings.php:630
+msgid "Erase all terms &raquo;"
+msgstr "Effacer le dictionnaire &raquo;"
+
+#: admin-includes/trait-xili-dictionary-settings.php:640
+msgid "All terms erased !"
+msgstr "Tous les termes effacés !"
+
+#: admin-includes/trait-xili-dictionary-settings.php:694
+msgid "Email sent."
+msgstr "Courriel envoyé."
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-settings.php:697
+msgid "Thanks for your email. A copy was sent to %1$s (%2$s)"
+msgstr "Merci pour votre courriel dont une copie est envoyé à %1$s (%2$s)"
+
+#: admin-includes/trait-xili-dictionary-settings.php:703
+msgid "Find below the list of msg."
+msgstr "Voici ci-dessous la liste des msg."
+
+#: admin-includes/trait-xili-dictionary-settings.php:709
+msgid "Import & export"
+msgstr "Importer et exporter"
+
+#: admin-includes/trait-xili-dictionary-settings.php:711
+msgid "Terms list management"
+msgstr "Gestion de l'affichage des termes (msg)"
+
+#: admin-includes/trait-xili-dictionary-settings.php:714
+msgid "Languages list management"
+msgstr "Gestion de la liste des langues"
+
+#: admin-includes/trait-xili-dictionary-settings.php:720
+msgid "Entries (Msgid and Msgstr)"
+msgstr "Entrées (msgid / msgstr)"
+
+#: admin-includes/trait-xili-dictionary-settings.php:726
+msgid "A new msgid was added."
+msgstr "Un nouveau msgid a été ajouté."
+
+#: admin-includes/trait-xili-dictionary-settings.php:727
+msgid "A msg was updated."
+msgstr "Un msg mis à jour."
+
+#: admin-includes/trait-xili-dictionary-settings.php:728
+msgid "A msg was deleted."
+msgstr "Un msg a été supprimé."
+
+#: admin-includes/trait-xili-dictionary-settings.php:729
+msgid "msg imported from WP: "
+msgstr "msg importés de WP : "
+
+#: admin-includes/trait-xili-dictionary-settings.php:730
+msgid "All msg imported !"
+msgstr "Tous les msg importés !"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-settings.php:732
+msgid "Result log: %s"
+msgstr "Message : %s"
+
+#: admin-includes/trait-xili-dictionary-settings.php:733
+msgid "All msgs erased !"
+msgstr "Tous les msg effacés !"
+
+#: admin-includes/trait-xili-dictionary-settings.php:734
+msgid "Error when adding !"
+msgstr "Erreur à la création !"
+
+#: admin-includes/trait-xili-dictionary-settings.php:735
+msgid "Error when updating !"
+msgstr "Erreur lors de la mise à jour !"
+
+#: admin-includes/trait-xili-dictionary-settings.php:736
+msgid ""
+"Wait during terms importing process until the entries (msgid and msgstr) "
+"list appears below!"
+msgstr ""
+"Patienter pendant le processus de l’importation des textes jusqu’à "
+"l’affichage ci-dessous de la liste des entrées (msgid et msgstr) !"
+
+#: admin-includes/trait-xili-dictionary-settings.php:760
+msgid "Dictionary"
+msgstr "Dictionnaire"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-settings.php:796
+msgid "msgid imported with success (%s msgstr)"
+msgstr "msgid importés avec succès (%s msgstr)"
+
+#: admin-includes/trait-xili-dictionary-settings.php:798
+msgid "already imported"
+msgstr "déjà importé"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-settings.php:810
+msgid "Polylang imported or refreshed (%1$s) - and %2$s category strings."
+msgstr ""
+"Importation ou actualisation (%1$s) de Polylang effectuée et %2$s textes des "
+"catégories."
+
+#: admin-includes/trait-xili-dictionary-settings.php:818
+msgid "Author"
+msgstr "Auteur"
+
+#: admin-includes/trait-xili-dictionary-settings.php:874
+msgid "Build a .pot file"
+msgstr "Générer un fichier .pot"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-settings.php:887
+msgid ""
+"Verify before that you are authorized to write in languages folder in theme "
+"named: %s"
+msgstr ""
+"Avant: vérifier que vous êtes bien habilité à modifier les fichiers langues "
+"dans le thème dénommé %s"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-settings.php:897
+msgid "SuperAdmin: %sonly as theme .mo"
+msgstr "En tant que Super Admin : %smodifier le .mo du thème original"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-settings.php:900
+msgid "SuperAdmin: %sonly as theme .po"
+msgstr "En tant que Super Admin : %smodifier le .mo du thème original"
+
+#: admin-includes/trait-xili-dictionary-settings.php:917
+msgid "Theme"
+msgstr "Thème courant"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-settings.php:926
+msgid "Build and save %s file"
+msgstr "Générer le fichier %s"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-settings.php:928
+msgid "Save only the local-xx_XX.%s sub-selection"
+msgstr "Sauver seulement la sous -sélection local-xx_XX.%s"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-settings.php:930
+msgid "Save %s w/o local msgs"
+msgstr "Sauve %s en excluant les messages (msg) “local”"
+
+#: admin-includes/trait-xili-dictionary-settings.php:935
+msgid "In which languages subfolder"
+msgstr "Vers quel sous-dossier langages"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-settings.php:939
+msgid "Sub-folder (%1$s) in current theme (%2$s)"
+msgstr "Sous-dossier (%1$s) du thème courant (%2$s)"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-settings.php:942
+msgid "Languages sub-folder (%1$s) in parent theme ( %2$s )"
+msgstr "Sous-dossier langues (%1$s) du thème parent ( %2$s )"
+
+#: admin-includes/trait-xili-dictionary-settings.php:944
+msgid "Themes sub-folder in wp-content/languages (WP_LANG_DIR)"
+msgstr "Sous-dossier themes de wp-content/languages (WP_LANG_DIR)"
+
+#: admin-includes/trait-xili-dictionary-settings.php:951
+msgid "Plugin language folder"
+msgstr "Sous-dossier langages de l'extension"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-settings.php:952
+msgid "Plugin language file in %s"
+msgstr "fichier langue d’une extension dans %s"
+
+#: admin-includes/trait-xili-dictionary-settings.php:974
+msgid "Check Origin(s) to be exported"
+msgstr "Cocher selon les origines à exporter"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-settings.php:984
+msgid "Plugin: %s"
+msgstr "L’extension : %s"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1003
+msgid "The previous file will be overwritten !"
+msgstr "Le fichier actuel sera remplacé !"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1083
+msgid "Slug:"
+msgstr "Code :"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1095
+msgid "Some active domains are detected in memory"
+msgstr "Plusieurs domaines actifs sont détectés en mémoire."
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-settings.php:1101
+msgid "This domain named %1$s has %2$d active entries."
+msgstr "Ce domaine dénommé %1$s a %2$d entrées."
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-settings.php:1106
+msgid "No entry in %s (or .mo file badly built) . "
+msgstr "No entry in %s (or .mo file badly built). "
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-settings.php:1117
+msgid "Some terms collected from %s !"
+msgstr "Quelques éléments collectés de %s !"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1122
+msgid "No terms collected from %s !"
+msgstr "Pas d'élément importé  de %s !"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1138
+msgid "Domain : "
+msgstr "Domaine : "
+
+#: admin-includes/trait-xili-dictionary-settings.php:1199
+msgid "Now, all the blog and core terms are imported:"
+msgstr ""
+"C'est terminé, tous les termes du coeur et options du site sont importés :"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1201
+msgid "This box is used for input dialog, leave it opened and visible…"
+msgstr ""
+"Cette fenêtre est utilisée pour le dialogue : laisser visible et ouverte…"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1216
+msgid "Drawing table..."
+msgstr "Tableau en cours de mise en place..."
+
+#: admin-includes/trait-xili-dictionary-settings.php:1248
+msgid "Language to delete"
+msgstr "Langue à supprimer"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1249
+msgid ""
+"Only the languages list is here modified (but not the dictionary's contents)"
+msgstr ""
+"Seule la liste des langages est modifiée mais pas les contenus du "
+"dictionnaire"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1252
+msgid "Select..."
+msgstr "Choisir..."
+
+#: admin-includes/trait-xili-dictionary-settings.php:1257
+msgid "Delete a language"
+msgstr "Supprimer une langue"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-settings.php:1272
+msgctxt "locales"
+msgid "%1$s/%2$s"
+msgstr "%1$s / %2$s"
+
+#. translators:
+#: admin-includes/trait-xili-dictionary-settings.php:1276
+msgctxt "locales"
+msgid "%1$s/%2$s *"
+msgstr "%1$s / %2$s *"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1283
+msgid "Language to add"
+msgstr "Langue à ajouter"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1289
+msgid "ISO (xx_YY)"
+msgstr "Code (xx_YY)"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1291
+msgid "Name (eng.)"
+msgstr "Nom (angl.)"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1295
+msgid "Add a language"
+msgstr "Ajouter une langue"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1336
+msgid "Choose…"
+msgstr "Choisir…"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1352
+msgid "The files"
+msgstr "Les fichiers"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1353
+msgid "Create or Update mo file in current theme folder"
+msgstr "Crée ou met à jour le fichier .mo dans le dossier du thème actif"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1354
+msgid "Import po/mo file"
+msgstr "Import d'un fichier "
+
+#: admin-includes/trait-xili-dictionary-settings.php:1354
+msgid "Import an existing .po file from current theme folder"
+msgstr "Importe un fichier .po existant dans le dossier du thème actif"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1355
+msgid "Import an existing .mo file from current theme folder"
+msgstr "Importe un fichier .po existant dans le dossier du thème actif"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1356
+msgid "Create or Update po file in current theme folder"
+msgstr "Crée ou met à jour le fichier .po dans le dossier du thème actif"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1357
+msgid "Download po or file to your computer"
+msgstr "Télécharger le fichier po sur votre ordinateur"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1357
+msgid "Download file"
+msgstr "Télécharger le fichier"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1359
+msgid "The taxonomies"
+msgstr "Les taxinomies du site."
+
+#: admin-includes/trait-xili-dictionary-settings.php:1360
+msgid "Import name and description of taxonomy"
+msgstr "Importe nom et description des taxinomies"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1360
+msgid "Import texts of taxonomy"
+msgstr "Importer des textes des taxonomies"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1362
+msgid "The website infos (title, sub-title and more…)"
+msgstr "Les infos du site (titre, sous-titre etc…)"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1365
+msgid "…and comment, locale, date terms, archive,…"
+msgstr ""
+"… et les termes pour commentaires, locaux et dates ainsi que ceux pour les "
+"archives."
+
+#: admin-includes/trait-xili-dictionary-settings.php:1369
+msgid "Import infos of website and more to become translatable..."
+msgstr ""
+"Importer des infos du site Web et bien plus encore pour devenir traduisible…"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1369
+msgid "Import texts of website's infos"
+msgstr "Importer des textes d’infos du site"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1371
+msgid "Dictionary in database"
+msgstr "Le dictionnaire dans la base"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1372
+msgid "Erase selected msg of dictionary ! (but not .mo or .po files)"
+msgstr ""
+"Effacer une sélection ou tous les msg du dictionnaire ! (les fichiers .mo "
+"et .po ne sont pas effacés)"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1372
+msgid "Erase (selection of) msg"
+msgstr "Effacer (une sélection) des msg &raquo;"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1373
+msgid "Import translatable texts from files"
+msgstr "Importer les textes traduisibles des fichiers"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1373
+msgid "Import texts from source files"
+msgstr "Importer les textes traduisibles des fichiers source"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1375
+msgid "Selection of plugin’s msgs for front-end"
+msgstr "Sélection des extensions pour le versant visiteur"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1376
+msgid "Import translatable texts for current active plugin"
+msgstr "Importer les textes des fichiers d’une extension active"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1376
+msgid "Import texts from plugins"
+msgstr "Importer les textes des extensions"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1390
+msgid "Sub list of msg"
+msgstr "Sélection de msg"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1397
+msgid "Containing:"
+msgstr "Incluant :"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1400
+#: admin-includes/trait-xili-dictionary-settings.php:1421
+msgid "Sub select…"
+msgstr "Sous sélectionner…"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1401
+msgid "No select…"
+msgstr "Sans sélection…"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1405
+msgid "Selection by language"
+msgstr "Sélection par langue"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1407
+msgid "No sub-selection"
+msgstr "Sans sous-sélection"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1410
+msgid "Only MsgID (en_US)"
+msgstr "Que le MsgID (en_US)"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1412
+msgid "Only Msgstr"
+msgstr "Only Msgstr"
+
+#: admin-includes/trait-xili-dictionary-settings.php:1414
+msgid "Only Msgstr plural"
+msgstr "Only Msgstr plural"
+
+#: admin-includes/trait-xili-dictionary-various.php:49
+#: class-xili-dictionary.php:1970
+msgid "child of"
+msgstr "enfant de"
+
+#: admin-includes/trait-xili-dictionary-xml-pll.php:84
+msgid "A config.xml file is available."
+msgstr "Un fichier config.xml est disponible."
+
+#: admin-includes/trait-xili-dictionary-xml-pll.php:86
+msgid ""
+"Check below if you want to add in dictionary the terms described inside this "
+"file. <br />(Do not forget to fill values in customizer before.)"
+msgstr ""
+"Cocher ci-dessous pour ajouter dans le dictionnaire les termes décrits dans "
+"ce fichier. <br />(Ne pas oublier auparavant de saisir ces valeurs dans "
+"l’écran de personnalisation.)"
+
+#: admin-includes/trait-xili-dictionary-xml-pll.php:88
+msgid "import theme_mods datas"
+msgstr "importer les données theme_mods"
+
+#: admin-includes/trait-xili-dictionary-xml-pll.php:91
+msgid "BUT current PHP install needs <em>simplexml</em> extension !"
+msgstr "MAIS le PHP courant nécessite l’extension <em>simplexml</em> !"
+
+#: admin-includes/trait-xili-dictionary-xml-pll.php:135
+msgid "Polylang translation strings are available."
+msgstr "Les chaînes de traduction de Polylang sont disponibles."
+
+#: admin-includes/trait-xili-dictionary-xml-pll.php:137
+msgid ""
+"Check below if you want to add in dictionary the terms (and translations) "
+"made by Polylang"
+msgstr ""
+"Cochez ci-dessous si vous souhaitez ajouter dans le dictionnaire les termes "
+"(et traductions) faites par Polylang"
+
+#: admin-includes/trait-xili-dictionary-xml-pll.php:139
+msgid "import Polylang strings"
+msgstr "importer les textes de Polylang"
+
+#: class-xili-dictionary.php:449
+msgctxt "post type general name"
+msgid "xili-dictionary©"
+msgstr "Dictionnaire xili©"
+
+#: class-xili-dictionary.php:450
+msgctxt "post type singular name"
+msgid "Msg"
+msgstr "Msg"
+
+#: class-xili-dictionary.php:451
+msgid "New Msgid"
+msgstr "Ajout msgid"
+
+#: class-xili-dictionary.php:452
+msgid "Add New Msgid"
+msgstr "Ajout msgid"
+
+#: class-xili-dictionary.php:453
+msgid "Edit Msg"
+msgstr "Editer le msg"
+
+#: class-xili-dictionary.php:454
+msgid "New Msg"
+msgstr "Nouveau msg"
+
+#: class-xili-dictionary.php:455
+msgid "View Msg"
+msgstr "Afficher"
+
+#: class-xili-dictionary.php:456
+msgid "Search Msg"
+msgstr "Chercher msg"
+
+#: class-xili-dictionary.php:457
+msgid "No Msg found"
+msgstr "Pas de msg trouvé"
+
+#: class-xili-dictionary.php:458
+msgid "No Msg found in Trash"
+msgstr "Pas de msg dans la poubelle"
+
+#: class-xili-dictionary.php:491 class-xili-dictionary.php:498
+msgid "Origins"
+msgstr "Origines"
+
+#: class-xili-dictionary.php:499
+msgid "Origin"
+msgstr "Origine"
+
+#: class-xili-dictionary.php:500
+msgid "Search Origins"
+msgstr "Chercher des origines"
+
+#: class-xili-dictionary.php:501
+msgid "Popular Origins"
+msgstr "Origines fréquentes"
+
+#: class-xili-dictionary.php:502
+msgid "All Origins"
+msgstr "Toutes les origines"
+
+#: class-xili-dictionary.php:503
+msgid "Parent Origin"
+msgstr "Origine parente"
+
+#: class-xili-dictionary.php:504
+msgid "Parent Origin:"
+msgstr "Origine parente :"
+
+#: class-xili-dictionary.php:505
+msgid "Edit Origin"
+msgstr "Modifier l'origine"
+
+#: class-xili-dictionary.php:506
+msgid "Update Origin"
+msgstr "Mettre à jour cette origine"
+
+#: class-xili-dictionary.php:507
+msgid "Add New Origin"
+msgstr "Ajouter une nouvelle origine"
+
+#: class-xili-dictionary.php:508
+msgid "New Origin Name "
+msgstr "Nouveau nom de l'origine"
+
+#: class-xili-dictionary.php:509
+msgid "Separate origins with commas"
+msgstr "Séparer les origines avec une virgule"
+
+#: class-xili-dictionary.php:510
+msgid "Add or remove origins"
+msgstr "Ajouter ou supprimer des origines"
+
+#: class-xili-dictionary.php:511
+msgid "Choose from the most used origins"
+msgstr "Choisir parmi les origines les plus fréquentes"
+
+#: class-xili-dictionary.php:512
+msgid "No origin found"
+msgstr "Pas d’origine trouvée"
+
+#: class-xili-dictionary.php:530
+msgid "Search Writers"
+msgstr "Recherche Rédacteurs"
+
+#: class-xili-dictionary.php:531
+msgid "Popular Writers"
+msgstr "Rédacteurs fréquents"
+
+#: class-xili-dictionary.php:532
+msgid "All Writers"
+msgstr "Tous les rédacteurs"
+
+#: class-xili-dictionary.php:533
+msgid "Parent Writer"
+msgstr "Parent du rédacteur"
+
+#: class-xili-dictionary.php:534
+msgid "Parent Writer:"
+msgstr "Parent du rédacteur :"
+
+#: class-xili-dictionary.php:535
+msgid "Edit Writer"
+msgstr "Modifier un rédacteur"
+
+#: class-xili-dictionary.php:536
+msgid "Update Writer"
+msgstr "Mettre à jour un rédacteur"
+
+#: class-xili-dictionary.php:537
+msgid "Add New Writer"
+msgstr "Ajouter un nouveau rédacteur"
+
+#: class-xili-dictionary.php:538
+msgid "New Writer Name "
+msgstr "Nouveau nom de rédacteur"
+
+#: class-xili-dictionary.php:539
+msgid "Separate writers with commas"
+msgstr "Séparer les rédacteurs avec une virgule"
+
+#: class-xili-dictionary.php:540
+msgid "Add or remove writers"
+msgstr "Ajouter ou supprimer des rédacteurs"
+
+#: class-xili-dictionary.php:541
+msgid "Choose from the most used writers"
+msgstr "Choisir parmi les rédacteurs les plus fréquents"
+
+#: class-xili-dictionary.php:563
+msgid "series"
+msgstr "Série"
+
+#. translators:
+#: class-xili-dictionary.php:567 class-xili-dictionary.php:579
+msgctxt "form"
+msgid "%s"
+msgstr "%s"
+
+#: class-xili-dictionary.php:568
+msgid "Reference"
+msgstr "Référence"
+
+#: class-xili-dictionary.php:569
+msgid ""
+"This text (msgid) is the Reference and must modified <strong>ONLY IF</"
+"strong> you are sure that it will be the same as in source code or text."
+msgstr ""
+"Ce texte (msgid) est LA référence et ne doit être modifié <strong>QUE SI</"
+"strong> vous êtes sûr qu'il correspondra bien avec celui du code source ou "
+"de texte ciblé."
+
+#. translators:
+#: class-xili-dictionary.php:572
+msgid ""
+"To create or edit translations (msgstr), see %1$s in the table of box %2$s."
+msgstr ""
+"Pour créer ou éditer (msgstr), voir %1$s dans la table de la boite %2$s."
+
+#: class-xili-dictionary.php:573
+msgid "links"
+msgstr "liens"
+
+#: class-xili-dictionary.php:574
+msgid "msg %s"
+msgstr "%s msg"
+
+#. translators:
+#: class-xili-dictionary.php:585
+msgctxt "form"
+msgid "msgstr[%d]"
+msgstr "msgstr[%d]"
+
+#: class-xili-dictionary.php:589
+msgid "&nbsp;(plural)"
+msgstr "&nbsp;(pluriel)"
+
+#: class-xili-dictionary.php:592
+msgid "Translation%s"
+msgstr "Traduction%s"
+
+#: class-xili-dictionary.php:737
+msgid "A term with the name provided already exists."
+msgstr "Le terme avec ce même nom existe."
+
+#. translators:
+#: class-xili-dictionary.php:930
+msgid "and context %s"
+msgstr "avec le contexte %s"
+
+#. translators:
+#: class-xili-dictionary.php:932 class-xili-dictionary.php:939
+msgid "msgid exists as %1$d with content: %2$s%3$s"
+msgstr "le msgid existe dans %1$d tel que : %2$s%3$s"
+
+#: class-xili-dictionary.php:937
+msgid "without context"
+msgstr "sans contexte (ctxt)"
+
+#: class-xili-dictionary.php:1212
+msgid "Name"
+msgstr "Nom"
+
+#: class-xili-dictionary.php:1228
+msgid "Description"
+msgstr "Description"
+
+#. translators:
+#: class-xili-dictionary.php:1246
+msgid "<a href=\"%s\">Display term(s) in XD</a>"
+msgstr "<a href=\"%s\" >Afficher dans XD</a>"
+
+#: class-xili-dictionary.php:1251
+msgid ""
+"This list above gathers the translations of name and description saved in "
+"current local-xx_XX.mo files of the current theme."
+msgstr ""
+"La liste ci-dessus regroupe les traductions des noms et descriptions "
+"présentes dans xili-dictionary et les fichiers local-xx_XX.mo du thème "
+"courant."
+
+#: class-xili-dictionary.php:1274
+msgid "View all writers"
+msgstr "Voir tous les rédacteurs"
+
+#: class-xili-dictionary.php:1412
+msgid "msgid saved as: <em>%s</em>"
+msgstr "msgid stocké : <em>%s</em>"
+
+#. translators:
+#: class-xili-dictionary.php:1432
+msgid "has plural: <a href=\"%1$s\" >%2$d</a><br />"
+msgstr "has plural: <a href=“%1$s” >%2$d</a><br />"
+
+#: class-xili-dictionary.php:1440
+msgid "has plural:"
+msgstr "a un plural :"
+
+#. translators:
+#: class-xili-dictionary.php:1466
+msgid "XD say to translate in %s: "
+msgstr "XD indique de traduire en %s :"
+
+#. translators:
+#: class-xili-dictionary.php:1639
+msgid "%1$s saved as: <em>%2$s</em>"
+msgstr "%1$s saved as: <em>%2$s</em>"
+
+#. translators:
+#: class-xili-dictionary.php:1650
+msgid ""
+"msgid plural of: <strong>%s</strong> ( <a href=\"%s\" title=\"link to:%d\" >"
+"%s</a> )<br />"
+msgstr ""
+"msgid plural de : <strong>%s</strong> ( <a href=\"%s\" title=\"lien vers :%d"
+"\" >%s</a> )<br />"
+
+#. translators:
+#: class-xili-dictionary.php:1653
+msgid "msgid plural of: <a href=\"%s\" >%d</a><br />"
+msgstr "msgid plural de : <a href=\"%s\" >%d</a><br />"
+
+#: class-xili-dictionary.php:1668
+msgid "( <a href=\"%1$s\" title = \"link of:%2$d\">%3$s</a> )<br />"
+msgstr "( <a href=“%1$s” title = “link of:%2$d”>%3$s</a> )<br />"
+
+#. translators:
+#: class-xili-dictionary.php:1671 class-xili-dictionary.php:1699
+msgid "msgstr of: <a href=\"%1$s\" >%2$d</a><br />"
+msgstr "msgstr of: <a href=“%1$s” >%2$d</a><br />"
+
+#. translators:
+#: class-xili-dictionary.php:1688
+msgid ""
+"<strong>%1$s</strong> plural of: <strong>%2$s</strong>( <a href=\"%3$s\" "
+"title=\"link to:%4$d\">%5$s</a> )<br />"
+msgstr ""
+"<strong>%1$s</strong> plural of: <strong>%2$s</strong>( <a href=“%3$s” "
+"title=“link to:%4$d”>%5$s</a> )<br />"
+
+#. translators:
+#: class-xili-dictionary.php:1691
+msgid ""
+"<strong>%1$s</strong> translation of: <strong>%2$s</strong>( <a href=\"%3$s"
+"\" title=\"link to:%4$d\">%5$s</a> )<br />"
+msgstr ""
+"<strong>%1$s</strong> translation of: <strong>%2$s</strong>( <a href=“%3$s” "
+"title=“link to:%4$d”>%5$s</a> )<br />"
+
+#. translators:
+#: class-xili-dictionary.php:1708
+msgid "msgstr[%1$d] plural of: <a href=\"%2$s\" >%3$d</a><br />"
+msgstr "msgstr[%1$d] plural of: <a href=“%2$s” >%3$d</a><br />"
+
+#. translators:
+#: class-xili-dictionary.php:1716
+msgid "go to <a href=\"%1$s\" title=\"link to:%2$d\">msgid</a>"
+msgstr "pointer le <a href=“%1$s\" title=\"lien vers :%2$d\">msgid</a>"
+
+#: class-xili-dictionary.php:1785
+msgid "Xili Dictionary"
+msgstr "Dictionnaire xili™"
+
+#: class-xili-dictionary.php:1794
+msgid "Msg list"
+msgstr "Liste msg"
+
+#: class-xili-dictionary.php:1798
+msgid "XD Msg list"
+msgstr "Liste XD msg"
+
+#: class-xili-dictionary.php:1810
+msgid "XD settings"
+msgstr "Réglages  XD"
+
+#: class-xili-dictionary.php:1811
+msgid "Info"
+msgstr "Info"
+
+#: class-xili-dictionary.php:1812
+msgid "Mail & Support"
+msgstr "Courriel et support"
+
+#: class-xili-dictionary.php:1831
+msgid "Settings"
+msgstr "Réglages"
+
+#: class-xili-dictionary.php:2014
+msgid "not translated in"
+msgstr "non traduit en"
+
+#: class-xili-dictionary.php:2067
+msgid ""
+"WARNING: xili-dictionary datas are not ready to be imported from XML "
+"generated here. <br />So, it is fully recommended to <strong>desactivate "
+"temporarily xili-dictionary</strong> during export and so, avoid clutter of "
+"the file."
+msgstr ""
+"ATTENTION : Les données de xili-dictionary ne sont pas prêtes à être "
+"importées à partir du fichier XML généré ici. <br/> Aussi il est vivement "
+"recommandé de <strong>désactiver temporairement l'extension xili-dictionary</"
+"strong> pendant l'exportation et éviter ainsi un fichier encombré."
+
+#: class-xili-dictionary.php:2068
+msgid ""
+"To export/import/backup dictionary datas, use .po files built by the plugin."
+msgstr ""
+"Pour sauvegarder/exporter/importer les donnés du dictionnaire, utiliser la "
+"génération des fichiers .po avec l'extension."
+
+#: class-xili-dictionary.php:2137
+msgid "Erasing"
+msgstr "Suppression en cours"
+
+#: class-xili-dictionary.php:2138
+msgid "Erase"
+msgstr "Supprimer"
+
+#: class-xili-dictionary.php:2145
+msgid "Importing files"
+msgstr "Importation en cours du fichier"
+
+#: class-xili-dictionary.php:2146
+msgid "Import"
+msgstr "Importer"
+
+#: class-xili-dictionary.php:2153
+msgid "Downloading files to your computer"
+msgstr "Télécharger les fichiers dans votre ordinateur"
+
+#: class-xili-dictionary.php:2154
+msgid "Download"
+msgstr "Télécharger"
 
 #~ msgid ""
 #~ "To create or edit translations (msgstr), see %s in the table of box %s."

@@ -7,10 +7,60 @@
 * @since 2.14
 */
 
-class Xili_Dictionary_Xml_Pll {
-	public function __construct( &$xd ) {
-		//error_log( '++++ +++ +' . $xili_dictionary->get_wplang() ) ;
-		//$xili_dictionary->xd = $xd;
+trait Xili_Dictionary_Xml_Pll {
+
+	// to be cleanly attached w/o creating terms (iso is passed)
+	public function target_lang( $target_lang ) {
+		if ( is_int( $target_lang ) ) {
+			return $target_lang;
+		}
+		if ( 'Polylang' == $this->multilanguage_plugin_active ) {
+			return (int) $this->iso_to_term_id[ $target_lang ];
+		} else {
+			return $target_lang;
+		}
+	}
+
+	/**
+	 * to be compatible with multilingual other plugins (first = Polylang)
+	 *
+	 */
+	public function other_multilingual_compat( $languages ) {
+		if ( class_exists( 'Polylang' ) ) { // 2.12
+			$this->multilanguage_plugin_active = 'Polylang';
+			// attach languages to group
+			foreach ( $languages as $language ) {
+				wp_set_object_terms( $language->term_id, 'the-langs-group', TAXOLANGSGROUP ); // link to group
+				$desc_array = unserialize( $language->description );
+				if ( false !== $desc_array ) {
+					// when back to pll from xl
+					$this->iso_to_term_id[ $desc_array['locale'] ] = $language->term_id;
+				}
+			}
+			add_filter( 'other_multilingual_plugin_filter_terms', array( &$this, 'polylang_language_terms_compat' ) );
+			add_filter( 'other_multilingual_plugin_filter_term', array( &$this, 'polylang_language_one_term_compat' ) );
+		}
+	}
+	// series
+	public function polylang_language_terms_compat( $languages ) {
+		$adapted_languages = array();
+		if ( $languages ) {
+			foreach ( $languages as $language ) {
+				// array
+				$adapted_languages[] = $this->Polylang_language_one_term_compat( $language );
+			}
+			return $adapted_languages;
+		}
+		return $languages;
+	}
+	// one term
+	public function polylang_language_one_term_compat( $language ) {
+		$adapted_language = array();
+		$adapted_language = (array) $language; // all values but with array to avoid error
+		$desc_array = unserialize( $language->description );
+		$adapted_language['name'] = $desc_array['locale']; // ISO
+		$adapted_language['description'] = $language->name; // full name
+		return (object) $adapted_language;
 	}
 
 	/**
@@ -19,7 +69,7 @@ class Xili_Dictionary_Xml_Pll {
 	 *
 	 * @since 2.12
 	 */
-	public static function available_theme_mod_xml() {
+	public function available_theme_mod_xml() {
 		if ( is_child_theme() ) {
 			$file_in_parent = file_exists( get_template_directory() . '/wpml-config.xml' );
 			$file_in_child = file_exists( get_stylesheet_directory() . '/wpml-config.xml' );
@@ -30,7 +80,7 @@ class Xili_Dictionary_Xml_Pll {
 		}
 	}
 
-	public static function display_form_theme_mod_xml() {
+	public function display_form_theme_mod_xml() {
 		$output = esc_html__( 'A config.xml file is available.', 'xili-dictionary' );
 		if ( extension_loaded( 'simplexml' ) ) {
 			$output .= ' ' . esc_html__( 'Check below if you want to add in dictionary the terms described inside this file. <br />(Do not forget to fill values in customizer before.)', 'xili-dictionary' );
@@ -49,7 +99,7 @@ class Xili_Dictionary_Xml_Pll {
 	 *
 	 * @since 2.12
 	 */
-	public static function get_xml_contents( $theme_slug = false ) {
+	public function get_xml_contents( $theme_slug = false ) {
 		if ( is_child_theme() ) {
 			$file_in_parent = file_exists( $parent_file_path = get_template_directory() . '/wpml-config.xml' );
 			$file_in_child = file_exists( $child_file_path = get_stylesheet_directory() . '/wpml-config.xml' );
@@ -81,7 +131,7 @@ class Xili_Dictionary_Xml_Pll {
 	 *
 	 * @since 2.12.2
 	 */
-	public static function display_form_pll_import() {
+	public function display_form_pll_import() {
 		$output = esc_html__( 'Polylang translation strings are available.', 'xili-dictionary' );
 
 		$output .= ' ' . esc_html__( 'Check below if you want to add in dictionary the terms (and translations) made by Polylang', 'xili-dictionary' );
@@ -98,7 +148,7 @@ class Xili_Dictionary_Xml_Pll {
 	 *
 	 * @since 2.12.2
 	 */
-	public static function import_pll_categories_name_description() {
+	public function import_pll_categories_name_description() {
 		$this->importing_mode = true;
 		$i = 0;
 		if ( 'isactive' == $this->xililanguage && ( $categories_group = get_option( 'xili_language_pll_term_category_groups' ) ) ) {
@@ -153,7 +203,7 @@ class Xili_Dictionary_Xml_Pll {
 	 *
 	 * @since 2.12.2
 	 */
-	public static function import_pll_db_mos() {
+	public function import_pll_db_mos() {
 		$listlanguages = $this->get_list_languages();
 		$results = array();
 		$this->importing_mode = true;
@@ -173,7 +223,7 @@ class Xili_Dictionary_Xml_Pll {
 	 * @since 2.12.2
 	 * @param lang as object
 	 */
-	public static function import_pll_post_mo( $lang ) {
+	public function import_pll_post_mo( $lang ) {
 		$mo_id = $this->get_id( $lang );
 		$mo = new MO();
 		$post = get_post( $mo_id, OBJECT );
@@ -211,7 +261,7 @@ class Xili_Dictionary_Xml_Pll {
 	 * @param object $lang
 	 * @return int
 	 */
-	public static function get_id( $lang ) {
+	public function get_id( $lang ) {
 		global $wpdb;
 		return $wpdb->get_var( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_title = %s AND post_type= %s", 'polylang_mo_' . $lang->term_id, 'polylang_mo' ) );
 	}
