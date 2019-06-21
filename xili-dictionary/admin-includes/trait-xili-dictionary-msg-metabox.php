@@ -1040,7 +1040,7 @@ trait Xili_Dictionary_Msg_Metabox {
 		<p class="xdversion">XD v. <?php echo XILIDICTIONARY_VER; ?></p>
 		<script type="text/javascript">
 function verifybefore(id) {
- var link = new array();
+ var link = new Array();
 
  link[0] = "<?php echo str_replace( 'amp;', '', $link_theme_mo ); ?>";
  link[1] = "<?php echo str_replace( 'amp;', '', $link_local_mo ); ?>";

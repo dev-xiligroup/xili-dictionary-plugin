@@ -4,14 +4,15 @@ Plugin Name: xili-dictionary
 Plugin URI: http://dev.xiligroup.com/xili-dictionary/
 Description: A tool using WordPress CPT and taxonomy for localized themes or multilingual themes managed by xili-language - a powerful tool to create .mo file(s) on the fly in the theme's folder and more... - ONLY for >= WP 4.6.1 -
 Author: dev.xiligroup - MS
-Version: 2.14.10
+Version: 2.14.11
 Author URI: http://dev.xiligroup.com
 License: GPLv2
 Text Domain: xili-dictionary
 Domain Path: /languages/
 */
 
-# 2.14.10 - 1900605 - WPCS and main class splitted in Traits
+# 2.14.11 - 190621 - fixes js metabox
+# 2.14.10 - 190605 - WPCS and main class splitted in Traits
 
 # 2.14.0 - 190513 - WP Standards PHP Code Sniffer rewriting
 
@@ -83,9 +84,9 @@ if ( ! function_exists( 'add_action' ) ) {
 	exit;
 }
 
-define( 'XILIDICTIONARY_VER', '2.14.10' );
+define( 'XILIDICTIONARY_VER', '2.14.11' );
 define( 'XILIDICTIONARY_DEBUG', false ); // WP_DEBUG must be also true !
-define( 'XILIDICTIONARY_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+define( 'XILIDICTIONARY_PLUGIN_DIR', plugin_dir_path( __FILE__ ) ); /* with / at end */
 define( 'XILIDICTIONARY_PLUGIN_URL', plugins_url( '', __FILE__ ) );
 // the class
 /********************* the CLASS **********************/
