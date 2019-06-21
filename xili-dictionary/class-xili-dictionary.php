@@ -1409,7 +1409,7 @@ class Xili_Dictionary {
 			}
 			if ( $display ) {
 				echo '<div class="msg-saved" >';
-				printf( esc_html__( 'msgid saved as: <em>%s</em>', 'xili-dictionary' ), ( $post->post_content ) );
+				printf( esc_html__( 'msgid saved as: <em>%s</em>', 'xili-dictionary' ), $post->post_content );
 				echo '</div>';
 			} else {
 				echo '<mark><strong>msgid</strong></mark>';
@@ -1418,7 +1418,7 @@ class Xili_Dictionary {
 				echo $spanend;
 			}
 			echo '<br />';
-			if ( '' == $ctxt && ! $display ) {
+			if ( '' != $ctxt && ! $display ) {
 				printf( 'ctxt: %s <br />', $ctxt );
 			}
 
