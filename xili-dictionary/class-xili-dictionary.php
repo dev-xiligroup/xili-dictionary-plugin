@@ -30,7 +30,6 @@ class Xili_Dictionary {
 
 	use Xili_Dictionary_Xml_Pll;
 
-
 	public $plugin_url = ''; // Url to this plugin - see construct
 	public $plugin_path = ''; // The path to this plugin - see construct
 
@@ -1771,7 +1770,7 @@ class Xili_Dictionary {
 	public function admin_init() {
 		$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 		/* Register our script. Same as in XTT loaded before if active */
-		wp_register_script( 'datatables-v10', XILIDICTIONARY_PLUGIN_URL . 'js/jquery.dataTables' . $suffix . '.js', array( 'jquery' ), XILIDICTIONARY_VER, true );
+		wp_register_script( 'datatables-v10', XILIDICTIONARY_PLUGIN_URL . '/js/jquery.dataTables' . $suffix . '.js', array( 'jquery' ), XILIDICTIONARY_VER, true );
 
 		wp_register_style( 'table_style-v10', XILIDICTIONARY_PLUGIN_URL . '/css/jquery.dataTables' . $suffix . '.css', array(), XILIDICTIONARY_VER, 'screen' );
 	}
