@@ -1,13 +1,15 @@
 <?php
+/**
+ * All about dictionary help
+ *
+ * @package Xili-Dictionary
+ * @subpackage admin
+ * @since 2.14
+ */
 
 /**
-* XD Admin class help and pointer functions
-*
-* @package Xili-Dictionary
-* @subpackage admin
-* @since 2.14
-*/
-
+ * { item_description }
+ */
 trait Xili_Dictionary_Help {
 
 	/**
@@ -15,8 +17,9 @@ trait Xili_Dictionary_Help {
 	 *
 	 * @since 1.2.2
 	 */
-	public function add_help_text( $contextual_help, $screen_id, $screen ) {
-
+	public function add_help_text() {
+		// public function add_help_text( $contextual_help, $screen_id, $screen ) { !
+		$screen = get_current_screen(); // 2021-04 !
 		$more_infos =
 		'<p><strong>' . __( 'For more information:' ) . '</strong></p>' .
 		'<p>' . __( '<a href="http://wiki.xiligroup.org" target="_blank">Xili Plugins Documentation and WIKI</a>', 'xili-dictionary' ) . '</p>' .
@@ -258,14 +261,19 @@ trait Xili_Dictionary_Help {
 				)
 			);
 		}
-		return $contextual_help;
+		// return $contextual_help; !
 	}
 
 	/**
+	 * Function localize_admin_js.
 	 * News pointer for tabs
 	 *
 	 * @since 2.14
 	 *
+	 * @param    <type> $case_news The case news.
+	 * @param    <type> $news_id   The news identifier.
+	 *
+	 * @return   <type> The admin js.
 	 */
 	public function localize_admin_js( $case_news, $news_id ) {
 		$about = __( 'Docs about xili-dictionary', 'xili-dictionary' );

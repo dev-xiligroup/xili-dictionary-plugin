@@ -274,9 +274,9 @@ class Xili_Dictionary {
 		/* special to detect theme changing since 1.1.9 */
 		add_action( 'switch_theme', array( &$this, 'xd_theme_switched' ) );
 
-		// Test about import frontend terms of plugin
+		// Test about import frontend terms of plugin.
 		if ( ! is_admin() && get_option( 'xd_test_importation', false ) ) {
-			add_filter( 'gettext', array( &$this, 'detect_plugin_frontent_msg' ), 5, 3 ); // front-end limited
+			add_filter( 'gettext', array( &$this, 'detect_plugin_frontent_msg' ), 5, 3 ); // front-end limited !
 		}
 
 		if ( ! is_admin() && get_option( 'xd_test_importation', false ) ) {
@@ -288,8 +288,8 @@ class Xili_Dictionary {
 
 		add_action( 'export_filters', array( &$this, 'message_export_limited' ) ); // 2.7
 
-		add_action( 'contextual_help', array( &$this, 'add_help_text' ), 10, 3 ); /* 1.2.2 - 2.14 */
-
+		// add_action( 'contextual_help', array( &$this, 'add_help_text' ), 10, 3 ); /* 1.2.2 - 2.14 */ !
+		add_action( 'admin_head', array( &$this, 'add_help_text' ) ); // 2021-04 !
 		if ( class_exists( 'xili_language_ms' ) ) {
 			$this->xililanguage_ms = true; // 1.3.4
 		}
