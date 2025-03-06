@@ -13,7 +13,7 @@ Version 2.24.10 introduces Trait files structure to split main class.
 
 **REQUIRES PHP 7.1+ !**
 
-**pre-tested with WP 5.2**
+**pre-tested with WP 6.1**
 
 The branch xd 2.12 is previous version (WP < 4.9)
 
