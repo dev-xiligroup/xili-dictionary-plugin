@@ -33,9 +33,9 @@ trait Xili_Dictionary_Settings {
 		//$tagsnamelike = ( isset( $_POST['tagsnamelike'] ) ) ? $_POST['tagsnamelike'] : '';
 		//if ( isset( $_GET['tagsnamelike'] ) )
 			//$tagsnamelike = $_GET['tagsnamelike']; /* if link from table */
-		$tagsnamesearch = ( isset( $_POST['tagsnamesearch'] ) ) ? $_POST['tagsnamesearch'] : '';
+		$tagsnamesearch = ( isset( $_POST['tagsnamesearch'] ) ) ? sanitize_text_field( wp_unslash($_POST['tagsnamesearch'])) : '';
 		if ( isset( $_GET['tagsnamesearch'] ) ) {
-			$tagsnamesearch = $_GET['tagsnamesearch'];
+			$tagsnamesearch = sanitize_text_field( wp_unslash($_GET['tagsnamesearch']));
 		}
 
 		if ( isset( $_POST['reset'] ) ) {
@@ -165,7 +165,7 @@ trait Xili_Dictionary_Settings {
 
 			case 'subselection':
 				//$tagsnamelike = $_POST['tagsnamelike'];
-				$tagsnamesearch = $_POST['tagsnamesearch'];
+				$tagsnamesearch = sanitize_text_field( wp_unslash($_POST['tagsnamesearch']));
 				$message .= ' selection of ' . $_POST['tagsgroup_parent_select'];
 				$actiontype = 'add';
 				break;
@@ -1395,7 +1395,7 @@ trait Xili_Dictionary_Settings {
 			*/
 			?>
 			<label for="tagsnamesearch"><?php esc_html_e( 'Containing:', 'xili-dictionary' ); ?></label>
-			<input name="tagsnamesearch" id="tagsnamesearch" type="text" value="<?php echo $tagsnamesearch; ?>" />
+			<input name="tagsnamesearch" id="tagsnamesearch" type="text" value="<?php echo sanitize_text_field( wp_unslash( $tagsnamesearch)); ?>" />
 			<p class="submit">
 				<input type="submit" id="tagssublist" name="tagssublist" value="<?php esc_html_e( 'Sub select…', 'xili-dictionary' ); ?>" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type="submit" id="notagssublist" name="notagssublist" value="<?php esc_html_e( 'No select…', 'xili-dictionary' ); ?>" />

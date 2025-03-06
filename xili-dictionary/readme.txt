@@ -3,8 +3,8 @@ Contributors: michelwppi, MS dev.xiligroup
 Donate link: http://dev.xiligroup.com/
 Tags: theme,post,plugin,posts, page, category, admin,multilingual,taxonomy,dictionary, .mo file, .po file , .pot file, l10n, i18n, language, international,wpmu,plural,multisite, WP network, translation, Polylang, xml
 Requires at least: 5.0
-Requires PHP: 5.6
-Tested up to: 5.5
+Requires PHP: 7.1+
+Tested up to: 6.7
 Stable tag: 2.14.11
 License: GPLv2
 
@@ -29,7 +29,8 @@ According some users, current versions can be stable with recent WP versions. BU
 * code source renewed continiously with latest WP tools since WP 4.3 until WP 5.5.
 * readme rewritting
 
-= Version 2.14.11 (updated 2019-06-05) =
+= Version 2.14.11 (updated 2025-03-06) =
+fixes sanitizing...
 see [Changelog tab](https://wordpress.org/extend/plugins/xili-dictionary/changelog/).
 
 == Installation ==
