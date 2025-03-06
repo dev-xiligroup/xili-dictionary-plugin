@@ -1,7 +1,7 @@
 === xili-dictionary ===
-Contributors: michelwppi, MS dev.xiligroup
+Contributors: michelwppi
 Donate link: http://dev.xiligroup.com/
-Tags: theme,post,plugin,posts, page, category, admin,multilingual,taxonomy,dictionary, .mo file, .po file , .pot file, l10n, i18n, language, international,wpmu,plural,multisite, WP network, translation, Polylang, xml
+Tags: taxonomy,dictionary, pomo, multilingual, admin
 Requires at least: 5.0
 Requires PHP: 7.1+
 Tested up to: 6.7
