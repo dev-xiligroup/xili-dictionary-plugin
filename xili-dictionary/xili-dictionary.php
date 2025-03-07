@@ -4,13 +4,14 @@ Plugin Name: xili-dictionary
 Plugin URI: http://dev.xiligroup.com/xili-dictionary/
 Description: A tool using wordpress's CPT and taxonomy for localized themes or multilingual themes managed by xili-language - a powerful tool to create .mo file(s) on the fly in the theme's folder and more... - ONLY for >= WP 3.2.1 -
 Author: dev.xiligroup - MS
-Version: 2.12.5
+Version: 2.12.5.1
 Author URI: http://dev.xiligroup.com
 License: GPLv2
 Text Domain: xili-dictionary
 Domain Path: /languages/
 */
 
+# 2.12.5.1 - 250226 - fixes sanitize - report patchstack.com
 # 2.12.5 - 160729 - wp_get_theme integration
 # 2.12.4 - 160216 - pot generation: now bbp addon integrated in xl (glotpress)
 
@@ -77,7 +78,7 @@ if ( !function_exists( 'add_action' ) ) {
 	exit;
 }
 
-define( 'XILIDICTIONARY_VER', '2.12.5' );
+define( 'XILIDICTIONARY_VER', '2.12.5.1' );
 define( 'XILIDICTIONARY_DEBUG', false ); // WP_DEBUG must be also true !
 
 // the class
@@ -3321,7 +3322,6 @@ function verifybefore(id) {
 	}
 	/**
 	 * @since 1.02
-	 * OBSOLETE
 	 */
 	function fill_default_languages_list() {
 		if ( $this->xililanguage == 'neveractive' || $this->xililanguage == 'wasactive' ) {
@@ -3938,7 +3938,7 @@ function verifybefore(id) {
 			<input name="tagsnamelike" id="tagsnamelike" type="text" value="<?php echo $tagsnamelike; ?>" /><br />
 */ ?>
 			<label for="tagsnamesearch"><?php _e('Containing:','xili-dictionary') ?></label>
-			<input name="tagsnamesearch" id="tagsnamesearch" type="text" value="<?php echo $tagsnamesearch; ?>" />
+			<input name="tagsnamesearch" id="tagsnamesearch" type="text" value="<?php echo sanitize_text_field( wp_unslash( $tagsnamesearch)); ?>" />
 			<p class="submit">
 				<input type="submit" id="tagssublist" name="tagssublist" value="<?php _e('Sub select…','xili-dictionary'); ?>" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type="submit" id="notagssublist" name="notagssublist" value="<?php _e('No select…','xili-dictionary'); ?>" />
@@ -4107,9 +4107,10 @@ function verifybefore(id) {
 		//$tagsnamelike = ( isset ( $_POST['tagsnamelike'] ) ) ? $_POST['tagsnamelike'] : '';
 		//if (isset($_GET['tagsnamelike']))
 			//$tagsnamelike = $_GET['tagsnamelike']; /* if link from table */
-		$tagsnamesearch = ( isset ( $_POST['tagsnamesearch'] ) ) ? $_POST['tagsnamesearch'] : '';
+		// 250226 - sanitize_text_field( wp_unslash(
+		$tagsnamesearch = ( isset ( $_POST['tagsnamesearch'] ) ) ? sanitize_text_field( wp_unslash($_POST['tagsnamesearch'])) : '';
 		if (isset($_GET['tagsnamesearch']))
-			$tagsnamesearch = $_GET['tagsnamesearch'];
+			$tagsnamesearch = sanitize_text_field( wp_unslash($_GET['tagsnamesearch']));
 
 
 
@@ -4234,7 +4235,7 @@ function verifybefore(id) {
 
 		case 'subselection';
 				//$tagsnamelike = $_POST['tagsnamelike'];
-				$tagsnamesearch = $_POST['tagsnamesearch'];
+				$tagsnamesearch = sanitize_text_field( wp_unslash($_POST['tagsnamesearch']));
 				$message .= ' selection of '.$_POST['tagsgroup_parent_select'];
 				$actiontype = "add";
 				break;
@@ -4848,7 +4849,7 @@ function verifybefore(id) {
 								}
 						?>
 					</div>
-					<h4><a href="http://dev.xiligroup.com/xili-dictionary" title="Plugin page and docs" target="_blank" style="text-decoration:none" ><img style="vertical-align:middle" src="<?php echo plugins_url( 'images/XD-full-logo-32.png', __FILE__ ) ; ?>" alt="xili-dictionary logo"/></a> - © <a href="http://dev.xiligroup.com" target="_blank" title="<?php _e('Author'); ?>" >xiligroup.com</a>™ - msc 2007-2016 - v. <?php echo XILIDICTIONARY_VER; ?></h4>
+					<h4><a href="http://dev.xiligroup.com/xili-dictionary" title="Plugin page and docs" target="_blank" style="text-decoration:none" ><img style="vertical-align:middle" src="<?php echo plugins_url( 'images/XD-full-logo-32.png', __FILE__ ) ; ?>" alt="xili-dictionary logo"/></a> - © <a href="http://dev.xiligroup.com" target="_blank" title="<?php _e('Author'); ?>" >xiligroup.com</a>™ - msc 2007-2025 - v. <?php echo XILIDICTIONARY_VER; ?></h4>
 				</div>
 			</div>
 			<br class="clear" />
