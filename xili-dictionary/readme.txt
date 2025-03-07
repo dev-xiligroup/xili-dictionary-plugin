@@ -4,7 +4,7 @@ Donate link: http://dev.xiligroup.com/
 Tags: taxonomy,dictionary, pomo, multilingual, admin
 Requires at least: 5.0
 Requires PHP: 7.1+
-Tested up to: 6.7
+Tested up to: 6.7.1
 Stable tag: 2.14.11
 License: GPLv2
 
